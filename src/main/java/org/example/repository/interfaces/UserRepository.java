@@ -5,17 +5,17 @@ import java.util.List;
 
 public interface UserRepository extends CrudRepository<User> {
 
-  void loginUser(String username, String password);
+  Integer loginUser(String username, String password);
 
-  void logOutUser();
+  Integer logOutUser();
 
-  void create(User user);
+  Integer create(User user);
 
-  void get(String userName);
+  Integer get(String userName);
 
-  void createListUsers(List<User> usersList);
+  Integer createListUsers(List<User> usersList);
 
-  void update(User user);
+  Integer update(User user);
 
-  void delete(String userName);
+  Integer delete(String userName);
 }

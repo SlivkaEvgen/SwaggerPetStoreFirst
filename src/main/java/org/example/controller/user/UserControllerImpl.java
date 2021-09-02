@@ -3,7 +3,6 @@ package org.example.controller.user;
 import org.example.controller.CommandImpl;
 import org.example.controller.Controller;
 import org.example.controller.ControllerImpl;
-import org.example.service.UserServiceImpl;
 import java.util.Scanner;
 
 public class UserControllerImpl implements Controller {
@@ -20,7 +19,7 @@ public class UserControllerImpl implements Controller {
       start();
     }
     if (next.equalsIgnoreCase("logout")) {
-      new UserServiceImpl().logOutUser();
+      new UserLogOutController().logOut();
       start();
     }
     if (next.equalsIgnoreCase("get")) {

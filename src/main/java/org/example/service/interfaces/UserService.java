@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface UserService {
 
-  void createNewUser(
+  Integer createNewUser(
       Integer id,
       String userName,
       String firstName,
@@ -15,15 +15,15 @@ public interface UserService {
       String email,
       String phone);
 
-  void logOutUser();
+  Integer logOutUser();
 
-  void loginUser(String username, String password);
+  Integer loginUser(String username, String password);
 
-  void getUser(String userName);
+  Integer getUser(String userName);
 
-  void createListUsers(List<User> usersList);
+  Integer createListUsers(List<User> usersList);
 
-  void update(
+  Integer update(
       Integer id,
       String userName,
       String firstName,
@@ -33,5 +33,5 @@ public interface UserService {
       String email,
       String phone);
 
-  void delete(String userName);
+  Integer delete(String userName);
 }

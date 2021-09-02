@@ -4,7 +4,7 @@ import org.example.controller.ControllerImpl;
 import org.example.controller.Validator;
 import org.example.service.UserServiceImpl;
 import java.util.Scanner;
-
+// done
 public class UserLogInController {
 
   private final Scanner scanner = new ControllerImpl().getScanner();
@@ -14,7 +14,13 @@ public class UserLogInController {
   public void logIn() {
     String userName = enterUserName();
     String password = enterPassword();
-    userService.loginUser(userName, password);
+    Integer loginUser = userService.loginUser(userName, password);
+    if (loginUser == 200) {
+      System.out.println(" ✅ Successfully");
+    } else {
+      System.out.println(" ❌ Error, please try again");
+      logIn();
+    }
   }
 
   private String enterUserName() {

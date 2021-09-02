@@ -41,7 +41,13 @@ public class UserCreateController implements Controller {
 
   private void createList() {
     List<User> userList = new ArrayList<>();
-    userService.createListUsers(userList);
+    Integer listUsers = userService.createListUsers(userList);
+    if (listUsers == 200) {
+      System.out.println(" ✅ Successfully");
+    } else {
+      System.out.println(" ❌ Error, please try again");
+      createList();
+    }
   }
 
   private void create() {
@@ -53,7 +59,15 @@ public class UserCreateController implements Controller {
     String password = enterPassword();
     String email = enterEmail();
     String phone = enterPhone();
-    userService.createNewUser(id, userName, firstName, lastName, status, password, email, phone);
+    Integer newUser =
+        userService.createNewUser(
+            id, userName, firstName, lastName, status, password, email, phone);
+    if (newUser == 200) {
+      System.out.println(" ✅ Successfully");
+    } else {
+      System.out.println(" ❌ Error, please try again");
+      create();
+    }
   }
 
   private String enterId() {

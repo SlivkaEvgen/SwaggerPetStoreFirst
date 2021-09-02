@@ -60,7 +60,7 @@ public class PetRepositoryImpl implements PetRepository {
   // 200  add a new pet// Pet object that needs to be added to the store
   @SneakyThrows
   @Override
-  public void create(Pet pet) {
+  public Integer create(Pet pet) {
     URI uri = URI.create(URI_PET + "/");
     //    pet = new Pet();
     //    pet.setId(1);
@@ -89,11 +89,12 @@ public class PetRepositoryImpl implements PetRepository {
     // System.out.println("Create pet $ " + response.code());
     System.out.println("Add pet(POST) pet $ " + response.body().string());
     response.close();
+    return response.code();
   }
   // 200 update //id/name/status
   @SneakyThrows
   @Override
-  public void update(Pet pet) {
+  public Integer update(Pet pet) {
     // https://petstore.swagger.io/v2/pet
     URI uri = URI.create(URI_PET);
 
@@ -135,6 +136,7 @@ public class PetRepositoryImpl implements PetRepository {
     // System.out.println("Update pet $ " + response.code());
     System.out.println("Update pet $ " + response.body().string());
     response.close();
+    return response.code();
   }
   // 200  findPetById
   @SneakyThrows

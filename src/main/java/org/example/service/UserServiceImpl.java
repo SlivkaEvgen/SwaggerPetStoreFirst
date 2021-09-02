@@ -10,7 +10,7 @@ public class UserServiceImpl implements UserService {
   private final UserRepositoryImpl userRepository = new UserRepositoryImpl();
 
   @Override
-  public void createNewUser(
+  public Integer createNewUser(
       Integer id,
       String userName,
       String firstName,
@@ -28,31 +28,31 @@ public class UserServiceImpl implements UserService {
     user.setPassword(password);
     user.setEmail(email);
     user.setPhone(phone);
-    userRepository.create(user);
+    return userRepository.create(user);
   }
 
   @Override
-  public void logOutUser() {
-    userRepository.logOutUser();
+  public Integer logOutUser() {
+    return userRepository.logOutUser();
   }
 
   @Override
-  public void loginUser(String username, String password) {
-    userRepository.loginUser(username, password);
+  public Integer loginUser(String username, String password) {
+    return userRepository.loginUser(username, password);
   }
 
   @Override
-  public void getUser(String userName) {
-    userRepository.get(userName);
+  public Integer getUser(String userName) {
+    return userRepository.get(userName);
   }
 
   @Override
-  public void createListUsers(List<User> usersList) {
-    userRepository.createListUsers(usersList);
+  public Integer createListUsers(List<User> usersList) {
+    return userRepository.createListUsers(usersList);
   }
 
   @Override
-  public void update(
+  public Integer update(
       Integer id,
       String userName,
       String firstName,
@@ -70,11 +70,11 @@ public class UserServiceImpl implements UserService {
     user.setPassword(password);
     user.setEmail(email);
     user.setPhone(phone);
-    userRepository.update(user);
+    return userRepository.update(user);
   }
 
   @Override
-  public void delete(String userName) {
-    userRepository.delete(userName);
+  public Integer delete(String userName) {
+    return userRepository.delete(userName);
   }
 }

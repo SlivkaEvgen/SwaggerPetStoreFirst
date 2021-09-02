@@ -17,7 +17,7 @@ public class UserRepositoryImpl implements UserRepository {
 
   @SneakyThrows
   @Override
-  public void loginUser(String username, String password) {
+  public Integer loginUser(String username, String password) {
     Request request =
         new Request.Builder()
             .url(
@@ -25,25 +25,27 @@ public class UserRepositoryImpl implements UserRepository {
                     URI.create(URI_USER + "/login?username=" + username + "&password=" + password)))
             .build();
     Response response = OK_CLIENT.newCall(request).execute();
-    // System.out.println("LOGIN $ " + response.code());
-    System.out.println("LOGIN body $ " + response.body().string());
+    int code = response.code();
+    // System.out.println("LOGIN body $ " + response.body().string());
     response.close();
+    return code;
   }
 
   @SneakyThrows
   @Override
-  public void logOutUser() {
+  public Integer logOutUser() {
     Request request =
         new Request.Builder().url(HttpUrl.get(URI.create(URI_USER + "/logout"))).get().build();
     Response response = OK_CLIENT.newCall(request).execute();
     // System.out.println("LOGOUT $ " + response.code());
-    System.out.println("LOGOUT $ " + response.body().string());
+    // System.out.println("LOGOUT $ " + response.body().string());
     response.close();
+    return response.code();
   }
 
   @SneakyThrows
   @Override
-  public void create(User user) { // POST
+  public Integer create(User user) { // POST
     RequestBody requestBody =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER)))
@@ -62,23 +64,26 @@ public class UserRepositoryImpl implements UserRepository {
                     .build())
             .execute();
     // System.out.println("CREATE $ " + response.code());
-    System.out.println("CREATE $ " + response.body().string());
+    // System.out.println(GSON.fromJson(response.body().string(), User.class));
     response.close();
+    return response.code();
   }
 
   @SneakyThrows
   @Override
-  public void get(String userName) {
+  public Integer get(String userName) {
     Request request =
         new Request.Builder().url(HttpUrl.get(URI.create(URI_USER + "/" + userName))).get().build();
     Response response = OK_CLIENT.newCall(request).execute();
-    System.out.println("GET $ " + response.body().string());
-    // return response.body().string();
+    // System.out.println("GET $ " + response.body().string());
+    System.out.println(GSON.fromJson(response.body().string(), User.class));
+    response.close();
+    return response.code();
   }
 
   @SneakyThrows
   @Override
-  public void createListUsers(List<User> usersList) {
+  public Integer createListUsers(List<User> usersList) {
     RequestBody requestBody =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER + "/createWithList")))
@@ -97,13 +102,15 @@ public class UserRepositoryImpl implements UserRepository {
                     .build())
             .execute();
     // System.out.println("CREATE LIST $ " + response.code());
-    System.out.println("CREATE LIST $ " + response.body().string());
+    // System.out.println("CREATE LIST $ " + response.body().string());
+    // System.out.println(GSON.fromJson(response.body().string(), User.class));
     response.close();
+    return response.code();
   }
 
   @SneakyThrows
   @Override
-  public void update(User user) {
+  public Integer update(User user) {
     URI uri = URI.create(URI_USER + "/" + user.getUsername());
     RequestBody requestBody =
         new Request.Builder()
@@ -118,13 +125,14 @@ public class UserRepositoryImpl implements UserRepository {
         OK_CLIENT
             .newCall(new Request.Builder().url(HttpUrl.get(uri)).put(requestBody).build())
             .execute();
-    System.out.println("UPDATE $ " + response.code());
+    // System.out.println(GSON.fromJson(response.body().string(), User.class));
     response.close();
+    return response.code();
   }
 
   @SneakyThrows
   @Override
-  public void delete(String userName) {
+  public Integer delete(String userName) {
     Request request =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER + "/" + userName)))
@@ -132,7 +140,8 @@ public class UserRepositoryImpl implements UserRepository {
             .build();
     Response response = OK_CLIENT.newCall(request).execute();
     // System.out.println("DELETE $ " + response.code());
-    System.out.println(response.body().string());
+    /// System.out.println(response.body().string());
     response.close();
+    return response.code();
   }
 }

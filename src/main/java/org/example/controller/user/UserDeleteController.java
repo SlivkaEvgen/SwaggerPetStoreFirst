@@ -4,7 +4,7 @@ import org.example.controller.ControllerImpl;
 import org.example.controller.Validator;
 import org.example.service.UserServiceImpl;
 import java.util.Scanner;
-
+// done
 public class UserDeleteController {
 
   private final Scanner scanner = new ControllerImpl().getScanner();
@@ -15,9 +15,16 @@ public class UserDeleteController {
     System.out.print(" ENTER USER-NAME \n \uD83D\uDC49 ");
     String userName = scanner.next();
     if (validator.validString(userName)) {
-      userService.delete(userName);
+      int delete = userService.delete(userName);
+      if (delete == 200) {
+        System.out.println(" ✅ Successfully");
+      } else {
+        System.out.println(" ❌ Error, please try again");
+        delete();
+      }
     } else {
-      System.out.println("Try again");
+      System.out.println(" ❌ Error, please try again");
+      delete();
     }
   }
 }

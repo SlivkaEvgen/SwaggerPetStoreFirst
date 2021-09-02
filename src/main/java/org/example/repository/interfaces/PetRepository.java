@@ -11,9 +11,9 @@ public interface PetRepository extends CrudRepository<Pet> {
 
   void findPetByStatus(String status);
 
-  void create(Pet pet);
+  Integer create(Pet pet);
 
-  void update(Pet pet);
+  Integer update(Pet pet);
 
   void get(Integer petId);
 

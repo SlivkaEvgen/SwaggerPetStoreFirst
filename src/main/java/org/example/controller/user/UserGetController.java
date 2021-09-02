@@ -14,7 +14,13 @@ public class UserGetController {
   public void get() {
     String userName = enterUserName();
     System.out.println();
-    userService.getUser(userName);
+    Integer user = userService.getUser(userName);
+    if (user == 200) {
+      System.out.println(" ✅ Successfully");
+    } else {
+      System.out.println(" ❌ Error, please try again");
+      get();
+    }
   }
 
   private String enterUserName() {
