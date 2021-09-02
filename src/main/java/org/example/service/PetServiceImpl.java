@@ -28,7 +28,7 @@ public class PetServiceImpl implements PetService {
       String name,
       String status,
       Category category,
-      String[] images,
+      List<String> images,
       List<Tag> tagList) {
     Pet pet = new Pet();
     pet.setId(id);
@@ -46,7 +46,7 @@ public class PetServiceImpl implements PetService {
       String name,
       String status,
       Category category,
-      String[] images,
+      List<String> images,
       List<Tag> tagList) {
     Pet pet = new Pet();
     pet.setId(id);
@@ -69,7 +69,7 @@ public class PetServiceImpl implements PetService {
       String name,
       String status,
       Category category,
-      String[] images,
+      List<String> images,
       List<Tag> tagList) {
     Pet pet = new Pet();
     pet.setId(id);

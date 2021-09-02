@@ -6,8 +6,8 @@ import java.io.Serializable;
 @Data
 public class Category implements Serializable {
 
-    private static final long serialVersionUID = 7835463788887777L;
+  private static final long serialVersionUID = 7835463788887777L;
 
-    Integer id;
-    String name;
+  Integer id;
+  String name;
 }

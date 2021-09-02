@@ -6,8 +6,8 @@ import java.io.Serializable;
 @Data
 public class Tag implements Serializable {
 
-    private static final long serialVersionUID = 9382619309373L;
+  private static final long serialVersionUID = 9382619309373L;
 
-    Integer id;
-    String name;
+  Integer id;
+  String name;
 }

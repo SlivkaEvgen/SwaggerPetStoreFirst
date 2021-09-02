@@ -16,7 +16,7 @@ public interface PetService {
       String name,
       String status,
       Category category,
-      String[] images,
+      List<String> images,
       List<Tag> tagList);
 
   void update(
@@ -24,7 +24,7 @@ public interface PetService {
       String name,
       String status,
       Category category,
-      String[] images,
+      List<String> images,
       List<Tag> tagList);
 
   void get(Integer petId);
@@ -34,7 +34,7 @@ public interface PetService {
       String name,
       String status,
       Category category,
-      String[] images,
+      List<String> images,
       List<Tag> tagList);
 
   void delete(Integer petId);
