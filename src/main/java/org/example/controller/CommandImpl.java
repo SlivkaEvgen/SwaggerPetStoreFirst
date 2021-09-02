@@ -1,5 +1,7 @@
 package org.example.controller;
 
+import org.example.controller.pet.PetControllerImpl;
+import org.example.controller.store.StoreControllerImpl;
 import org.example.controller.user.UserControllerImpl;
 import java.util.Scanner;
 
@@ -14,9 +16,16 @@ public class CommandImpl implements Controller {
     String next = scanner.next();
     if (next.equalsIgnoreCase("user")) {
       new UserControllerImpl().start();
+      start();
     }
-    if (next.equalsIgnoreCase("pet")) {}
-    if (next.equalsIgnoreCase("store")) {}
+    if (next.equalsIgnoreCase("pet")) {
+      new PetControllerImpl().startPet();
+      start();
+    }
+    if (next.equalsIgnoreCase("store")) {
+      new StoreControllerImpl().startStore();
+      start();
+    }
     if (next.equalsIgnoreCase("back")) {
       new ControllerImpl().start();
     }

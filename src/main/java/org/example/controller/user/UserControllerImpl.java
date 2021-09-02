@@ -3,14 +3,12 @@ package org.example.controller.user;
 import org.example.controller.CommandImpl;
 import org.example.controller.Controller;
 import org.example.controller.ControllerImpl;
-import org.example.controller.Validator;
 import org.example.service.UserServiceImpl;
 import java.util.Scanner;
 
 public class UserControllerImpl implements Controller {
 
   private final Scanner scanner = new ControllerImpl().getScanner();
-  private final UserServiceImpl userService = new UserServiceImpl();
 
   @Override
   public void start() {
@@ -22,7 +20,7 @@ public class UserControllerImpl implements Controller {
       start();
     }
     if (next.equalsIgnoreCase("logout")) {
-      userService.logOutUser();
+      new UserServiceImpl().logOutUser();
       start();
     }
     if (next.equalsIgnoreCase("get")) {
@@ -38,13 +36,7 @@ public class UserControllerImpl implements Controller {
       start();
     }
     if (next.equalsIgnoreCase("delete")) {
-      System.out.print("Enter USER-NAME \n \uD83D\uDC49 ");
-      String userName = scanner.next();
-      if (new Validator().validString(userName)) {
-        userService.delete(userName);
-      } else {
-        System.out.println("Try again");
-      }
+      new UserDeleteController().delete();
       start();
     }
     if (next.equalsIgnoreCase("back")) {

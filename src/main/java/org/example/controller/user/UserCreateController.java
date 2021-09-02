@@ -39,12 +39,12 @@ public class UserCreateController implements Controller {
     }
   }
 
-  public void createList() {
+  private void createList() {
     List<User> userList = new ArrayList<>();
     userService.createListUsers(userList);
   }
 
-  public void create() {
+  private void create() {
     Integer id = Integer.valueOf(enterId());
     String userName = enterUserName();
     String firstName = enterFirstName();

@@ -17,7 +17,7 @@ public class UserGetController {
     userService.getUser(userName);
   }
 
-  public String enterUserName() {
+  private String enterUserName() {
     System.out.print(" ENTER USERNAME \n \uD83D\uDC49 ");
     String userName = scanner.next();
     if (!validator.validString(userName)) {
