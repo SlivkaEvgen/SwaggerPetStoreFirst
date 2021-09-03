@@ -1,12 +1,12 @@
 package org.example.controller.store;
 
+import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
-import org.example.controller.ControllerImpl;
 import java.util.Scanner;
 
 public class StoreControllerImpl {
 
-  private final Scanner scanner = new ControllerImpl().getScanner();
+  private final Scanner scanner = ScannerConsole.getInstance();
 
   public void startStore() {
     System.out.print(

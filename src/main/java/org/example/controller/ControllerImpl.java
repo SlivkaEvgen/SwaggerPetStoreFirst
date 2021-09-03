@@ -1,10 +1,11 @@
 package org.example.controller;
 
+import org.example.config.ScannerConsole;
 import java.util.Scanner;
 
 public class ControllerImpl implements Controller {
 
-  private final Scanner scanner = new Scanner(System.in);
+  private final Scanner scanner = ScannerConsole.getInstance();
 
   @Override
   public void start() {
@@ -14,7 +15,7 @@ public class ControllerImpl implements Controller {
 
   private void startConsole() {
     System.out.print("   \uD83D\uDC49 Start \n   \uD83D\uDC49 Stop\n\uD83D\uDC49 ");
-    String start = getScanner().next();
+    String start = scanner.next();
     if (start.equalsIgnoreCase("start")) {
       new CommandImpl().start();
     }
@@ -24,10 +25,6 @@ public class ControllerImpl implements Controller {
       System.out.print("        ⛔WRONG⛔\n\uD83D\uDCACPlease, enter again \n");
       startConsole();
     }
-  }
-
-  public Scanner getScanner() {
-    return scanner;
   }
 
   @Override

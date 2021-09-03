@@ -1,15 +1,14 @@
 package org.example.controller.user;
 
-import org.example.controller.ControllerImpl;
+import org.example.config.ScannerConsole;
 import org.example.controller.Validator;
 import org.example.service.UserServiceImpl;
 import java.util.Scanner;
 
 public class UserUpdateController {
 
-  private final Scanner scanner = new ControllerImpl().getScanner();
+  private final Scanner scanner = ScannerConsole.getInstance();
   private final UserServiceImpl userService = new UserServiceImpl();
-  private final Validator validator = new Validator();
 
   public void update() {
     Integer id = Integer.valueOf(enterId());
@@ -33,7 +32,7 @@ public class UserUpdateController {
   private String enterId() {
     System.out.print(" ENTER ID \n \uD83D\uDC49 ");
     String id = scanner.next();
-    if (validator.validNumber(id)) {
+    if (Validator.validNumber(id)) {
       return id;
     } else {
       System.out.println("Try again");
@@ -45,7 +44,7 @@ public class UserUpdateController {
   private String enterUserName() {
     System.out.print(" ENTER USERNAME \n \uD83D\uDC49 ");
     String userName = scanner.next();
-    if (!validator.validString(userName)) {
+    if (!Validator.validString(userName)) {
       System.out.println("Try again");
       enterUserName();
     }
@@ -55,7 +54,7 @@ public class UserUpdateController {
   private String enterFirstName() {
     System.out.print(" ENTER FIRSTNAME \n \uD83D\uDC49 ");
     String firstName = scanner.next();
-    if (!validator.validString(firstName)) {
+    if (!Validator.validString(firstName)) {
       System.out.println("Try again");
       enterLastName();
     }
@@ -65,7 +64,7 @@ public class UserUpdateController {
   private String enterLastName() {
     System.out.print(" ENTER LASTNAME \n \uD83D\uDC49 ");
     String lastName = scanner.next();
-    if (!validator.validString(lastName)) {
+    if (!Validator.validString(lastName)) {
       System.out.println("Try again");
       enterLastName();
     }
@@ -90,7 +89,7 @@ public class UserUpdateController {
   private String enterPassword() {
     System.out.print(" ENTER PASSWORD \n \uD83D\uDC49 ");
     String password = scanner.next();
-    if (!validator.validString(password)) {
+    if (!Validator.validString(password)) {
       System.out.println("Try again");
       enterPassword();
     }
@@ -100,7 +99,7 @@ public class UserUpdateController {
   private String enterEmail() {
     System.out.print(" ENTER EMAIL \n \uD83D\uDC49 ");
     String email = scanner.next();
-    if (!validator.validString(email)) {
+    if (!Validator.validString(email)) {
       System.out.println("Try again");
       enterEmail();
     }
@@ -114,7 +113,7 @@ public class UserUpdateController {
   private String enterPhone() {
     System.out.print(" ENTER NUMBER PHONE \n \uD83D\uDC49 ");
     String number = scanner.next();
-    if (!validator.validNumber(number)) {
+    if (!Validator.validNumber(number)) {
       System.out.println("Try again");
       enterPhone();
     }

@@ -3,6 +3,7 @@ package org.example.repository;
 import com.google.gson.Gson;
 import lombok.SneakyThrows;
 import okhttp3.*;
+import org.example.config.HttpConnect;
 import org.example.model.User;
 import org.example.repository.interfaces.UserRepository;
 import org.example.util.PropertiesLoader;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
 
-  private final OkHttpClient OK_CLIENT = new OkHttpClient();
+  private final OkHttpClient OK_CLIENT = HttpConnect.getInstance();
   private final Gson GSON = new Gson();
   private final String URI_USER = PropertiesLoader.getProperties("uriUser");
 

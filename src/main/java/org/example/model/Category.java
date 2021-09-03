@@ -8,6 +8,6 @@ public class Category implements Serializable {
 
   private static final long serialVersionUID = 7835463788887777L;
 
-  Integer id;
-  String name;
+  private Integer id;
+  private String name;
 }

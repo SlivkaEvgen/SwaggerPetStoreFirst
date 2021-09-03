@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.config.ScannerConsole;
 import org.example.controller.pet.PetControllerImpl;
 import org.example.controller.store.StoreControllerImpl;
 import org.example.controller.user.UserControllerImpl;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class CommandImpl implements Controller {
 
-  private final Scanner scanner = new ControllerImpl().getScanner();
+   private final Scanner scanner = ScannerConsole.getInstance();
 
   @Override
   public void start() {

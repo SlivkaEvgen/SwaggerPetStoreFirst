@@ -3,6 +3,7 @@ package org.example.repository;
 import com.google.gson.Gson;
 import lombok.SneakyThrows;
 import okhttp3.*;
+import org.example.config.HttpConnect;
 import org.example.model.Pet;
 import org.example.repository.interfaces.PetRepository;
 import org.example.util.PropertiesLoader;
@@ -11,7 +12,7 @@ import java.net.URI;
 
 public class PetRepositoryImpl implements PetRepository {
 
-  private final OkHttpClient OK_CLIENT = new OkHttpClient();
+  private final OkHttpClient OK_CLIENT = HttpConnect.getInstance();
   private final String URI_PET = PropertiesLoader.getProperties("uriPet");
   private final Gson GSON = new Gson();
 

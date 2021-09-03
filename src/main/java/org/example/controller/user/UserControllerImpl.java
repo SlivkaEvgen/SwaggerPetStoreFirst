@@ -1,13 +1,13 @@
 package org.example.controller.user;
 
+import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
 import org.example.controller.Controller;
-import org.example.controller.ControllerImpl;
 import java.util.Scanner;
 
 public class UserControllerImpl implements Controller {
 
-  private final Scanner scanner = new ControllerImpl().getScanner();
+  private final Scanner scanner = ScannerConsole.getInstance();
 
   @Override
   public void start() {

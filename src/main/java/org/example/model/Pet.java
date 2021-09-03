@@ -9,10 +9,10 @@ public class Pet implements Serializable {
 
   private static final long serialVersionUID = 5888882349777L;
 
-  Integer id;
-  String name;
-  Category category;
-  List<String> photoUrls;
-  String status; // available, pending, sold
-  List<Tag> tags;
+  private Integer id;
+  private String name;
+  private Category category;
+  private List<String> photoUrls;
+  private String status; // available, pending, sold
+  private List<Tag> tags;
 }

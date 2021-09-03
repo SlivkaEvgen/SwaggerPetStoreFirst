@@ -1,12 +1,12 @@
 package org.example.controller.pet;
 
+import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
-import org.example.controller.ControllerImpl;
 import java.util.Scanner;
 
 public class PetControllerImpl {
 
-  private final Scanner scanner = new ControllerImpl().getScanner();
+  private final Scanner scanner = ScannerConsole.getInstance();
 
   public void startPet() {
     System.out.print(
