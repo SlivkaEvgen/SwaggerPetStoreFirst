@@ -1,12 +1,15 @@
 package org.example.service.interfaces;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
+import org.example.model.Order;
+
 public interface StoreService {
 
   void returnsPetInventoriesByStatus();
 
-  void placeAnOrderForAPet(Integer orderId, Integer petId, Integer quantity, String status);
+  Integer placeAnOrderForAPet(Integer orderId, Integer petId, Integer quantity, String status);
 
-  void findOrderById(Integer petId);
+  Order findOrderById(Integer petId);
 
-  void deleteOrderById(Integer orderId);
+  Integer deleteOrderById(Integer orderId);
 }

@@ -15,24 +15,24 @@ public class StoreServiceImpl implements StoreService {
   }
 
   @Override
-  public void placeAnOrderForAPet(Integer orderId, Integer petId, Integer quantity, String status) {
+  public Integer placeAnOrderForAPet(Integer orderId, Integer petId, Integer quantity, String status) {
     Order order = new Order();
     order.setId(orderId);
     order.setPetId(petId);
     order.setComplete(true);
     order.setQuantity(quantity);
-    order.setStatus(status); // placed, approved, delivered
-    order.setShipDate(new Date().toString());
-    storeRepository.placeAnOrderForAPet(order);
+    order.setStatus(status);
+    order.setShipDate(String.valueOf(new Date().getTime()));
+    return storeRepository.placeAnOrderForAPet(order);
   }
 
   @Override
-  public void findOrderById(Integer petId) {
-    storeRepository.findOrderById(petId);
+  public Order findOrderById(Integer petId) {
+    return storeRepository.findOrderById(petId);
   }
 
   @Override
-  public void deleteOrderById(Integer orderId) {
-    storeRepository.deleteOrderById(orderId);
+  public Integer deleteOrderById(Integer orderId) {
+    return storeRepository.deleteOrderById(orderId);
   }
 }

@@ -112,7 +112,6 @@ public class UserRepositoryImpl implements UserRepository {
         OK_CLIENT
             .newCall(new Request.Builder().url(HttpUrl.get(uri)).put(requestBody).build())
             .execute();
-    // System.out.println(GSON.fromJson(response.body().string(), User.class));
     return response.code();
   }
 

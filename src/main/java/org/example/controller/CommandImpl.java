@@ -24,7 +24,7 @@ public class CommandImpl implements Controller {
       start();
     }
     if (next.equalsIgnoreCase("store")) {
-      new StoreControllerImpl().startStore();
+      new StoreControllerImpl().start();
       start();
     }
     if (next.equalsIgnoreCase("back")) {

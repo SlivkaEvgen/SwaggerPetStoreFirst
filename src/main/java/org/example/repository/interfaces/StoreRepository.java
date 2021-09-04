@@ -4,11 +4,11 @@ import org.example.model.Order;
 
 public interface StoreRepository {
 
-  void deleteOrderById(Integer orderId);
+  Integer deleteOrderById(Integer orderId);
 
-  void findOrderById(Integer petId);
+  Order findOrderById(Integer petId);
 
-  void placeAnOrderForAPet(Order order);
+  Integer placeAnOrderForAPet(Order order);
 
-  void returnsPetInventoriesByStatus();
+  Integer returnsPetInventoriesByStatus();
 }
