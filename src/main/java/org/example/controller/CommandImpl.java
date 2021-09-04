@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class CommandImpl implements Controller {
 
-   private final Scanner scanner = ScannerConsole.getInstance();
+  private final Scanner scanner = ScannerConsole.getInstance();
 
   @Override
   public void start() {
@@ -32,6 +32,9 @@ public class CommandImpl implements Controller {
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();
+    }else {
+      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again ");
+        start();
     }
   }
 

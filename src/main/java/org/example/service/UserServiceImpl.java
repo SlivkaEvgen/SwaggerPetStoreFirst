@@ -10,12 +10,11 @@ public class UserServiceImpl implements UserService {
   private final UserRepositoryImpl userRepository = new UserRepositoryImpl();
 
   @Override
-  public Integer createNewUser(
+  public User createNewUser(
       Integer id,
       String userName,
       String firstName,
       String lastName,
-      Integer status,
       String password,
       String email,
       String phone) {
@@ -24,7 +23,7 @@ public class UserServiceImpl implements UserService {
     user.setUsername(userName);
     user.setFirstName(firstName);
     user.setLastName(lastName);
-    user.setUserStatus(status);
+    user.setUserStatus(200);
     user.setPassword(password);
     user.setEmail(email);
     user.setPhone(phone);
@@ -70,7 +69,7 @@ public class UserServiceImpl implements UserService {
     user.setPassword(password);
     user.setEmail(email);
     user.setPhone(phone);
-    return userRepository.update(user);
+    return userRepository.update(user, userName);
   }
 
   @Override

@@ -8,16 +8,15 @@ import java.util.Scanner;
 public class UserLogInController {
 
   private final Scanner scanner = ScannerConsole.getInstance();
-  private final UserServiceImpl userService = new UserServiceImpl();
 
   public void logIn() {
     String userName = enterUserName();
     String password = enterPassword();
-    Integer loginUser = userService.loginUser(userName, password);
+    Integer loginUser = new UserServiceImpl().loginUser(userName, password);
     if (loginUser == 200) {
       System.out.println(" ✅ Successfully");
     } else {
-      System.out.println(" ❌ Error, please try again");
+        System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       logIn();
     }
   }
@@ -26,7 +25,7 @@ public class UserLogInController {
     System.out.print(" ENTER USERNAME \n \uD83D\uDC49 ");
     String userName = scanner.next();
     if (!Validator.validString(userName)) {
-      System.out.println("Try again");
+        System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       enterUserName();
     }
     return userName;
@@ -36,7 +35,7 @@ public class UserLogInController {
     System.out.print(" ENTER PASSWORD \n \uD83D\uDC49 ");
     String password = scanner.next();
     if (!Validator.validString(password)) {
-      System.out.println("Try again");
+        System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       enterPassword();
     }
     return password;

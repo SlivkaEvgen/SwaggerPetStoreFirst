@@ -4,14 +4,12 @@ import org.example.service.UserServiceImpl;
 
 public class UserLogOutController {
 
-  private final UserServiceImpl userService = new UserServiceImpl();
-
   public void logOut() {
-    Integer logOutUser = userService.logOutUser();
+    Integer logOutUser = new UserServiceImpl().logOutUser();
     if (logOutUser == 200) {
       System.out.println(" ✅ Successfully");
     } else {
-      System.out.println(" ❌ Error, please try again");
+        System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       logOut();
     }
   }

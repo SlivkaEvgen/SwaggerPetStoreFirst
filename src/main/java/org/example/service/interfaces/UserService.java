@@ -5,12 +5,11 @@ import java.util.List;
 
 public interface UserService {
 
-  Integer createNewUser(
+  User createNewUser(
       Integer id,
       String userName,
       String firstName,
       String lastName,
-      Integer status,
       String password,
       String email,
       String phone);

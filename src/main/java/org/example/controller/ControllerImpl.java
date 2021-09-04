@@ -22,7 +22,7 @@ public class ControllerImpl implements Controller {
     if (start.equalsIgnoreCase("stop")) {
       stop();
     } else {
-      System.out.print("        ⛔WRONG⛔\n\uD83D\uDCACPlease, enter again \n");
+      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       startConsole();
     }
   }

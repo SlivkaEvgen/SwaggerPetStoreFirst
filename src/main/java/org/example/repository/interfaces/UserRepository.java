@@ -9,13 +9,13 @@ public interface UserRepository extends CrudRepository<User> {
 
   Integer logOutUser();
 
-  Integer create(User user);
+  User create(User user);
 
   Integer get(String userName);
 
   Integer createListUsers(List<User> usersList);
 
-  Integer update(User user);
+  Integer update(User user,String userName);
 
   Integer delete(String userName);
 }

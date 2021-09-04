@@ -26,10 +26,7 @@ public class UserRepositoryImpl implements UserRepository {
                     URI.create(URI_USER + "/login?username=" + username + "&password=" + password)))
             .build();
     Response response = OK_CLIENT.newCall(request).execute();
-    int code = response.code();
-    // System.out.println("LOGIN body $ " + response.body().string());
-    response.close();
-    return code;
+    return response.code();
   }
 
   @SneakyThrows
@@ -38,15 +35,12 @@ public class UserRepositoryImpl implements UserRepository {
     Request request =
         new Request.Builder().url(HttpUrl.get(URI.create(URI_USER + "/logout"))).get().build();
     Response response = OK_CLIENT.newCall(request).execute();
-    // System.out.println("LOGOUT $ " + response.code());
-    // System.out.println("LOGOUT $ " + response.body().string());
-    response.close();
     return response.code();
   }
 
   @SneakyThrows
   @Override
-  public Integer create(User user) { // POST
+  public User create(User user) { // POST
     RequestBody requestBody =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER)))
@@ -64,10 +58,7 @@ public class UserRepositoryImpl implements UserRepository {
                     .post(requestBody)
                     .build())
             .execute();
-    // System.out.println("CREATE $ " + response.code());
-    // System.out.println(GSON.fromJson(response.body().string(), User.class));
-    response.close();
-    return response.code();
+    return GSON.fromJson(response.body() != null ? response.body().string() : null, User.class);
   }
 
   @SneakyThrows
@@ -76,9 +67,8 @@ public class UserRepositoryImpl implements UserRepository {
     Request request =
         new Request.Builder().url(HttpUrl.get(URI.create(URI_USER + "/" + userName))).get().build();
     Response response = OK_CLIENT.newCall(request).execute();
-    // System.out.println("GET $ " + response.body().string());
-    System.out.println(GSON.fromJson(response.body().string(), User.class));
-    response.close();
+    System.out.println(
+        GSON.fromJson(response.body() != null ? response.body().string() : null, User.class));
     return response.code();
   }
 
@@ -102,17 +92,13 @@ public class UserRepositoryImpl implements UserRepository {
                     .post(requestBody)
                     .build())
             .execute();
-    // System.out.println("CREATE LIST $ " + response.code());
-    // System.out.println("CREATE LIST $ " + response.body().string());
-    // System.out.println(GSON.fromJson(response.body().string(), User.class));
-    response.close();
     return response.code();
   }
 
   @SneakyThrows
   @Override
-  public Integer update(User user) {
-    URI uri = URI.create(URI_USER + "/" + user.getUsername());
+  public Integer update(User user, String userName) {
+    URI uri = URI.create(URI_USER + "/" + userName);
     RequestBody requestBody =
         new Request.Builder()
             .url(HttpUrl.get(uri))
@@ -127,7 +113,6 @@ public class UserRepositoryImpl implements UserRepository {
             .newCall(new Request.Builder().url(HttpUrl.get(uri)).put(requestBody).build())
             .execute();
     // System.out.println(GSON.fromJson(response.body().string(), User.class));
-    response.close();
     return response.code();
   }
 
@@ -140,9 +125,6 @@ public class UserRepositoryImpl implements UserRepository {
             .delete()
             .build();
     Response response = OK_CLIENT.newCall(request).execute();
-    // System.out.println("DELETE $ " + response.code());
-    /// System.out.println(response.body().string());
-    response.close();
     return response.code();
   }
 }
