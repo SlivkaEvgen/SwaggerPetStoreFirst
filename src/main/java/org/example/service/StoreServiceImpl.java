@@ -15,7 +15,8 @@ public class StoreServiceImpl implements StoreService {
   }
 
   @Override
-  public Integer placeAnOrderForAPet(Integer orderId, Integer petId, Integer quantity, String status) {
+  public Integer placeAnOrderForAPet(
+      Integer orderId, Integer petId, Integer quantity, String status) {
     Order order = new Order();
     order.setId(orderId);
     order.setPetId(petId);

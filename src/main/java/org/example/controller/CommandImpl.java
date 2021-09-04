@@ -32,9 +32,9 @@ public class CommandImpl implements Controller {
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();
-    }else {
+    } else {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again ");
-        start();
+      start();
     }
   }
 

@@ -55,7 +55,7 @@ public class PetServiceImpl implements PetService {
     pet.setCategory(category);
     pet.setTags(tagList);
     pet.setPhotoUrls(images);
-    petRepository.update(pet,name);
+    petRepository.update(pet, name);
   }
 
   @Override

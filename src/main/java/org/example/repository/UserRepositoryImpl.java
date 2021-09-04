@@ -98,10 +98,9 @@ public class UserRepositoryImpl implements UserRepository {
   @SneakyThrows
   @Override
   public Integer update(User user, String userName) {
-    URI uri = URI.create(URI_USER + "/" + userName);
     RequestBody requestBody =
         new Request.Builder()
-            .url(HttpUrl.get(uri))
+            .url(HttpUrl.get(URI.create(URI_USER + "/" + userName)))
             .put(
                 RequestBody.create(
                     MediaType.parse("application/json; charset=utf-8"), GSON.toJson(user)))
@@ -110,7 +109,11 @@ public class UserRepositoryImpl implements UserRepository {
             .body();
     Response response =
         OK_CLIENT
-            .newCall(new Request.Builder().url(HttpUrl.get(uri)).put(requestBody).build())
+            .newCall(
+                new Request.Builder()
+                    .url(HttpUrl.get(URI.create(URI_USER + "/" + userName)))
+                    .put(requestBody)
+                    .build())
             .execute();
     return response.code();
   }

@@ -6,7 +6,7 @@ import org.example.controller.Controller;
 import org.example.controller.Validator;
 import org.example.service.UserServiceImpl;
 import java.util.Scanner;
-//done
+// done
 public class UserGetController implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();

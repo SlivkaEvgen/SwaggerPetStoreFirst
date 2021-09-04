@@ -4,7 +4,7 @@ import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
 import org.example.controller.Controller;
 import java.util.Scanner;
-//done
+// done
 public class UserControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
@@ -43,9 +43,9 @@ public class UserControllerImpl implements Controller {
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();
-    }else{
-        System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again ");
-        start();
+    } else {
+      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again ");
+      start();
     }
   }
 
