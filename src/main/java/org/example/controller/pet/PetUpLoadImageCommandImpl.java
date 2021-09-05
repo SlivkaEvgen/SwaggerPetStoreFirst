@@ -7,7 +7,7 @@ import org.example.service.PetServiceImpl;
 import java.io.File;
 import java.util.Scanner;
 // done
-public class PetUpLoadImageCommand implements Controller {
+public class PetUpLoadImageCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
 

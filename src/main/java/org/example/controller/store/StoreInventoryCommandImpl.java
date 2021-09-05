@@ -3,7 +3,7 @@ package org.example.controller.store;
 import org.example.controller.Controller;
 import org.example.service.StoreServiceImpl;
 // done
-public class StoreInventoryCommand implements Controller {
+public class StoreInventoryCommandImpl implements Controller {
 
   @Override
   public void start() {

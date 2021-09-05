@@ -4,30 +4,29 @@ import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.controller.Validator;
 import org.example.model.Category;
-import org.example.model.Pet;
 import org.example.model.Tag;
 import org.example.service.PetServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-// done 50/50
-public class PetCreateCommand implements Controller {
+
+public class PetUpdateCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final List<Object> tagList = new ArrayList<>();
   private final List<Object> imagesList = new ArrayList<>();
 
-  private void create() {
+  private void UpdatesWithFormData() {
     String id = enterId();
     String name = enterName();
     String status = enterStatus();
     Category category = createCategory();
     List<Object> images = createListImages();
     List<Object> tagList = createTagList();
-    Pet pet =
-        new PetServiceImpl().create(Integer.valueOf(id), name, status, category, images, tagList);
-    System.out.println(pet);
-    if (pet.getId() != 0) {
+    Integer update =
+        new PetServiceImpl().update(Integer.valueOf(id), name, status, category, images, tagList);
+    System.out.println(update);
+    if (update != 0) {
       System.out.println(" ✅ Successfully");
     } else {
       System.out.print("\n      ⚠️ Something Wrong ⚠️ \n \uD83D\uDCAC Please, try again \n ");
@@ -78,24 +77,15 @@ public class PetCreateCommand implements Controller {
     return category;
   }
 
-  private String enterCategoryId() {
-    System.out.print(" ENTER CATEGORY-ID \n \uD83D\uDC49 ");
-    String id = scanner.next();
-    if (!Validator.validNumber(id)) {
-      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-      return enterId();
+  private List<Object> createListImages() {
+    System.out.print(" ❗ Attention! ❗\n ❗ CREATING IMAGES-LIST ❗\n \uD83D\uDC49 ");
+    String image = pathToImage();
+    imagesList.add(image);
+    String addImageOrNo = addImageOrNo();
+    if (Validator.validString(addImageOrNo) & addImageOrNo.equalsIgnoreCase("yes")) {
+      return createListImages();
     }
-    return id;
-  }
-
-  private String enterCategoryName() {
-    System.out.print(" ENTER CATEGORY-NAME \n \uD83D\uDC49 ");
-    String name = scanner.next();
-    if (!Validator.validString(name)) {
-      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-      return enterName();
-    }
-    return name;
+    return imagesList;
   }
 
   private List<Object> createTagList() {
@@ -150,15 +140,24 @@ public class PetCreateCommand implements Controller {
     return name;
   }
 
-  private List<Object> createListImages() {
-    System.out.print(" ❗ Attention! ❗\n ❗ CREATING IMAGES-LIST ❗\n \uD83D\uDC49 ");
-    String image = pathToImage();
-    imagesList.add(image);
-    String addImageOrNo = addImageOrNo();
-    if (Validator.validString(addImageOrNo) & addImageOrNo.equalsIgnoreCase("yes")) {
-      return createListImages();
+  private String enterCategoryId() {
+    System.out.print(" ENTER CATEGORY-ID \n \uD83D\uDC49 ");
+    String id = scanner.next();
+    if (!Validator.validNumber(id)) {
+      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
+      return enterId();
     }
-    return imagesList;
+    return id;
+  }
+
+  private String enterCategoryName() {
+    System.out.print(" ENTER CATEGORY-NAME \n \uD83D\uDC49 ");
+    String name = scanner.next();
+    if (!Validator.validString(name)) {
+      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
+      return enterName();
+    }
+    return name;
   }
 
   private String pathToImage() {
@@ -172,9 +171,45 @@ public class PetCreateCommand implements Controller {
     return scanner.next();
   }
 
+  private void UpdateAnExistingPet() {
+    String id = enterId();
+    String name = enterName();
+    String status = enterStatus();
+    Category category = createCategory();
+    List<Object> images = createListImages();
+    List<Object> tagList = createTagList();
+    Integer update =
+        new PetServiceImpl()
+            .updatePut(Integer.valueOf(id), name, status, category, images, tagList);
+    System.out.println(update);
+    if (update != 0) {
+      System.out.println(" ✅ Successfully");
+    } else {
+      System.out.print("\n      ⚠️ Something Wrong ⚠️ \n \uD83D\uDCAC Please, try again \n ");
+    }
+  }
+
   @Override
   public void start() {
-    create();
+    System.out.print(
+        "\n \uD83D\uDC49 UpdatesWithFormData\n \uD83D\uDC49 UpdateAnExistingPet\n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
+    String next = scanner.next();
+    if (next.equalsIgnoreCase("UpdatesWithFormData")) {
+      UpdatesWithFormData();
+      start();
+    }
+
+    if (next.equalsIgnoreCase("UpdateAnExistingPet")) {
+      UpdateAnExistingPet();
+      start();
+    }
+
+    if (next.equalsIgnoreCase("back")) {
+      new PetControllerImpl().start();
+    }
+    if (next.equalsIgnoreCase("stop")) {
+      stop();
+    }
   }
 
   @Override

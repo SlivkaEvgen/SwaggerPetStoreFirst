@@ -7,7 +7,7 @@ import org.example.model.Order;
 import org.example.service.StoreServiceImpl;
 import java.util.Scanner;
 // done
-public class StoreFindCommand implements Controller {
+public class StoreFindCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
 

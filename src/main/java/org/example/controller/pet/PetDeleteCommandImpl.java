@@ -1,20 +1,20 @@
-package org.example.controller.user;
+package org.example.controller.pet;
 
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.controller.Validator;
-import org.example.service.UserServiceImpl;
+import org.example.service.PetServiceImpl;
 import java.util.Scanner;
 // done
-public class UserDeleteController implements Controller {
+public class PetDeleteCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
 
   private void delete() {
-    System.out.print(" ENTER USER-NAME \n \uD83D\uDC49 ");
-    String userName = scanner.next();
-    if (Validator.validString(userName)) {
-      if (new UserServiceImpl().delete(userName) == 200) {
+    System.out.print(" ENTER ID \n \uD83D\uDC49 ");
+    String id = scanner.next();
+    if (Validator.validNumber(id)) {
+      if (new PetServiceImpl().delete(Integer.valueOf(id)) == 200) {
         System.out.println(" ✅ Successfully");
       } else {
         System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");

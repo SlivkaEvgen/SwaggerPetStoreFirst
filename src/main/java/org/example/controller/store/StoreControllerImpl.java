@@ -15,19 +15,19 @@ public class StoreControllerImpl implements Controller {
         "\n \uD83D\uDC49 Inventory\n \uD83D\uDC49 CreateOrder\n \uD83D\uDC49 FindOrder \n \uD83D\uDC49 DeleteOrder \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
     if (next.equalsIgnoreCase("Inventory")) {
-      new StoreInventoryCommand().start();
+      new StoreInventoryCommandImpl().start();
       start();
     }
     if (next.equalsIgnoreCase("CreateOrder")) {
-      new StoreCreateCommand().start();
+      new StoreCreateCommandImpl().start();
       start();
     }
     if (next.equalsIgnoreCase("FindOrder")) {
-      new StoreFindCommand().start();
+      new StoreFindCommandImpl().start();
       start();
     }
     if (next.equalsIgnoreCase("DeleteOrder")) {
-      new StoreDeleteCommand().start();
+      new StoreDeleteCommandImpl().start();
       start();
     }
     if (next.equalsIgnoreCase("back")) {

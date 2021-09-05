@@ -3,7 +3,7 @@ package org.example.controller.user;
 import org.example.controller.Controller;
 import org.example.service.UserServiceImpl;
 // done
-public class UserLogOutController implements Controller {
+public class UserLogOutControllerImpl implements Controller {
 
   private void logOut() {
     if (new UserServiceImpl().logOutUser() == 200) {
