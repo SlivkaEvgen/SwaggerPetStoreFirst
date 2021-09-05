@@ -2,7 +2,7 @@ package org.example.controller;
 
 import org.example.config.ScannerConsole;
 import java.util.Scanner;
-// ok
+
 public class ControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();

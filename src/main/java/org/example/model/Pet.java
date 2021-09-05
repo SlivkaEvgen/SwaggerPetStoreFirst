@@ -18,8 +18,7 @@ public class Pet implements Serializable {
   private float id;
   Category Category;
   private String name;
-  List<Object> photoUrls;
-  List<Object> tags;
+  List<Object> photoUrls, tags;
 
   private enum Status {
     AVAILABLE,

@@ -10,15 +10,18 @@ import java.util.Scanner;
 public class PetCreateCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
-  private final EnterCommands enterCommands = new EnterCommands();
 
   private void create() {
-   Pet pet = new PetServiceImpl().create(Integer.valueOf(enterCommands.enterId()),
-                 enterCommands.enterName(),
-                 enterCommands.enterStatus(),
-                 enterCommands.createCategory(),
-                 enterCommands.createListImages(),
-                 enterCommands.createTagList());
+    final EnterCommands enterCommands = new EnterCommands();
+    Pet pet =
+        new PetServiceImpl()
+            .create(
+                Integer.valueOf(enterCommands.enterId()),
+                enterCommands.enterName(),
+                enterCommands.enterStatus(),
+                enterCommands.createCategory(),
+                enterCommands.createListImages(),
+                enterCommands.createTagList());
     System.out.println(pet);
     if (pet.getId() != 0) {
       System.out.println(" ✅ Successfully");

@@ -5,13 +5,13 @@ import org.example.controller.Controller;
 import org.example.controller.EnterCommands;
 import org.example.service.UserServiceImpl;
 import java.util.Scanner;
-// done
+
 public class UserUpdateControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
-  private final EnterCommands enterCommands = new EnterCommands();
 
   private void update() {
+    final EnterCommands enterCommands = new EnterCommands();
     Integer update =
         new UserServiceImpl()
             .update(

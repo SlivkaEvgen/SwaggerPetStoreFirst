@@ -4,7 +4,7 @@ import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
 import org.example.controller.Controller;
 import java.util.Scanner;
-// ok
+
 public class UserControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();

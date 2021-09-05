@@ -1,11 +1,10 @@
 package org.example.controller.store;
 
-import okhttp3.internal.http2.ConnectionShutdownException;
 import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
 import org.example.controller.Controller;
 import java.util.Scanner;
-// ok
+
 public class StoreControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();

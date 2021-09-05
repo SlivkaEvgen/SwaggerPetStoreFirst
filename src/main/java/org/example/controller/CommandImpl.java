@@ -5,7 +5,7 @@ import org.example.controller.pet.PetControllerImpl;
 import org.example.controller.store.StoreControllerImpl;
 import org.example.controller.user.UserControllerImpl;
 import java.util.Scanner;
-// ok
+
 public class CommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();

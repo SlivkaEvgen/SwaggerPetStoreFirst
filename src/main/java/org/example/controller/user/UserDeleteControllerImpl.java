@@ -5,7 +5,7 @@ import org.example.controller.Controller;
 import org.example.controller.Validator;
 import org.example.service.UserServiceImpl;
 import java.util.Scanner;
-// ok
+
 public class UserDeleteControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
