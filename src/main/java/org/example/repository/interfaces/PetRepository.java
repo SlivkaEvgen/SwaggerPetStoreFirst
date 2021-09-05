@@ -10,11 +10,11 @@ public interface PetRepository<T,ID> extends CrudRepository<T,ID> {
 
   Integer findPetByStatus(String status);
 
-  Integer create(T t);
+  T create(T t);
 
   Integer update(T t, ID id);
 
-  Integer get(ID id);
+  T get(ID id);
 
   Integer updatePut(T t);
 }

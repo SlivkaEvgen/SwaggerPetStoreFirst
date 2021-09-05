@@ -3,6 +3,7 @@ package org.example.controller.store;
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.controller.Validator;
+import org.example.model.Order;
 import org.example.service.StoreServiceImpl;
 import java.util.Scanner;
 // done
@@ -15,13 +16,13 @@ public class StoreCreateCommandImpl implements Controller {
     String id = enterId();
     String petId = enterPetId();
     String quantity = enterQuantity();
-    String status = enterStatus();
-    Integer integer =
+   Order order  =
         new StoreServiceImpl()
             .placeAnOrderForAPet(
-                Integer.valueOf(id), Integer.valueOf(petId), Integer.valueOf(quantity), status);
-    if (integer == 200) {
+                Integer.valueOf(id), Integer.valueOf(petId), Integer.valueOf(quantity), enterStatus());
+    if (order.getId()!=null) {
       System.out.println(" ✅ Successfully");
+      System.out.println(order);
     } else {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       start();
@@ -68,8 +69,9 @@ public class StoreCreateCommandImpl implements Controller {
             & !status.equalsIgnoreCase("delivered")) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterStatus();
+    }else {
+        return status;
     }
-    return status;
   }
 
   @Override

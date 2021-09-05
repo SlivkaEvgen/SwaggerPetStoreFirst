@@ -1,14 +1,18 @@
 package org.example.controller.store;
 
+import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.service.StoreServiceImpl;
+
+import java.util.Scanner;
+
 // done
 public class StoreInventoryCommandImpl implements Controller {
-
+    private final Scanner scanner = ScannerConsole.getInstance();
   @Override
   public void start() {
-      Integer id = 0;
-     new StoreServiceImpl().returnsPetInventoriesByStatus(id);
+    int r = 0;
+     new StoreServiceImpl().returnsPetInventoriesByStatus(r);
   }
 
   @Override

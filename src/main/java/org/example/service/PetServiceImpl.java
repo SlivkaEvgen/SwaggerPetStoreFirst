@@ -12,15 +12,11 @@ public class PetServiceImpl implements PetService<Pet, Integer> {
   private final PetRepositoryImpl petRepository = new PetRepositoryImpl();
 
   @Override
-  public Integer uploadImage(File file, Integer petId) {
-    return petRepository.uploadImage(file, petId);
-  }
-
-  @Override
   public Integer findPetByStatus(String status) {
     return petRepository.findPetByStatus(status);
   }
 
+  @Override
   public Pet create(
       Integer id,
       String name,
@@ -31,11 +27,15 @@ public class PetServiceImpl implements PetService<Pet, Integer> {
     Pet pet = new Pet();
     pet.setId(Long.valueOf(id));
     pet.setName(name);
-    pet.setStatus(status);
     pet.setCategory(category);
     pet.setTags(tagList);
     pet.setPhotoUrls(images);
     return petRepository.create(pet);
+  }
+
+  @Override
+  public Integer uploadImage(File file, Integer petId) {
+    return petRepository.uploadImage(file, petId);
   }
 
   @Override
@@ -49,16 +49,10 @@ public class PetServiceImpl implements PetService<Pet, Integer> {
     Pet pet = new Pet();
     pet.setId(Long.valueOf(id));
     pet.setName(name);
-    pet.setStatus(status);
     pet.setCategory(category);
     pet.setTags(tagList);
     pet.setPhotoUrls(images);
     return petRepository.update(pet, name);
-  }
-
-  @Override
-  public Integer findById(Integer petId) {
-    return petRepository.get(String.valueOf(petId));
   }
 
   @Override
@@ -72,7 +66,6 @@ public class PetServiceImpl implements PetService<Pet, Integer> {
     Pet pet = new Pet();
     pet.setId(Long.valueOf(id));
     pet.setName(name);
-    pet.setStatus(status);
     pet.setCategory(category);
     pet.setTags(tagList);
     pet.setPhotoUrls(images);
@@ -82,5 +75,10 @@ public class PetServiceImpl implements PetService<Pet, Integer> {
   @Override
   public Integer delete(Integer petId) {
     return petRepository.delete(String.valueOf(petId));
+  }
+
+  @Override
+  public Pet findById(Integer petId) {
+    return petRepository.get(String.valueOf(petId));
   }
 }

@@ -20,5 +20,11 @@ public class Pet implements Serializable {
   private String name;
   List<Object> photoUrls;
   List<Object> tags;
-  private String status;
+
+    private enum Status{
+      AVAILABLE,
+      PENDING,
+      SOLD
+  }
+
 }

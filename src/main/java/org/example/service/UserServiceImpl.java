@@ -5,9 +5,29 @@ import org.example.repository.UserRepositoryImpl;
 import org.example.service.interfaces.UserService;
 import java.util.List;
 
-public class UserServiceImpl implements UserService<User,String> {
+public class UserServiceImpl implements UserService<User, String> {
 
   private final UserRepositoryImpl userRepository = new UserRepositoryImpl();
+
+  @Override
+  public Integer loginUser(String username, String password) {
+    return userRepository.loginUser(username, password);
+  }
+
+  @Override
+  public Integer logOutUser() {
+    return userRepository.logOutUser();
+  }
+
+  @Override
+  public User findById(String userName) {
+    return userRepository.get(userName);
+  }
+
+  @Override
+  public Integer createListUsers(List<User> usersList) {
+    return userRepository.createListUsers(usersList);
+  }
 
   @Override
   public User createNewUser(
@@ -28,26 +48,6 @@ public class UserServiceImpl implements UserService<User,String> {
     user.setEmail(email);
     user.setPhone(phone);
     return userRepository.create(user);
-  }
-
-  @Override
-  public Integer logOutUser() {
-    return userRepository.logOutUser();
-  }
-
-  @Override
-  public Integer loginUser(String username, String password) {
-    return userRepository.loginUser(username, password);
-  }
-
-  @Override
-  public Integer findById(String userName) {
-    return userRepository.get(userName);
-  }
-
-  @Override
-  public Integer createListUsers(List<User> usersList) {
-    return userRepository.createListUsers(usersList);
   }
 
   @Override

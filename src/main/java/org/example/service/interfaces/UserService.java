@@ -5,11 +5,11 @@ import java.util.List;
 
 public interface UserService<T, ID> extends Service<T, ID> {
 
-  Integer logOutUser();
-
   Integer loginUser(String username, String password);
 
-  Integer findById(String userName);
+  Integer logOutUser();
+
+  User findById(String userName);
 
   Integer createListUsers(List<User> usersList);
 

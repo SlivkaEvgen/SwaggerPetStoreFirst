@@ -6,7 +6,7 @@ public interface StoreRepository<T,ID> extends CrudRepository<T,ID>{
 
   T findById(ID id);
 
-  Integer create(T t);
+  T create(T t);
 
-  Integer get(ID id);
+  T get(ID id);
 }

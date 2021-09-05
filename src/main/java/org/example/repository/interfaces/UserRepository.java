@@ -8,9 +8,9 @@ public interface UserRepository<T,ID> extends CrudRepository<T, ID> {
 
   Integer logOutUser();
 
-  Integer create(T t);
+  T create(T t);
 
-  Integer get(ID id);
+  T get(ID id);
 
   Integer createListUsers(List<T> usersList);
 

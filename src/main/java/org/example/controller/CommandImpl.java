@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import okhttp3.internal.http2.ConnectionShutdownException;
 import org.example.config.ScannerConsole;
 import org.example.controller.pet.PetControllerImpl;
 import org.example.controller.store.StoreControllerImpl;
@@ -11,7 +12,7 @@ public class CommandImpl implements Controller {
   private final Scanner scanner = ScannerConsole.getInstance();
 
   @Override
-  public void start() {
+  public void start() throws ConnectionShutdownException, InterruptedException {
     System.out.print(
         "\n \uD83D\uDC49 User\n \uD83D\uDC49 Pet\n \uD83D\uDC49 Store\n   \uD83D\uDC49 BACK\n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();

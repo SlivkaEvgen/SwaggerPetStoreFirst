@@ -10,14 +10,13 @@ import org.example.util.PropertiesLoader;
 import java.net.URI;
 import java.util.List;
 
-public class UserRepositoryImpl implements UserRepository<User, String> {
+public class UserRepositoryImpl  implements UserRepository<User,String> {
 
   private final OkHttpClient OK_CLIENT = HttpConnect.getInstance();
   private final Gson GSON = new Gson();
   private final String URI_USER = PropertiesLoader.getProperties("uriUser");
 
   @SneakyThrows
-  @Override
   public Integer loginUser(String username, String password) {
     Request request =
         new Request.Builder()
@@ -30,7 +29,6 @@ public class UserRepositoryImpl implements UserRepository<User, String> {
   }
 
   @SneakyThrows
-  @Override
   public Integer logOutUser() {
     Request request =
         new Request.Builder().url(HttpUrl.get(URI.create(URI_USER + "/logout"))).get().build();
@@ -39,8 +37,7 @@ public class UserRepositoryImpl implements UserRepository<User, String> {
   }
 
   @SneakyThrows
-  @Override
-  public Integer create(User user) {
+  public User create(User user) {
     RequestBody requestBody =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER)))
@@ -58,24 +55,19 @@ public class UserRepositoryImpl implements UserRepository<User, String> {
                     .post(requestBody)
                     .build())
             .execute();
-    System.out.println(
-        GSON.fromJson(response.body() != null ? response.body().string() : null, User.class));
-    return response.code();
+       return GSON.fromJson(response.body() != null ? response.body().string() : null, User.class);
   }
 
   @SneakyThrows
-  @Override
-  public Integer get(String userName) {
+  public User get(String userName) {
     Request request =
         new Request.Builder().url(HttpUrl.get(URI.create(URI_USER + "/" + userName))).get().build();
     Response response = OK_CLIENT.newCall(request).execute();
-    System.out.println(
-        GSON.fromJson(response.body() != null ? response.body().string() : null, User.class));
-    return response.code();
+       return GSON.fromJson(response.body().string(), User.class);
+    //return response.code();
   }
 
   @SneakyThrows
-  @Override
   public Integer createListUsers(List<User> usersList) {
     RequestBody requestBody =
         new Request.Builder()
@@ -98,7 +90,6 @@ public class UserRepositoryImpl implements UserRepository<User, String> {
   }
 
   @SneakyThrows
-  @Override
   public Integer update(User user, String userName) {
     RequestBody requestBody =
         new Request.Builder()
@@ -121,7 +112,6 @@ public class UserRepositoryImpl implements UserRepository<User, String> {
   }
 
   @SneakyThrows
-  @Override
   public Integer delete(String userName) {
     Request request =
         new Request.Builder()

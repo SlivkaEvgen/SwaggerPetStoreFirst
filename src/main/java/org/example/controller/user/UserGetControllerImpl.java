@@ -15,7 +15,7 @@ public class UserGetControllerImpl implements Controller {
     try {
       String userName = enterUserName();
       System.out.println();
-      if (new UserServiceImpl().findById(userName) == 200) {
+      if (new UserServiceImpl().findById(userName).getId() != 0) {
         System.out.println(" ✅ Successfully");
       } else {
         System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");

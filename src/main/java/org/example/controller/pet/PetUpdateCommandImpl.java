@@ -1,5 +1,6 @@
 package org.example.controller.pet;
 
+import okhttp3.internal.http2.ConnectionShutdownException;
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.controller.Validator;
@@ -24,7 +25,7 @@ public class PetUpdateCommandImpl implements Controller {
     List<Object> images = createListImages();
     List<Object> tagList = createTagList();
     Integer update =
-        new PetServiceImpl().update(Integer.valueOf(id), name, status, category, images, tagList);
+         new PetServiceImpl().update(Integer.valueOf(id), name, status, category, images, tagList);
     System.out.println(update);
     if (update != 0) {
       System.out.println(" ✅ Successfully");
@@ -179,7 +180,7 @@ public class PetUpdateCommandImpl implements Controller {
     List<Object> images = createListImages();
     List<Object> tagList = createTagList();
     Integer update =
-        new PetServiceImpl()
+         new PetServiceImpl()
             .updatePut(Integer.valueOf(id), name, status, category, images, tagList);
     System.out.println(update);
     if (update != 0) {
@@ -190,7 +191,7 @@ public class PetUpdateCommandImpl implements Controller {
   }
 
   @Override
-  public void start() {
+  public void start() throws ConnectionShutdownException, InterruptedException {
     System.out.print(
         "\n \uD83D\uDC49 UpdatesWithFormData\n \uD83D\uDC49 UpdateAnExistingPet\n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();

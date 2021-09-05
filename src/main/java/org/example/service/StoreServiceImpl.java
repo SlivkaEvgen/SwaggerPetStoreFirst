@@ -5,17 +5,17 @@ import org.example.repository.StoreRepositoryImpl;
 import org.example.service.interfaces.StoreService;
 import java.util.Date;
 
-public class StoreServiceImpl implements StoreService<Order,Integer> {
+public class StoreServiceImpl implements StoreService<Order, Integer> {
 
   private final StoreRepositoryImpl storeRepository = new StoreRepositoryImpl();
 
   @Override
   public void returnsPetInventoriesByStatus(Integer id) {
-      storeRepository.get(id);
+    storeRepository.get(id);
   }
 
   @Override
-  public Integer placeAnOrderForAPet(
+  public Order placeAnOrderForAPet(
       Integer orderId, Integer petId, Integer quantity, String status) {
     Order order = new Order();
     order.setId(Long.valueOf(orderId));

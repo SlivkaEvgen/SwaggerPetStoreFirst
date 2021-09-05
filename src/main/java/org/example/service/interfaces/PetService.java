@@ -5,9 +5,7 @@ import org.example.model.Pet;
 import java.io.File;
 import java.util.List;
 
-public interface PetService<T,ID> extends Service<T, ID> {
-
-  Integer findById(Integer petId);
+public interface PetService<T, ID> extends Service<T, ID> {
 
   Integer findPetByStatus(String status);
 
@@ -38,4 +36,6 @@ public interface PetService<T,ID> extends Service<T, ID> {
       List<Object> tagList);
 
   Integer delete(Integer petId);
+
+  Pet findById(Integer petId);
 }

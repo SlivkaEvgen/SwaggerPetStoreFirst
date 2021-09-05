@@ -18,14 +18,14 @@ public class PetCreateCommandImpl implements Controller {
   private final List<Object> imagesList = new ArrayList<>();
 
   private void create() {
-    String id = enterId();
-    String name = enterName();
-    String status = enterStatus();
-    Category category = createCategory();
-    List<Object> images = createListImages();
-    List<Object> tagList = createTagList();
-    Pet pet =
-        new PetServiceImpl().create(Integer.valueOf(id), name, status, category, images, tagList);
+//    String id = enterId();
+//    String name = enterName();
+//    String status = enterStatus();
+//    Category category = createCategory();
+//    List<Object> images = createListImages();
+//    List<Object> tagList = createTagList();
+   Pet pet =
+         new PetServiceImpl().create(Integer.valueOf(enterId()), enterName(), enterStatus(), createCategory(), createListImages(), createTagList());
     System.out.println(pet);
     if (pet.getId() != 0) {
       System.out.println(" ✅ Successfully");
@@ -70,11 +70,9 @@ public class PetCreateCommandImpl implements Controller {
 
   private Category createCategory() {
     System.out.print(" ❗ Attention! ❗\n ❗ CREATING CATEGORY ❗\n \uD83D\uDC49 ");
-    String id = enterCategoryId();
-    String name = enterCategoryName();
     Category category = new Category();
-    category.setId(Long.valueOf(id));
-    category.setName(name);
+    category.setId(Long.valueOf(enterCategoryId()));
+    category.setName(enterCategoryName());
     return category;
   }
 
@@ -106,16 +104,14 @@ public class PetCreateCommandImpl implements Controller {
 
   private Tag createTag() {
     Tag tag = new Tag();
-    String id = enterTagId();
-    String name = enterTagName();
-    tag.setId(Long.valueOf(id));
-    tag.setName(name);
-    String yesNo = yesNo();
-    if (Validator.validString(yesNo) & yesNo.equalsIgnoreCase("yes")) {
+    tag.setId(Long.valueOf(enterTagId()));
+    tag.setName(enterTagName());
+//    String yesNo = yesNo();
+    if (Validator.validString(yesNo()) & yesNo().equalsIgnoreCase("yes")) {
       tagList.add(tag);
       return createTag();
     }
-    if (Validator.validString(yesNo) & yesNo.equalsIgnoreCase("no")) {
+    if (Validator.validString(yesNo()) & yesNo().equalsIgnoreCase("no")) {
       return tag;
     } else {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
@@ -152,10 +148,10 @@ public class PetCreateCommandImpl implements Controller {
 
   private List<Object> createListImages() {
     System.out.print(" ❗ Attention! ❗\n ❗ CREATING IMAGES-LIST ❗\n \uD83D\uDC49 ");
-    String image = pathToImage();
-    imagesList.add(image);
-    String addImageOrNo = addImageOrNo();
-    if (Validator.validString(addImageOrNo) & addImageOrNo.equalsIgnoreCase("yes")) {
+//    String image = pathToImage();
+    imagesList.add(pathToImage());
+//    String addImageOrNo = addImageOrNo();
+    if (Validator.validString(addImageOrNo()) & addImageOrNo().equalsIgnoreCase("yes")) {
       return createListImages();
     }
     return imagesList;
