@@ -19,7 +19,7 @@ public class Pet implements Serializable {
   private float id;
   Category Category;
   private String name;
-  List<Object> photoUrls = new ArrayList<>();
-  List<Object> tags = new ArrayList<>();
+  List<Object> photoUrls;
+  List<Object> tags;
   private String status;
 }
