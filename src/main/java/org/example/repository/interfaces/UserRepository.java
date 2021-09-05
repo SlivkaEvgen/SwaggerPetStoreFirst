@@ -15,7 +15,7 @@ public interface UserRepository extends CrudRepository<User> {
 
   Integer createListUsers(List<User> usersList);
 
-  Integer update(User user,String userName);
+  Integer update(User user, String userName);
 
   Integer delete(String userName);
 }

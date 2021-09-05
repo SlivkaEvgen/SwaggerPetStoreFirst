@@ -2,7 +2,6 @@ package org.example.repository.interfaces;
 
 import org.example.model.Pet;
 import java.io.File;
-import java.util.List;
 
 public interface PetRepository extends CrudRepository<Pet> {
 
@@ -10,7 +9,7 @@ public interface PetRepository extends CrudRepository<Pet> {
 
   Integer delete(Integer petId);
 
- Integer findPetByStatus(String status);
+  Integer findPetByStatus(String status);
 
   Pet create(Pet pet);
 

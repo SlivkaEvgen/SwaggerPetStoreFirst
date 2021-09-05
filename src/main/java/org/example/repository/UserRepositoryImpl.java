@@ -40,7 +40,7 @@ public class UserRepositoryImpl implements UserRepository {
 
   @SneakyThrows
   @Override
-  public User create(User user) { // POST
+  public User create(User user) {
     RequestBody requestBody =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER)))

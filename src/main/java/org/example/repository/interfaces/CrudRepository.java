@@ -4,5 +4,5 @@ public interface CrudRepository<T> {
 
   T create(T t);
 
-  Integer update(T t,String userName);
+  Integer update(T t, String userName);
 }

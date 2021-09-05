@@ -5,7 +5,6 @@ import org.example.model.Pet;
 import org.example.repository.PetRepositoryImpl;
 import org.example.service.interfaces.PetService;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PetServiceImpl implements PetService {
@@ -32,7 +31,7 @@ public class PetServiceImpl implements PetService {
     Pet pet = new Pet();
     pet.setId(Long.valueOf(id));
     pet.setName(name);
-    pet.setStatus(status); // available, pending, sold
+    pet.setStatus(status);
     pet.setCategory(category);
     pet.setTags(tagList);
     pet.setPhotoUrls(images);
@@ -50,7 +49,7 @@ public class PetServiceImpl implements PetService {
     Pet pet = new Pet();
     pet.setId(Long.valueOf(id));
     pet.setName(name);
-    pet.setStatus(status); // available, pending, sold
+    pet.setStatus(status);
     pet.setCategory(category);
     pet.setTags(tagList);
     pet.setPhotoUrls(images);
@@ -73,7 +72,7 @@ public class PetServiceImpl implements PetService {
     Pet pet = new Pet();
     pet.setId(Long.valueOf(id));
     pet.setName(name);
-    pet.setStatus(status); // available, pending, sold
+    pet.setStatus(status);
     pet.setCategory(category);
     pet.setTags(tagList);
     pet.setPhotoUrls(images);
