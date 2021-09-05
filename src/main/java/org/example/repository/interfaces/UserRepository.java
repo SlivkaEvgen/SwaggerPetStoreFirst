@@ -2,7 +2,7 @@ package org.example.repository.interfaces;
 
 import java.util.List;
 
-public interface UserRepository<T,ID> extends CrudRepository<T, ID> {
+public interface UserRepository<T, ID> extends CrudRepository<T, ID> {
 
   Integer loginUser(ID id, String password);
 

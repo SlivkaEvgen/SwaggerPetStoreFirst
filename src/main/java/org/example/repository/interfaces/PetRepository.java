@@ -2,7 +2,7 @@ package org.example.repository.interfaces;
 
 import java.io.File;
 
-public interface PetRepository<T,ID> extends CrudRepository<T,ID> {
+public interface PetRepository<T, ID> extends CrudRepository<T, ID> {
 
   Integer uploadImage(File file, Integer petId);
 

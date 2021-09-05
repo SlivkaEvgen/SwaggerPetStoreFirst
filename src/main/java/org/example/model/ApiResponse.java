@@ -15,5 +15,5 @@ public class ApiResponse implements Serializable {
   private static final long serialVersionUID = 88249378887777L;
 
   private Long code;
-  private String type,message;
+  private String type, message;
 }

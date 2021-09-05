@@ -1,6 +1,6 @@
 package org.example.repository.interfaces;
 
-public interface StoreRepository<T,ID> extends CrudRepository<T,ID>{
+public interface StoreRepository<T, ID> extends CrudRepository<T, ID> {
 
   Integer delete(ID id);
 

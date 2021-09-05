@@ -21,10 +21,9 @@ public class Pet implements Serializable {
   List<Object> photoUrls;
   List<Object> tags;
 
-    private enum Status{
-      AVAILABLE,
-      PENDING,
-      SOLD
+  private enum Status {
+    AVAILABLE,
+    PENDING,
+    SOLD
   }
-
 }
