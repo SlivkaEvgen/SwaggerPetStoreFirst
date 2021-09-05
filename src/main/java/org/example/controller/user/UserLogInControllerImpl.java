@@ -5,15 +5,13 @@ import org.example.controller.Controller;
 import org.example.controller.Validator;
 import org.example.service.UserServiceImpl;
 import java.util.Scanner;
-// done
+// ok
 public class UserLogInControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
 
   private void logIn() {
-    String userName = enterUserName();
-    String password = enterPassword();
-    if (new UserServiceImpl().loginUser(userName, password) == 200) {
+    if (new UserServiceImpl().loginUser(enterUserName(), enterPassword()) == 200) {
       System.out.println(" ✅ Successfully");
     } else {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
@@ -26,7 +24,7 @@ public class UserLogInControllerImpl implements Controller {
     String userName = scanner.next();
     if (!Validator.validString(userName)) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-      enterUserName();
+      return enterUserName();
     }
     return userName;
   }
@@ -36,7 +34,7 @@ public class UserLogInControllerImpl implements Controller {
     String password = scanner.next();
     if (!Validator.validString(password)) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-      enterPassword();
+      return enterPassword();
     }
     return password;
   }

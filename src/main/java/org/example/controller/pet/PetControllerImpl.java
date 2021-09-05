@@ -9,7 +9,7 @@ public class PetControllerImpl {
 
   private final Scanner scanner = ScannerConsole.getInstance();
 
-  public void start() throws ConnectionShutdownException, InterruptedException {
+  public void start()  {
     System.out.print(
         "\n \uD83D\uDC49 GET\n \uD83D\uDC49 CREATE\n \uD83D\uDC49 UPDATE\n \uD83D\uDC49 UPLOAD-IMAGE\n \uD83D\uDC49 DELETE \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();

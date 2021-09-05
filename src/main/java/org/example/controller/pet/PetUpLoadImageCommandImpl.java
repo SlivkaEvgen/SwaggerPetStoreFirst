@@ -12,7 +12,7 @@ public class PetUpLoadImageCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
 
-  private void upload() throws InterruptedException, ConnectionShutdownException {
+  private void upload()  {
     System.out.print(" ENTER PET-ID \n \uD83D\uDC49 ");
     String petId = scanner.next();
     if (Validator.validNumber(petId)) {
@@ -38,7 +38,7 @@ public class PetUpLoadImageCommandImpl implements Controller {
   }
 
   @Override
-  public void start() throws ConnectionShutdownException, InterruptedException {
+  public void start() {
     upload();
   }
 

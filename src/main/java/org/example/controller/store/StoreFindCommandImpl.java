@@ -6,7 +6,7 @@ import org.example.controller.Validator;
 import org.example.model.Order;
 import org.example.service.StoreServiceImpl;
 import java.util.Scanner;
-// done
+// ok
 public class StoreFindCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
@@ -16,12 +16,12 @@ public class StoreFindCommandImpl implements Controller {
     System.out.print(" ENTER ORDER-ID \n \uD83D\uDC49 ");
     String orderId = scanner.next();
     if (Validator.validNumber(orderId)) {
-      Order orderById = new StoreServiceImpl().findById(Integer.valueOf(orderId));
-      if (orderById.getId() != null) {
+        Order byId = new StoreServiceImpl().findById(Integer.valueOf(orderId));
+        if (byId.getId()!= null) {
+        System.out.println(byId);
         System.out.println(" ✅ Successfully");
-        System.out.println(orderById);
       } else {
-        System.out.print("\n      ⚠️ Not found ⚠️ \n \uD83D\uDCAC Please, enter again \n");
+        System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
         start();
       }
     } else {

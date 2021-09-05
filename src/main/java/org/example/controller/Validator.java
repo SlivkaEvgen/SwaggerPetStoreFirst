@@ -1,5 +1,5 @@
 package org.example.controller;
-
+//ok
 public class Validator {
 
   public static boolean validNumber(String hasNumbers) {

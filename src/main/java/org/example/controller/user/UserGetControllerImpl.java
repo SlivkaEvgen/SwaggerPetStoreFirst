@@ -1,40 +1,26 @@
 package org.example.controller.user;
 
-import com.google.gson.JsonSyntaxException;
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.controller.Validator;
 import org.example.service.UserServiceImpl;
 import java.util.Scanner;
-// done
+// ok
 public class UserGetControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
 
   private void get() {
-    try {
-      String userName = enterUserName();
-      System.out.println();
-      if (new UserServiceImpl().findById(userName).getId() != 0) {
-        System.out.println(" ✅ Successfully");
-      } else {
-        System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-        get();
-      }
-    } catch (JsonSyntaxException t) {
-      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-      enterUserName();
-    }
-  }
-
-  private String enterUserName() {
     System.out.print(" ENTER USERNAME \n \uD83D\uDC49 ");
+    final UserServiceImpl userService = new UserServiceImpl();
     String userName = scanner.next();
-    if (!Validator.validString(userName)) {
+    if (Validator.validString(userName) & userService.findById(userName).getId() != null) {
+      System.out.println(userService.findById(userName));
+      System.out.println(" ✅ Successfully");
+    } else {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-      enterUserName();
+      get();
     }
-    return userName;
   }
 
   @Override

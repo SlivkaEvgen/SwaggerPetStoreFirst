@@ -5,13 +5,17 @@ import org.example.controller.Controller;
 import org.example.controller.Validator;
 import org.example.service.StoreServiceImpl;
 import java.util.Scanner;
-// done
+// ok
 public class StoreDeleteCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
 
   @Override
   public void start() {
+    delete();
+  }
+
+  private void delete() {
     System.out.print(" ENTER ORDER-ID \n \uD83D\uDC49 ");
     String orderId = scanner.next();
     if (Validator.validNumber(orderId)) {

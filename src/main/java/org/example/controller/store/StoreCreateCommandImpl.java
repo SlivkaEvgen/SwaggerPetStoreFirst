@@ -6,21 +6,21 @@ import org.example.controller.Validator;
 import org.example.model.Order;
 import org.example.service.StoreServiceImpl;
 import java.util.Scanner;
-// done
+// ok
 public class StoreCreateCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
 
   @Override
   public void start() {
-    String id = enterId();
-    String petId = enterPetId();
-    String quantity = enterQuantity();
-   Order order  =
+    Order order =
         new StoreServiceImpl()
             .placeAnOrderForAPet(
-                Integer.valueOf(id), Integer.valueOf(petId), Integer.valueOf(quantity), enterStatus());
-    if (order.getId()!=null) {
+                Integer.valueOf(enterId()),
+                Integer.valueOf(enterPetId()),
+                Integer.valueOf(enterQuantity()),
+                enterStatus());
+    if (order.getId() != null) {
       System.out.println(" ✅ Successfully");
       System.out.println(order);
     } else {
@@ -69,9 +69,8 @@ public class StoreCreateCommandImpl implements Controller {
             & !status.equalsIgnoreCase("delivered")) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterStatus();
-    }else {
-        return status;
     }
+    return status;
   }
 
   @Override

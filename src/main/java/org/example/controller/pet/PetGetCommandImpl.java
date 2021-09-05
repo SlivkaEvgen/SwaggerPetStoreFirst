@@ -48,7 +48,7 @@ public class PetGetCommandImpl implements Controller {
   }
 
   @Override
-  public void start() throws ConnectionShutdownException, InterruptedException {
+  public void start()  {
     System.out.print(
         "\n \uD83D\uDC49 GetByID\n \uD83D\uDC49 GetByStatus\n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
