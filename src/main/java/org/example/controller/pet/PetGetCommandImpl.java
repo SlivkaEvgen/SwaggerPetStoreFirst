@@ -1,13 +1,13 @@
 package org.example.controller.pet;
 
-import okhttp3.internal.http2.ConnectionShutdownException;
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.controller.Validator;
 import org.example.model.Pet;
 import org.example.service.PetServiceImpl;
 import java.util.Scanner;
-// done
+
+// ok
 public class PetGetCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
@@ -16,8 +16,8 @@ public class PetGetCommandImpl implements Controller {
     System.out.print(" ENTER ID \n \uD83D\uDC49 ");
     String id = scanner.next();
     if (Validator.validNumber(id)) {
-        Pet byId = new PetServiceImpl().findById(Integer.valueOf(id));
-        if (byId.getId()!=0) {
+      Pet byId = new PetServiceImpl().findById(Integer.valueOf(id));
+      if (byId.getId() != 0) {
         System.out.println(" ✅ Successfully");
         System.out.println(byId);
       } else {
@@ -36,8 +36,8 @@ public class PetGetCommandImpl implements Controller {
     String status = scanner.next();
     if (!Validator.validString(status)
         | !status.equalsIgnoreCase("available")
-        & !status.equalsIgnoreCase("pending")
-        & !status.equalsIgnoreCase("sold")) {
+            & !status.equalsIgnoreCase("pending")
+            & !status.equalsIgnoreCase("sold")) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       findByStatus();
     } else {
@@ -48,7 +48,7 @@ public class PetGetCommandImpl implements Controller {
   }
 
   @Override
-  public void start()  {
+  public void start() {
     System.out.print(
         "\n \uD83D\uDC49 GetByID\n \uD83D\uDC49 GetByStatus\n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();

@@ -2,6 +2,7 @@ package org.example.controller.user;
 
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
+import org.example.controller.EnterCommands;
 import org.example.service.UserServiceImpl;
 import java.util.Scanner;
 // done
@@ -15,7 +16,7 @@ public class UserUpdateControllerImpl implements Controller {
         new UserServiceImpl()
             .update(
                 Integer.valueOf(enterCommands.enterId()),
-                enterCommands.enterUserName(),
+                enterCommands.enterName(),
                 enterCommands.enterFirstName(),
                 enterCommands.enterLastName(),
                 200,

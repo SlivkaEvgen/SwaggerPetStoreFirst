@@ -1,15 +1,14 @@
 package org.example.controller.pet;
 
-import okhttp3.internal.http2.ConnectionShutdownException;
 import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
 import java.util.Scanner;
-// done
+// ok
 public class PetControllerImpl {
 
   private final Scanner scanner = ScannerConsole.getInstance();
 
-  public void start()  {
+  public void start() {
     System.out.print(
         "\n \uD83D\uDC49 GET\n \uD83D\uDC49 CREATE\n \uD83D\uDC49 UPDATE\n \uD83D\uDC49 UPLOAD-IMAGE\n \uD83D\uDC49 DELETE \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();

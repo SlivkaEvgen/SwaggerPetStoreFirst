@@ -5,7 +5,7 @@ import org.example.controller.Controller;
 import org.example.controller.Validator;
 import org.example.service.PetServiceImpl;
 import java.util.Scanner;
-// done
+// ok
 public class PetDeleteCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();

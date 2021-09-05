@@ -1,10 +1,9 @@
 package org.example.controller;
 
-import okhttp3.internal.http2.ConnectionShutdownException;
-//ok
+// ok
 public interface Controller {
 
-  void start() throws ConnectionShutdownException, InterruptedException;
+  void start();
 
   void stop();
 }
