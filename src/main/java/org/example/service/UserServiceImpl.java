@@ -19,11 +19,11 @@ public class UserServiceImpl implements UserService {
       String email,
       String phone) {
     User user = new User();
-    user.setId(id);
+    user.setId(Long.valueOf(id));
     user.setUsername(userName);
     user.setFirstName(firstName);
     user.setLastName(lastName);
-    user.setUserStatus(200);
+    user.setUserStatus(200L);
     user.setPassword(password);
     user.setEmail(email);
     user.setPhone(phone);
@@ -61,11 +61,11 @@ public class UserServiceImpl implements UserService {
       String email,
       String phone) {
     User user = new User();
-    user.setId(id);
+    user.setId(Long.valueOf(id));
     user.setUsername(userName);
     user.setFirstName(firstName);
     user.setLastName(lastName);
-    user.setUserStatus(status);
+    user.setUserStatus(Long.valueOf(status));
     user.setPassword(password);
     user.setEmail(email);
     user.setPhone(phone);

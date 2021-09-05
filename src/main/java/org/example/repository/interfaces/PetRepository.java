@@ -2,20 +2,21 @@ package org.example.repository.interfaces;
 
 import org.example.model.Pet;
 import java.io.File;
+import java.util.List;
 
 public interface PetRepository extends CrudRepository<Pet> {
 
-  void uploadImage(File file, Integer petId);
+  Integer uploadImage(File file, Integer petId);
 
-  void delete(Integer petId);
+  Integer delete(Integer petId);
 
-  void findPetByStatus(String status);
+ Integer findPetByStatus(String status);
 
   Pet create(Pet pet);
 
-  Integer update(Pet pet,String petName);
+  Integer update(Pet pet, String petName);
 
-  void get(Integer petId);
+  Pet get(Integer petId);
 
-  void updatePut(Pet pet);
+  Integer updatePut(Pet pet);
 }

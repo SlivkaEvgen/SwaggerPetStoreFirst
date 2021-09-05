@@ -20,7 +20,7 @@ public class CommandImpl implements Controller {
       start();
     }
     if (next.equalsIgnoreCase("pet")) {
-      new PetControllerImpl().startPet();
+      new PetControllerImpl().start();
       start();
     }
     if (next.equalsIgnoreCase("store")) {

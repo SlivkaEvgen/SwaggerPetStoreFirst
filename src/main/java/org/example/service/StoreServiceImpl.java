@@ -18,10 +18,10 @@ public class StoreServiceImpl implements StoreService {
   public Integer placeAnOrderForAPet(
       Integer orderId, Integer petId, Integer quantity, String status) {
     Order order = new Order();
-    order.setId(orderId);
-    order.setPetId(petId);
+    order.setId(Long.valueOf(orderId));
+    order.setPetId(Long.valueOf(petId));
     order.setComplete(true);
-    order.setQuantity(quantity);
+    order.setQuantity(Long.valueOf(quantity));
     order.setStatus(status);
     order.setShipDate(String.valueOf(new Date().getTime()));
     return storeRepository.placeAnOrderForAPet(order);

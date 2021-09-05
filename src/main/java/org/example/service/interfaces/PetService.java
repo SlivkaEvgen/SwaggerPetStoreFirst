@@ -1,41 +1,43 @@
 package org.example.service.interfaces;
 
 import org.example.model.Category;
-import org.example.model.Tag;
+import org.example.model.Pet;
+
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface PetService {
 
-  void uploadImage(File file, Integer petId);
+  Integer uploadImage(File file, Integer petId);
 
-  void findPetByStatus(String status);
+ Integer findPetByStatus(String status);
 
-  void create(
-      Integer id,
-      String name,
-      String status,
-      Category category,
-      List<String> images,
-      List<Tag> tagList);
+  Pet create(
+          Integer id,
+          String name,
+          String status,
+          Category category,
+          List<Object> images,
+          List<Object> tagList);
 
-  void update(
-      Integer id,
-      String name,
-      String status,
-      Category category,
-      List<String> images,
-      List<Tag> tagList);
+  Integer update(
+          Integer id,
+          String name,
+          String status,
+          Category category,
+          List<Object> images,
+          List<Object> tagList);
 
-  void get(Integer petId);
+  Pet get(Integer petId);
 
-  void updatePut(
-      Integer id,
-      String name,
-      String status,
-      Category category,
-      List<String> images,
-      List<Tag> tagList);
+  Integer updatePut(
+          Integer id,
+          String name,
+          String status,
+          Category category,
+          List<Object> images,
+          List<Object> tagList);
 
-  void delete(Integer petId);
+  Integer delete(Integer petId);
 }
