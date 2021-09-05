@@ -7,9 +7,8 @@ public class StoreInventoryCommand implements Controller {
 
   @Override
   public void start() {
-    StoreServiceImpl storeService = new StoreServiceImpl();
-    storeService.returnsPetInventoriesByStatus();
-    storeService.returnsPetInventoriesByStatus();
+      Integer id = 0;
+     new StoreServiceImpl().returnsPetInventoriesByStatus(id);
   }
 
   @Override

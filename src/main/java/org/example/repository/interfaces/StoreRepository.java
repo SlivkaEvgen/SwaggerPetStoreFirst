@@ -1,14 +1,12 @@
 package org.example.repository.interfaces;
 
-import org.example.model.Order;
+public interface StoreRepository<T,ID> extends CrudRepository<T,ID>{
 
-public interface StoreRepository {
+  Integer delete(ID id);
 
-  Integer deleteOrderById(Integer orderId);
+  T findById(ID id);
 
-  Order findOrderById(Integer petId);
+  Integer create(T t);
 
-  Integer placeAnOrderForAPet(Order order);
-
-  Integer returnsPetInventoriesByStatus();
+  Integer get(ID id);
 }

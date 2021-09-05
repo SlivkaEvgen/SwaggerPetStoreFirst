@@ -5,9 +5,9 @@ import org.example.model.Pet;
 import java.io.File;
 import java.util.List;
 
-public interface PetService {
+public interface PetService<T,ID> extends Service<T, ID> {
 
-  Integer uploadImage(File file, Integer petId);
+  Integer findById(Integer petId);
 
   Integer findPetByStatus(String status);
 
@@ -19,6 +19,8 @@ public interface PetService {
       List<Object> images,
       List<Object> tagList);
 
+  Integer uploadImage(File file, Integer petId);
+
   Integer update(
       Integer id,
       String name,
@@ -26,8 +28,6 @@ public interface PetService {
       Category category,
       List<Object> images,
       List<Object> tagList);
-
-  Pet get(Integer petId);
 
   Integer updatePut(
       Integer id,

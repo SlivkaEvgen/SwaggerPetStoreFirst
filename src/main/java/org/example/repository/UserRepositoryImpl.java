@@ -10,7 +10,7 @@ import org.example.util.PropertiesLoader;
 import java.net.URI;
 import java.util.List;
 
-public class UserRepositoryImpl implements UserRepository {
+public class UserRepositoryImpl implements UserRepository<User, String> {
 
   private final OkHttpClient OK_CLIENT = HttpConnect.getInstance();
   private final Gson GSON = new Gson();
@@ -40,7 +40,7 @@ public class UserRepositoryImpl implements UserRepository {
 
   @SneakyThrows
   @Override
-  public User create(User user) {
+  public Integer create(User user) {
     RequestBody requestBody =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER)))
@@ -58,7 +58,9 @@ public class UserRepositoryImpl implements UserRepository {
                     .post(requestBody)
                     .build())
             .execute();
-    return GSON.fromJson(response.body() != null ? response.body().string() : null, User.class);
+    System.out.println(
+        GSON.fromJson(response.body() != null ? response.body().string() : null, User.class));
+    return response.code();
   }
 
   @SneakyThrows

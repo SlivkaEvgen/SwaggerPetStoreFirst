@@ -5,13 +5,13 @@ import org.example.repository.StoreRepositoryImpl;
 import org.example.service.interfaces.StoreService;
 import java.util.Date;
 
-public class StoreServiceImpl implements StoreService {
+public class StoreServiceImpl implements StoreService<Order,Integer> {
 
   private final StoreRepositoryImpl storeRepository = new StoreRepositoryImpl();
 
   @Override
-  public void returnsPetInventoriesByStatus() {
-    storeRepository.returnsPetInventoriesByStatus();
+  public void returnsPetInventoriesByStatus(Integer id) {
+      storeRepository.get(id);
   }
 
   @Override
@@ -24,16 +24,16 @@ public class StoreServiceImpl implements StoreService {
     order.setQuantity(Long.valueOf(quantity));
     order.setStatus(status);
     order.setShipDate(String.valueOf(new Date().getTime()));
-    return storeRepository.placeAnOrderForAPet(order);
+    return storeRepository.create(order);
   }
 
   @Override
-  public Order findOrderById(Integer petId) {
-    return storeRepository.findOrderById(petId);
+  public Order findById(Integer petId) {
+    return storeRepository.findById(petId);
   }
 
   @Override
-  public Integer deleteOrderById(Integer orderId) {
-    return storeRepository.deleteOrderById(orderId);
+  public Integer delete(Integer orderId) {
+    return storeRepository.delete(orderId);
   }
 }

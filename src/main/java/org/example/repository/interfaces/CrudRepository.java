@@ -1,8 +1,12 @@
 package org.example.repository.interfaces;
 
-public interface CrudRepository<T> {
+public interface CrudRepository<T, ID> {
 
-  T create(T t);
+  Integer create(T t);
 
-  Integer update(T t, String userName);
+  Integer update(T t, ID id);
+
+  Integer delete(ID id);
+
+  Integer get(ID id);
 }

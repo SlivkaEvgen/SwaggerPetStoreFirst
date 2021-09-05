@@ -15,7 +15,7 @@ public class StoreDeleteCommand implements Controller {
     System.out.print(" ENTER ORDER-ID \n \uD83D\uDC49 ");
     String orderId = scanner.next();
     if (Validator.validNumber(orderId)) {
-      if (new StoreServiceImpl().deleteOrderById(Integer.valueOf(orderId)) == 200) {
+      if (new StoreServiceImpl().delete(Integer.valueOf(orderId)) == 200) {
         System.out.println(" ✅ Successfully");
       } else {
         System.out.print("\n      ⚠️ Not found ⚠️ \n \uD83D\uDCAC Please, enter again \n");

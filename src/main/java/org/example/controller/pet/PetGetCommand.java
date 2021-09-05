@@ -15,10 +15,10 @@ public class PetGetCommand implements Controller {
     System.out.print(" ENTER ID \n \uD83D\uDC49 ");
     String id = scanner.next();
     if (Validator.validNumber(id)) {
-      Pet pet = new PetServiceImpl().get(Integer.valueOf(id));
-      if (pet.getId() != 0) {
+      Integer integer = new PetServiceImpl().findById(Integer.valueOf(id));
+      if (integer != 0) {
         System.out.println(" ✅ Successfully");
-        System.out.println(pet);
+        System.out.println(integer);
       } else {
         System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
         findById();

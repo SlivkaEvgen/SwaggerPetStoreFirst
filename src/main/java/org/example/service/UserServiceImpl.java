@@ -5,7 +5,7 @@ import org.example.repository.UserRepositoryImpl;
 import org.example.service.interfaces.UserService;
 import java.util.List;
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService<User,String> {
 
   private final UserRepositoryImpl userRepository = new UserRepositoryImpl();
 
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public Integer getUser(String userName) {
+  public Integer findById(String userName) {
     return userRepository.get(userName);
   }
 

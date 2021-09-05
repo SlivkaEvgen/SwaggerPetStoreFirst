@@ -7,7 +7,7 @@ import org.example.service.interfaces.PetService;
 import java.io.File;
 import java.util.List;
 
-public class PetServiceImpl implements PetService {
+public class PetServiceImpl implements PetService<Pet, Integer> {
 
   private final PetRepositoryImpl petRepository = new PetRepositoryImpl();
 
@@ -57,8 +57,8 @@ public class PetServiceImpl implements PetService {
   }
 
   @Override
-  public Pet get(Integer petId) {
-    return petRepository.get(petId);
+  public Integer findById(Integer petId) {
+    return petRepository.get(String.valueOf(petId));
   }
 
   @Override
@@ -81,6 +81,6 @@ public class PetServiceImpl implements PetService {
 
   @Override
   public Integer delete(Integer petId) {
-    return petRepository.delete(petId);
+    return petRepository.delete(String.valueOf(petId));
   }
 }

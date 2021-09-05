@@ -1,21 +1,20 @@
 package org.example.repository.interfaces;
 
-import org.example.model.User;
 import java.util.List;
 
-public interface UserRepository extends CrudRepository<User> {
+public interface UserRepository<T,ID> extends CrudRepository<T, ID> {
 
-  Integer loginUser(String username, String password);
+  Integer loginUser(ID id, String password);
 
   Integer logOutUser();
 
-  User create(User user);
+  Integer create(T t);
 
-  Integer get(String userName);
+  Integer get(ID id);
 
-  Integer createListUsers(List<User> usersList);
+  Integer createListUsers(List<T> usersList);
 
-  Integer update(User user, String userName);
+  Integer update(T t, ID id);
 
-  Integer delete(String userName);
+  Integer delete(ID id);
 }

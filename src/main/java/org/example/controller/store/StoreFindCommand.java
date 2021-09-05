@@ -16,7 +16,7 @@ public class StoreFindCommand implements Controller {
     System.out.print(" ENTER ORDER-ID \n \uD83D\uDC49 ");
     String orderId = scanner.next();
     if (Validator.validNumber(orderId)) {
-      Order orderById = new StoreServiceImpl().findOrderById(Integer.valueOf(orderId));
+      Order orderById = new StoreServiceImpl().findById(Integer.valueOf(orderId));
       if (orderById.getId() != null) {
         System.out.println(" ✅ Successfully");
         System.out.println(orderById);
