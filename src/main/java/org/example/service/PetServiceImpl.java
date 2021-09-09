@@ -2,30 +2,40 @@ package org.example.service;
 
 import org.example.model.Category;
 import org.example.model.Pet;
+import org.example.model.Tag;
 import org.example.repository.PetRepositoryImpl;
 import org.example.service.interfaces.PetService;
+
 import java.io.File;
 import java.util.List;
 
-public class PetServiceImpl implements PetService<Pet, Integer> {
+public class PetServiceImpl implements PetService<Pet, Long> {
 
   private final PetRepositoryImpl petRepository = new PetRepositoryImpl();
+  private static PetServiceImpl petService;
+
+  public static PetServiceImpl getPetServiceImpl() {
+    if (petService == null) {
+      petService = new PetServiceImpl();
+    }
+    return petService;
+  }
 
   @Override
-  public Integer findPetByStatus(String status) {
+  public String findPetByStatus(String status) {
     return petRepository.findPetByStatus(status);
   }
 
   @Override
   public Pet create(
-      Integer id,
+      Long id,
       String name,
       String status,
       Category category,
-      List<Object> images,
-      List<Object> tagList) {
+      List<String> images,
+      List<Tag> tagList) {
     Pet pet = new Pet();
-    pet.setId(Long.valueOf(id));
+    pet.setId(id);
     pet.setName(name);
     pet.setCategory(category);
     pet.setTags(tagList);
@@ -34,37 +44,28 @@ public class PetServiceImpl implements PetService<Pet, Integer> {
   }
 
   @Override
-  public Integer uploadImage(File file, Integer petId) {
+  public Long uploadImage(File file, Long petId) {
     return petRepository.uploadImage(file, petId);
   }
 
   @Override
-  public Integer update(
-      Integer id,
-      String name,
-      String status,
-      Category category,
-      List<Object> images,
-      List<Object> tagList) {
+  public Long update(Long id, String name, String status) {
     Pet pet = new Pet();
-    pet.setId(Long.valueOf(id));
+    pet.setId(id);
     pet.setName(name);
-    pet.setCategory(category);
-    pet.setTags(tagList);
-    pet.setPhotoUrls(images);
-    return petRepository.update(pet, name);
+    return petRepository.update(id, name, status);
   }
 
   @Override
-  public Integer updatePut(
-      Integer id,
+  public Long updatePut(
+      Long id,
       String name,
       String status,
       Category category,
-      List<Object> images,
-      List<Object> tagList) {
+      List<String> images,
+      List<Tag> tagList) {
     Pet pet = new Pet();
-    pet.setId(Long.valueOf(id));
+    pet.setId(id);
     pet.setName(name);
     pet.setCategory(category);
     pet.setTags(tagList);
@@ -73,12 +74,12 @@ public class PetServiceImpl implements PetService<Pet, Integer> {
   }
 
   @Override
-  public Integer delete(Integer petId) {
-    return petRepository.delete(String.valueOf(petId));
+  public Long delete(Long petId) {
+    return petRepository.delete(petId);
   }
 
   @Override
-  public Pet findById(Integer petId) {
-    return petRepository.get(String.valueOf(petId));
+  public Pet findById(Long petId) {
+    return petRepository.get(petId);
   }
 }

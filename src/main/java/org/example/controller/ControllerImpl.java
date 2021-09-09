@@ -1,11 +1,20 @@
 package org.example.controller;
 
 import org.example.config.ScannerConsole;
+
 import java.util.Scanner;
 
 public class ControllerImpl implements Controller {
 
+  private static ControllerImpl controller = getController();
   private final Scanner scanner = ScannerConsole.getInstance();
+
+  public static ControllerImpl getController() {
+    if (controller == null) {
+      controller = new ControllerImpl();
+    }
+    return controller;
+  }
 
   @Override
   public void start() {
@@ -30,6 +39,5 @@ public class ControllerImpl implements Controller {
   @Override
   public void stop() {
     System.exit(0);
-    scanner.close();
   }
 }

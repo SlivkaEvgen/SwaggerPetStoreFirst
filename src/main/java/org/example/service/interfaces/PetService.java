@@ -2,40 +2,39 @@ package org.example.service.interfaces;
 
 import org.example.model.Category;
 import org.example.model.Pet;
+import org.example.model.Tag;
+
 import java.io.File;
 import java.util.List;
 
 public interface PetService<T, ID> extends Service<T, ID> {
 
-  Integer findPetByStatus(String status);
+  String findPetByStatus(String status);
 
   Pet create(
-      Integer id,
+      Long id,
       String name,
       String status,
       Category category,
-      List<Object> images,
-      List<Object> tagList);
+      List<String> images,
+      List<Tag> tagList);
 
-  Integer uploadImage(File file, Integer petId);
+    Long uploadImage(File file, Long petId);
 
-  Integer update(
-      Integer id,
+    Long update(
+      Long id,
+      String name,
+      String status);
+
+    Long updatePut(
+      Long id,
       String name,
       String status,
       Category category,
-      List<Object> images,
-      List<Object> tagList);
+      List<String> images,
+      List<Tag> tagList);
 
-  Integer updatePut(
-      Integer id,
-      String name,
-      String status,
-      Category category,
-      List<Object> images,
-      List<Object> tagList);
+    Long delete(Long petId);
 
-  Integer delete(Integer petId);
-
-  Pet findById(Integer petId);
+  Pet findById(Long petId);
 }

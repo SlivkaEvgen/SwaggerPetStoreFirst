@@ -2,13 +2,23 @@ package org.example.controller.store;
 
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
-import org.example.controller.Validator;
 import org.example.service.StoreServiceImpl;
+import org.example.util.Validator;
+
 import java.util.Scanner;
 
 public class StoreDeleteCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
+  private final StoreServiceImpl storeService = StoreServiceImpl.getStoreService();
+  private static StoreDeleteCommandImpl storeDeleteCommand;
+
+  public static StoreDeleteCommandImpl getStoreDeleteCommand() {
+    if (storeDeleteCommand == null) {
+      storeDeleteCommand = new StoreDeleteCommandImpl();
+    }
+    return storeDeleteCommand;
+  }
 
   @Override
   public void start() {
@@ -19,7 +29,7 @@ public class StoreDeleteCommandImpl implements Controller {
     System.out.print(" ENTER ORDER-ID \n \uD83D\uDC49 ");
     String orderId = scanner.next();
     if (Validator.validNumber(orderId)) {
-      if (new StoreServiceImpl().delete(Integer.valueOf(orderId)) == 200) {
+      if (storeService.delete(Long.valueOf(orderId)) == 200) {
         System.out.println(" ✅ Successfully");
       } else {
         System.out.print("\n      ⚠️ Not found ⚠️ \n \uD83D\uDCAC Please, enter again \n");
@@ -34,6 +44,5 @@ public class StoreDeleteCommandImpl implements Controller {
   @Override
   public void stop() {
     System.exit(0);
-    scanner.close();
   }
 }

@@ -1,28 +1,24 @@
 package org.example.controller.user;
 
-import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.controller.EnterCommands;
 import org.example.service.UserServiceImpl;
-import java.util.Scanner;
 
 public class UserUpdateControllerImpl implements Controller {
 
-  private final Scanner scanner = ScannerConsole.getInstance();
+  private final UserServiceImpl userService = UserServiceImpl.getUserService();
+  private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
+  private static UserUpdateControllerImpl userUpdateController;
+
+  public static UserUpdateControllerImpl getUserUpdateController() {
+    if (userUpdateController == null) {
+      userUpdateController = new UserUpdateControllerImpl();
+    }
+    return userUpdateController;
+  }
 
   private void update() {
-    final EnterCommands enterCommands = new EnterCommands();
-    Integer update =
-        new UserServiceImpl()
-            .update(
-                Integer.valueOf(enterCommands.enterId()),
-                enterCommands.enterName(),
-                enterCommands.enterFirstName(),
-                enterCommands.enterLastName(),
-                200,
-                enterCommands.enterPassword(),
-                enterCommands.enterEmail(),
-                enterCommands.enterPhone());
+    Long update = userService.update(enterCommands.enterId(), enterCommands.enterName(), 200);
     if (update == 200) {
       System.out.println(" ✅ Successfully");
     } else {
@@ -39,6 +35,5 @@ public class UserUpdateControllerImpl implements Controller {
   @Override
   public void stop() {
     System.exit(0);
-    scanner.close();
   }
 }

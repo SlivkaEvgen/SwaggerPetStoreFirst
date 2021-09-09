@@ -4,17 +4,17 @@ import java.io.File;
 
 public interface PetRepository<T, ID> extends CrudRepository<T, ID> {
 
-  Integer uploadImage(File file, Integer petId);
+  ID uploadImage(File file, ID petId);
 
-  Integer delete(ID id);
+  ID delete(ID id);
 
-  Integer findPetByStatus(String status);
+  // String findPetByStatus(String status);
 
   T create(T t);
 
-  Integer update(T t, ID id);
+  ID update(ID id, String petName, String status);
 
   T get(ID id);
 
-  Integer updatePut(T t);
+  ID updatePut(T t);
 }

@@ -2,22 +2,30 @@ package org.example.controller.pet;
 
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
-import org.example.controller.Validator;
 import org.example.model.Pet;
 import org.example.service.PetServiceImpl;
+import org.example.util.Validator;
 import java.util.Scanner;
 
-// ok
 public class PetGetCommandImpl implements Controller {
 
+  private static PetGetCommandImpl petGetCommand;
   private final Scanner scanner = ScannerConsole.getInstance();
+  private final PetServiceImpl petService = PetServiceImpl.getPetServiceImpl();
+
+  public static PetGetCommandImpl getPetGetCommand() {
+    if (petGetCommand == null) {
+      petGetCommand = new PetGetCommandImpl();
+    }
+    return petGetCommand;
+  }
 
   private void findById() {
     System.out.print(" ENTER ID \n \uD83D\uDC49 ");
     String id = scanner.next();
     if (Validator.validNumber(id)) {
-      Pet byId = new PetServiceImpl().findById(Integer.valueOf(id));
-      if (byId.getId() != 0) {
+      Pet byId = petService.findById(Long.valueOf(id));
+      if (byId.getId() != null) {
         System.out.println(" ✅ Successfully");
         System.out.println(byId);
       } else {
@@ -41,8 +49,10 @@ public class PetGetCommandImpl implements Controller {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       findByStatus();
     } else {
-      if (new PetServiceImpl().findPetByStatus(status) == 200) {
+        String petByStatus = petService.findPetByStatus(status);
+        if (petByStatus != null) {
         System.out.println(" ✅ Successfully");
+        System.out.println(petByStatus);
       }
     }
   }
@@ -74,6 +84,5 @@ public class PetGetCommandImpl implements Controller {
   @Override
   public void stop() {
     System.exit(0);
-    scanner.close();
   }
 }

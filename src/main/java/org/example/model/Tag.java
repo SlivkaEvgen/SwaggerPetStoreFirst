@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 @Data
@@ -13,7 +14,6 @@ import java.io.Serializable;
 public class Tag implements Serializable {
 
   private static final long serialVersionUID = 9382619309373L;
-
   private Long id;
   private String name;
 }

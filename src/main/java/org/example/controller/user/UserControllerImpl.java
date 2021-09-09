@@ -7,7 +7,21 @@ import java.util.Scanner;
 
 public class UserControllerImpl implements Controller {
 
+  private static UserControllerImpl userController;// = getUserController();
   private final Scanner scanner = ScannerConsole.getInstance();
+  private final UserLogInControllerImpl userLogInController = UserLogInControllerImpl.getUserLoginController();
+  private final UserLogOutControllerImpl userLogOutController = UserLogOutControllerImpl.getUserLogOutController();
+  private final UserGetControllerImpl userGetController = UserGetControllerImpl.getUserGetController();
+  private final UserCreateControllerImpl userCreateController = UserCreateControllerImpl.getUserCreateController();
+  private final UserUpdateControllerImpl userUpdateController = UserUpdateControllerImpl.getUserUpdateController();
+  private final UserDeleteControllerImpl userDeleteController = UserDeleteControllerImpl.getUserDeleteController();
+
+  public static UserControllerImpl getUserController() {
+    if (userController == null) {
+      userController = new UserControllerImpl();
+    }
+    return userController;
+  }
 
   @Override
   public void start() {
@@ -15,27 +29,27 @@ public class UserControllerImpl implements Controller {
         "\n \uD83D\uDC49 LOGIN \n \uD83D\uDC49 LOGOUT \n \uD83D\uDC49 GET\n \uD83D\uDC49 CREATE\n \uD83D\uDC49 UPDATE\n \uD83D\uDC49 DELETE \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
     if (next.equalsIgnoreCase("login")) {
-      new UserLogInControllerImpl().start();
+      userLogInController.start();
       start();
     }
     if (next.equalsIgnoreCase("logout")) {
-      new UserLogOutControllerImpl().start();
+      userLogOutController.start();
       start();
     }
     if (next.equalsIgnoreCase("get")) {
-      new UserGetControllerImpl().start();
+      userGetController.start();
       start();
     }
     if (next.equalsIgnoreCase("create")) {
-      new UserCreateControllerImpl().start();
+      userCreateController.start();
       start();
     }
     if (next.equalsIgnoreCase("update")) {
-      new UserUpdateControllerImpl().start();
+      userUpdateController.start();
       start();
     }
     if (next.equalsIgnoreCase("delete")) {
-      new UserDeleteControllerImpl().start();
+      userDeleteController.start();
       start();
     }
     if (next.equalsIgnoreCase("back")) {
@@ -52,6 +66,5 @@ public class UserControllerImpl implements Controller {
   @Override
   public void stop() {
     System.exit(0);
-    scanner.close();
   }
 }

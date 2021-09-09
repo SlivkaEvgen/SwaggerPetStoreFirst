@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 @Data
@@ -13,7 +14,7 @@ import java.io.Serializable;
 public class ApiResponse implements Serializable {
 
   private static final long serialVersionUID = 88249378887777L;
-
   private Long code;
-  private String type, message;
+  private String type;
+  private String message;
 }

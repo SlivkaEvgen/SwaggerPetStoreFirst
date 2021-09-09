@@ -1,12 +1,11 @@
 package org.example.repository.interfaces;
 
 public interface StoreRepository<T, ID> extends CrudRepository<T, ID> {
-
-  Integer delete(ID id);
+  T get();
 
   T findById(ID id);
 
   T create(T t);
 
-  T get(ID id);
+  ID delete(ID id);
 }

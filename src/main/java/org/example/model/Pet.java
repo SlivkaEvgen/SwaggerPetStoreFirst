@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,15 +15,10 @@ import java.util.List;
 public class Pet implements Serializable {
 
   private static final long serialVersionUID = 5888882349777L;
-
-  private float id;
-  Category Category;
+  private Long id;
+  private Category Category;
   private String name;
-  List<Object> photoUrls, tags;
-
-  private enum Status {
-    AVAILABLE,
-    PENDING,
-    SOLD
-  }
+  private List<String> photoUrls;
+  private List<Tag> tags;
+  private Status status;
 }

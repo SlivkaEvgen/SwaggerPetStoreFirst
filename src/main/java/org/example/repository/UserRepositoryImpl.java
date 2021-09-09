@@ -7,10 +7,11 @@ import org.example.config.HttpConnect;
 import org.example.model.User;
 import org.example.repository.interfaces.UserRepository;
 import org.example.util.PropertiesLoader;
+
 import java.net.URI;
 import java.util.List;
 
-public class UserRepositoryImpl implements UserRepository<User, String> {
+public class UserRepositoryImpl implements UserRepository<User, Long> {
 
   private final OkHttpClient OK_CLIENT = HttpConnect.getInstance();
   private final Gson GSON = new Gson();
@@ -18,7 +19,7 @@ public class UserRepositoryImpl implements UserRepository<User, String> {
 
   @SneakyThrows
   @Override
-  public Integer loginUser(String username, String password) {
+  public Long loginUser(String username, String password) {
     Request request =
         new Request.Builder()
             .url(
@@ -26,16 +27,16 @@ public class UserRepositoryImpl implements UserRepository<User, String> {
                     URI.create(URI_USER + "/login?username=" + username + "&password=" + password)))
             .build();
     Response response = OK_CLIENT.newCall(request).execute();
-    return response.code();
+    return (long) response.code();
   }
 
   @SneakyThrows
   @Override
-  public Integer logOutUser() {
+  public Long logOutUser() {
     Request request =
         new Request.Builder().url(HttpUrl.get(URI.create(URI_USER + "/logout"))).get().build();
     Response response = OK_CLIENT.newCall(request).execute();
-    return response.code();
+    return (long) response.code();
   }
 
   @SneakyThrows
@@ -72,7 +73,7 @@ public class UserRepositoryImpl implements UserRepository<User, String> {
 
   @SneakyThrows
   @Override
-  public Integer createListUsers(List<User> usersList) {
+  public Long createListUsers(List<User> usersList) {
     RequestBody requestBody =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER + "/createWithList")))
@@ -90,12 +91,12 @@ public class UserRepositoryImpl implements UserRepository<User, String> {
                     .post(requestBody)
                     .build())
             .execute();
-    return response.code();
+    return (long) response.code();
   }
 
   @SneakyThrows
   @Override
-  public Integer update(User user, String userName) {
+  public Long update(User user, String userName) {
     RequestBody requestBody =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER + "/" + userName)))
@@ -113,18 +114,18 @@ public class UserRepositoryImpl implements UserRepository<User, String> {
                     .put(requestBody)
                     .build())
             .execute();
-    return response.code();
+    return (long) response.code();
   }
 
   @SneakyThrows
   @Override
-  public Integer delete(String userName) {
+  public Long delete(String userName) {
     Request request =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER + "/" + userName)))
             .delete()
             .build();
     Response response = OK_CLIENT.newCall(request).execute();
-    return response.code();
+    return (long) response.code();
   }
 }

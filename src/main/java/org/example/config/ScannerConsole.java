@@ -9,11 +9,7 @@ public class ScannerConsole implements Closeable {
 
   public static Scanner getInstance() {
     if (scanner == null) {
-      synchronized (ScannerConsole.class) {
-        if (scanner == null) {
-          scanner = new Scanner(System.in);
-        }
-      }
+      scanner = new Scanner(System.in);
     }
     return scanner;
   }

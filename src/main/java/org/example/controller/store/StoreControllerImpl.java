@@ -8,6 +8,18 @@ import java.util.Scanner;
 public class StoreControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
+  private final StoreInventoryCommandImpl storeInventoryCommand = StoreInventoryCommandImpl.getStoreInventoryCommand();
+  private final StoreCreateCommandImpl storeCreateCommand = StoreCreateCommandImpl.getStoreCreateCommand();
+  private final StoreFindCommandImpl storeFindCommand = StoreFindCommandImpl.getStoreFindCommand();
+  private final StoreDeleteCommandImpl storeDeleteCommand = StoreDeleteCommandImpl.getStoreDeleteCommand();
+  private static StoreControllerImpl storeController;
+
+  public static StoreControllerImpl getStoreController() {
+    if (storeController == null) {
+      storeController = new StoreControllerImpl();
+    }
+    return storeController;
+  }
 
   @Override
   public void start() {
@@ -15,23 +27,24 @@ public class StoreControllerImpl implements Controller {
         "\n \uD83D\uDC49 Inventory\n \uD83D\uDC49 CreateOrder\n \uD83D\uDC49 FindOrder \n \uD83D\uDC49 DeleteOrder \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
     if (next.equalsIgnoreCase("Inventory")) {
-      new StoreInventoryCommandImpl().start();
+      storeInventoryCommand.start();
       start();
     }
     if (next.equalsIgnoreCase("CreateOrder")) {
-      new StoreCreateCommandImpl().start();
+      storeCreateCommand.start();
       start();
     }
     if (next.equalsIgnoreCase("FindOrder")) {
-      new StoreFindCommandImpl().start();
+      storeFindCommand.start();
       start();
     }
     if (next.equalsIgnoreCase("DeleteOrder")) {
-      new StoreDeleteCommandImpl().start();
+      storeDeleteCommand.start();
       start();
     }
     if (next.equalsIgnoreCase("back")) {
-      new CommandImpl().start();
+        new CommandImpl().start();
+        //  command.start();
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();
@@ -44,6 +57,5 @@ public class StoreControllerImpl implements Controller {
   @Override
   public void stop() {
     System.exit(0);
-    scanner.close();
   }
 }

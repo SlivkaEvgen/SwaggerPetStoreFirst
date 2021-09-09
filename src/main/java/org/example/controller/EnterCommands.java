@@ -3,21 +3,32 @@ package org.example.controller;
 import org.example.config.ScannerConsole;
 import org.example.model.Category;
 import org.example.model.Tag;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EnterCommands implements Controller {
 
-  private final List<Object> tagList = new ArrayList<>();
-  private final List<Object> imagesList = new ArrayList<>();
+  private static Long id;
+  private static String name;
+  private static EnterCommands enterCommands;
   private final Scanner scanner = ScannerConsole.getInstance();
-  private String id, name;
 
-  public String enterId() {
+  private final List<Tag> tagList = new ArrayList<>();
+  private final List<String> imagesList = new ArrayList<>();
+
+  public static EnterCommands getEnterCommands() {
+    if (enterCommands == null) {
+      enterCommands = new EnterCommands();
+    }
+    return enterCommands;
+  }
+
+  public Long enterId() {
     System.out.print(" ENTER ID \n \uD83D\uDC49 ");
-    id = scanner.next();
-    if (!Validator.validNumber(id)) {
+    id = Long.valueOf(scanner.next());
+    if (!Validator.validNumber(String.valueOf(id))) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterId();
     }
@@ -105,15 +116,15 @@ public class EnterCommands implements Controller {
   public Category createCategory() {
     System.out.print(" ❗ Attention! ❗\n ❗ CREATING CATEGORY ❗\n \uD83D\uDC49 ");
     final Category category = new Category();
-    category.setId(Long.valueOf(enterCategoryId()));
+    category.setId(enterCategoryId());
     category.setName(enterCategoryName());
     return category;
   }
 
-  private String enterCategoryId() {
+  private Long enterCategoryId() {
     System.out.print(" ENTER CATEGORY-ID \n \uD83D\uDC49 ");
-    id = scanner.next();
-    if (!Validator.validNumber(id)) {
+    id = Long.valueOf(scanner.next());
+    if (!Validator.validNumber(String.valueOf(id))) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterId();
     }
@@ -130,10 +141,10 @@ public class EnterCommands implements Controller {
     return name;
   }
 
-  private String enterTagId() {
+  private Long enterTagId() {
     System.out.print(" ENTER TAG-ID \n \uD83D\uDC49 ");
-    id = scanner.next();
-    if (!Validator.validNumber(id)) {
+    id = Long.valueOf(scanner.next());
+    if (!Validator.validNumber(String.valueOf(id))) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterTagId();
     }
@@ -150,7 +161,7 @@ public class EnterCommands implements Controller {
     return name;
   }
 
-  public List<Object> createTagList() {
+  public List<Tag> createTagList() {
     System.out.print(" ❗ Attention! ❗\n ❗ CREATING TAGS-LIST ❗\n \uD83D\uDC49 ");
     tagList.add(createTag());
     return tagList;
@@ -158,7 +169,7 @@ public class EnterCommands implements Controller {
 
   private Tag createTag() {
     Tag tag = new Tag();
-    tag.setId(Long.valueOf(enterTagId()));
+    tag.setId(enterTagId());
     tag.setName(enterTagName());
     //    String yesNo = yesNo();
     if (Validator.validString(yesNo()) & yesNo().equalsIgnoreCase("yes")) {
@@ -180,7 +191,7 @@ public class EnterCommands implements Controller {
     return scanner.next();
   }
 
-  public List<Object> createListImages() {
+  public List<String> createListImages() {
     System.out.print(" ❗ Attention! ❗\n ❗ CREATING IMAGES-LIST ❗\n \uD83D\uDC49 ");
     //    String image = pathToImage();
     imagesList.add(pathToImage());
@@ -202,14 +213,14 @@ public class EnterCommands implements Controller {
     return scanner.next();
   }
 
-  public String enterPetId() {
+  public Long enterPetId() {
     System.out.print(" ENTER PET-ID \n \uD83D\uDC49 ");
     String petId = scanner.next();
     if (!Validator.validNumber(petId)) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterPetId();
     }
-    return petId;
+    return Long.valueOf(petId);
   }
 
   public String enterQuantity() {
@@ -242,6 +253,5 @@ public class EnterCommands implements Controller {
   @Override
   public void stop() {
     System.exit(0);
-    scanner.close();
   }
 }

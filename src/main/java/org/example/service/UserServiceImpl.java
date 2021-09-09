@@ -5,33 +5,41 @@ import org.example.repository.UserRepositoryImpl;
 import org.example.service.interfaces.UserService;
 import java.util.List;
 
-public class UserServiceImpl implements UserService<User, String> {
+public class UserServiceImpl implements UserService<User, Long> {
 
   private final UserRepositoryImpl userRepository = new UserRepositoryImpl();
+  private static UserServiceImpl userService;
+
+  public static UserServiceImpl getUserService() {
+    if (userService == null) {
+      userService = new UserServiceImpl();
+    }
+    return userService;
+  }
 
   @Override
-  public Integer loginUser(String username, String password) {
+  public Long loginUser(String username, String password) {
     return userRepository.loginUser(username, password);
   }
 
   @Override
-  public Integer logOutUser() {
+  public Long logOutUser() {
     return userRepository.logOutUser();
   }
 
   @Override
-  public User findById(String userName) {
+  public User getByName(String userName) {
     return userRepository.get(userName);
   }
 
   @Override
-  public Integer createListUsers(List<User> usersList) {
+  public Long createListUsers(List<User> usersList) {
     return userRepository.createListUsers(usersList);
   }
 
   @Override
   public User createNewUser(
-      Integer id,
+      Long id,
       String userName,
       String firstName,
       String lastName,
@@ -39,11 +47,11 @@ public class UserServiceImpl implements UserService<User, String> {
       String email,
       String phone) {
     User user = new User();
-    user.setId(Long.valueOf(id));
-    user.setUsername(userName);
+    user.setId(id);
+    user.setUserName(userName);
     user.setFirstName(firstName);
     user.setLastName(lastName);
-    user.setUserStatus(200L);
+    user.setUserStatus(200);
     user.setPassword(password);
     user.setEmail(email);
     user.setPhone(phone);
@@ -51,29 +59,16 @@ public class UserServiceImpl implements UserService<User, String> {
   }
 
   @Override
-  public Integer update(
-      Integer id,
-      String userName,
-      String firstName,
-      String lastName,
-      Integer status,
-      String password,
-      String email,
-      String phone) {
+  public Long update(Long id, String userName, Integer status) {
     User user = new User();
-    user.setId(Long.valueOf(id));
-    user.setUsername(userName);
-    user.setFirstName(firstName);
-    user.setLastName(lastName);
-    user.setUserStatus(Long.valueOf(status));
-    user.setPassword(password);
-    user.setEmail(email);
-    user.setPhone(phone);
+    user.setId(id);
+    user.setUserName(userName);
+    user.setUserStatus(status);
     return userRepository.update(user, userName);
   }
 
   @Override
-  public Integer delete(String userName) {
+  public Long delete(String userName) {
     return userRepository.delete(userName);
   }
 }

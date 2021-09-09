@@ -2,14 +2,23 @@ package org.example.controller.pet;
 
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
-import org.example.controller.Validator;
 import org.example.service.PetServiceImpl;
+import org.example.util.Validator;
 import java.io.File;
 import java.util.Scanner;
-// ok
+
 public class PetUpLoadImageCommandImpl implements Controller {
 
+  private static PetUpLoadImageCommandImpl petUpLoadImageCommand;
   private final Scanner scanner = ScannerConsole.getInstance();
+  private final PetServiceImpl petService = PetServiceImpl.getPetServiceImpl();
+
+  public static PetUpLoadImageCommandImpl getPetUpLoadImageCommand() {
+    if (petUpLoadImageCommand == null) {
+      petUpLoadImageCommand = new PetUpLoadImageCommandImpl();
+    }
+    return petUpLoadImageCommand;
+  }
 
   private void upload() {
     System.out.print(" ENTER PET-ID \n \uD83D\uDC49 ");
@@ -20,7 +29,7 @@ public class PetUpLoadImageCommandImpl implements Controller {
       String next = scanner.next();
       if (Validator.validString(next) & next.contains("/")
           && next.contains("png") | next.contains("jpg")) {
-        Integer integer = new PetServiceImpl().uploadImage(new File(next), Integer.valueOf(petId));
+          Long integer = petService.uploadImage(new File(next), Long.valueOf(petId));
         if (integer == 200) {
           System.out.println(" ✅ Successfully");
         } else {
@@ -45,6 +54,5 @@ public class PetUpLoadImageCommandImpl implements Controller {
   @Override
   public void stop() {
     System.exit(0);
-    scanner.close();
   }
 }

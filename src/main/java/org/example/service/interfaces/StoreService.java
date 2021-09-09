@@ -4,11 +4,11 @@ import org.example.model.Order;
 
 public interface StoreService<T, ID> extends Service<T, ID> {
 
-  void returnsPetInventoriesByStatus(Integer id);
+  void returnsPetInventoriesByStatus();
 
-  Order placeAnOrderForAPet(Integer orderId, Integer petId, Integer quantity, String status);
+  Order placeAnOrderForAPet(Long orderId, Long petId, Integer quantity, String status);
 
-  Order findById(Integer petId);
+  Order findById(Long petId);
 
-  Integer delete(Integer orderId);
+  Long delete(Long orderId);
 }

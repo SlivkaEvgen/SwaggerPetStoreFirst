@@ -5,22 +5,27 @@ import org.example.controller.Controller;
 import org.example.controller.EnterCommands;
 import org.example.service.PetServiceImpl;
 import java.util.Scanner;
-// ok
+
 public class PetUpdateCommandImpl implements Controller {
 
+  private static PetUpdateCommandImpl petUpdateCommand;
   private final Scanner scanner = ScannerConsole.getInstance();
-  private final EnterCommands enterCommands = new EnterCommands();
+  private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
+  private final PetServiceImpl petService = PetServiceImpl.getPetServiceImpl();
+
+  public static PetUpdateCommandImpl getPetUpdateCommand() {
+    if (petUpdateCommand == null) {
+      petUpdateCommand = new PetUpdateCommandImpl();
+    }
+    return petUpdateCommand;
+  }
 
   private void UpdatesWithFormData() {
-    Integer update =
-        new PetServiceImpl()
-            .update(
-                Integer.valueOf(enterCommands.enterId()),
-                enterCommands.enterName(),
-                enterCommands.enterStatus(),
-                enterCommands.createCategory(),
-                enterCommands.createListImages(),
-                enterCommands.createTagList());
+      Long update =
+        petService.update(
+            enterCommands.enterId(),
+            enterCommands.enterName(),
+            enterCommands.enterStatus());
     System.out.println(update);
     if (update != 0) {
       System.out.println(" ✅ Successfully");
@@ -30,15 +35,14 @@ public class PetUpdateCommandImpl implements Controller {
   }
 
   private void UpdateAnExistingPet() {
-    Integer update =
-        new PetServiceImpl()
-            .updatePut(
-                Integer.valueOf(enterCommands.enterId()),
-                enterCommands.enterName(),
-                enterCommands.enterStatus(),
-                enterCommands.createCategory(),
-                enterCommands.createListImages(),
-                enterCommands.createTagList());
+      Long update =
+        petService.updatePut(
+            enterCommands.enterId(),
+            enterCommands.enterName(),
+            enterCommands.enterStatus(),
+            enterCommands.createCategory(),
+            enterCommands.createListImages(),
+            enterCommands.createTagList());
     System.out.println(update);
     if (update != 0) {
       System.out.println(" ✅ Successfully");
@@ -73,6 +77,5 @@ public class PetUpdateCommandImpl implements Controller {
   @Override
   public void stop() {
     System.exit(0);
-    scanner.close();
   }
 }

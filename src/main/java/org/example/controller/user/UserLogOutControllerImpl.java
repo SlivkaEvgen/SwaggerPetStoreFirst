@@ -5,8 +5,18 @@ import org.example.service.UserServiceImpl;
 
 public class UserLogOutControllerImpl implements Controller {
 
+  private final UserServiceImpl userService = UserServiceImpl.getUserService();
+  private static UserLogOutControllerImpl userLogOutController;
+
+  public static UserLogOutControllerImpl getUserLogOutController() {
+    if (userLogOutController == null) {
+      userLogOutController = new UserLogOutControllerImpl();
+    }
+    return userLogOutController;
+  }
+
   private void logOut() {
-    if (new UserServiceImpl().logOutUser() == 200) {
+    if (userService.logOutUser() == 200) {
       System.out.println(" ✅ Successfully");
     } else {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");

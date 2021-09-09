@@ -5,9 +5,19 @@ import org.example.service.StoreServiceImpl;
 
 public class StoreInventoryCommandImpl implements Controller {
 
+  private final StoreServiceImpl storeService = StoreServiceImpl.getStoreService();
+  private static StoreInventoryCommandImpl storeInventoryCommand;
+
+  public static StoreInventoryCommandImpl getStoreInventoryCommand() {
+    if (storeInventoryCommand == null) {
+      storeInventoryCommand = new StoreInventoryCommandImpl();
+    }
+    return storeInventoryCommand;
+  }
+
   @Override
   public void start() {
-    new StoreServiceImpl().returnsPetInventoriesByStatus(0);
+    storeService.returnsPetInventoriesByStatus();
   }
 
   @Override

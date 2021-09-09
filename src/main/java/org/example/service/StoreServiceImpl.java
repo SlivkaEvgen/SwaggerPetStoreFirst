@@ -3,37 +3,45 @@ package org.example.service;
 import org.example.model.Order;
 import org.example.repository.StoreRepositoryImpl;
 import org.example.service.interfaces.StoreService;
+
 import java.util.Date;
 
-public class StoreServiceImpl implements StoreService<Order, Integer> {
+public class StoreServiceImpl implements StoreService<Order, Long> {
 
   private final StoreRepositoryImpl storeRepository = new StoreRepositoryImpl();
+  private static StoreServiceImpl storeService;
 
-  @Override
-  public void returnsPetInventoriesByStatus(Integer id) {
-    storeRepository.get(id);
+  public static StoreServiceImpl getStoreService() {
+    if (storeService == null) {
+      storeService = new StoreServiceImpl();
+    }
+    return storeService;
   }
 
   @Override
-  public Order placeAnOrderForAPet(
-      Integer orderId, Integer petId, Integer quantity, String status) {
+  public void returnsPetInventoriesByStatus() {
+    storeRepository.get();
+  }
+
+  @Override
+  public Order placeAnOrderForAPet(Long orderId, Long petId, Integer quantity, String status) {
     Order order = new Order();
-    order.setId(Long.valueOf(orderId));
-    order.setPetId(Long.valueOf(petId));
+    order.setId(orderId);
+    order.setPetId(petId);
     order.setComplete(true);
-    order.setQuantity(Long.valueOf(quantity));
+    order.setQuantity(quantity);
     order.setStatus(status);
     order.setShipDate(String.valueOf(new Date().getTime()));
     return storeRepository.create(order);
   }
 
   @Override
-  public Order findById(Integer petId) {
+  public Order findById(Long petId) {
     return storeRepository.findById(petId);
   }
 
   @Override
-  public Integer delete(Integer orderId) {
+  public Long delete(Long orderId) {
     return storeRepository.delete(orderId);
   }
 }

@@ -2,9 +2,9 @@ package org.example.repository.interfaces;
 
 public interface CrudRepository<T, ID> {
 
+  // T get(ID id);
+
   T create(T t);
 
-  Integer delete(ID id);
-
-  T get(ID id);
+  //  ID delete(ID id);
 }
