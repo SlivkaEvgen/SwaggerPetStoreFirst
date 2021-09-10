@@ -1,8 +1,10 @@
 package org.example.controller.user;
 
+import lombok.NoArgsConstructor;
 import org.example.controller.Controller;
 import org.example.service.UserServiceImpl;
 
+@NoArgsConstructor
 public class UserLogOutControllerImpl implements Controller {
 
   private final UserServiceImpl userService = UserServiceImpl.getUserService();

@@ -1,13 +1,15 @@
 package org.example.controller.pet;
 
+import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
 
 import java.util.Scanner;
 
+@NoArgsConstructor
 public class PetControllerImpl {
 
-  private static PetControllerImpl petController;// = getPetController();
+  private static PetControllerImpl petController;
   private final Scanner scanner = ScannerConsole.getInstance();
   private final PetGetCommandImpl petGetCommand = PetGetCommandImpl.getPetGetCommand();
   private final PetCreateCommandImpl petCreateCommand = PetCreateCommandImpl.getPetCreateCommand();

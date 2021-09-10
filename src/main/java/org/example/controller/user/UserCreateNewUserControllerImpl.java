@@ -1,10 +1,11 @@
 package org.example.controller.user;
 
+import lombok.NoArgsConstructor;
 import org.example.controller.Controller;
 import org.example.controller.EnterCommands;
-import org.example.model.User;
 import org.example.service.UserServiceImpl;
 
+@NoArgsConstructor
 public class UserCreateNewUserControllerImpl implements Controller {
 
   private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
@@ -24,8 +25,8 @@ public class UserCreateNewUserControllerImpl implements Controller {
         enterCommands.enterUserName(),
         enterCommands.enterFirstName(),
         enterCommands.enterLastName(),
-        enterCommands.enterPassword(),
         enterCommands.enterEmail(),
+        enterCommands.enterPassword(),
         enterCommands.enterPhone());
   }
 

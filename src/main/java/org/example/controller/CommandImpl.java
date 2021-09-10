@@ -12,8 +12,15 @@ public class CommandImpl implements Controller {
   private final PetControllerImpl petController = PetControllerImpl.getPetController();
   private final UserControllerImpl userController = UserControllerImpl.getUserController();
   private final StoreControllerImpl storeController = StoreControllerImpl.getStoreController();
-  private final ControllerImpl controller = ControllerImpl.getController();
   private final Scanner scanner = ScannerConsole.getInstance();
+  private static CommandImpl command;
+
+  public static CommandImpl getCommand() {
+    if (command == null) {
+      command = new CommandImpl();
+    }
+    return command;
+  }
 
   @Override
   public void start() {
@@ -33,7 +40,7 @@ public class CommandImpl implements Controller {
       start();
     }
     if (next.equalsIgnoreCase("back")) {
-      controller.start();
+      ControllerImpl.getController().start();
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();

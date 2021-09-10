@@ -1,9 +1,11 @@
 package org.example.controller;
 
+import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 
 import java.util.Scanner;
 
+@NoArgsConstructor
 public class ControllerImpl implements Controller {
 
   private static ControllerImpl controller;
@@ -26,7 +28,7 @@ public class ControllerImpl implements Controller {
     System.out.print("   \uD83D\uDC49 Start \n   \uD83D\uDC49 Stop\n\uD83D\uDC49 ");
     String start = scanner.next();
     if (start.equalsIgnoreCase("start")) {
-      new CommandImpl().start();
+      CommandImpl.getCommand().start();
     }
     if (start.equalsIgnoreCase("stop")) {
       stop();

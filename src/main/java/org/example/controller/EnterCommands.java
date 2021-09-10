@@ -1,13 +1,14 @@
 package org.example.controller;
 
+import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 import org.example.model.Category;
 import org.example.model.Tag;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@NoArgsConstructor
 public class EnterCommands implements Controller {
 
   private static EnterCommands enterCommands;
@@ -35,7 +36,7 @@ public class EnterCommands implements Controller {
   public String enterName() {
     System.out.print(" ENTER NAME \n \uD83D\uDC49 ");
     String name = scanner.next();
-    if (!Validator.validString(name) | name.length() > 10) {
+    if (name.length() > 10) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterName();
     }
@@ -44,12 +45,12 @@ public class EnterCommands implements Controller {
 
     public String enterUserName() {
         System.out.print(" ENTER USER-NAME \n \uD83D\uDC49 ");
-        String name = scanner.next();
-        if (!Validator.validString(name) | name.length() > 10) {
+        String userName = scanner.next();
+        if (userName.length() > 10) {
             System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
             return enterName();
         }
-        return name;
+        return userName;
     }
 
   public String enterFirstName() {

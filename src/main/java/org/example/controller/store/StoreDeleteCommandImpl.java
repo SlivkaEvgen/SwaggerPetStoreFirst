@@ -1,5 +1,6 @@
 package org.example.controller.store;
 
+import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.service.StoreServiceImpl;
@@ -7,6 +8,7 @@ import org.example.util.Validator;
 
 import java.util.Scanner;
 
+@NoArgsConstructor
 public class StoreDeleteCommandImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();

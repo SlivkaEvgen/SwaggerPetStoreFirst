@@ -8,7 +8,7 @@ public interface PetRepository<T, ID> extends CrudRepository<T, ID> {
 
   ID delete(ID id);
 
-  // String findPetByStatus(String status);
+  String findPetByStatus(String status);
 
   T create(T t);
 

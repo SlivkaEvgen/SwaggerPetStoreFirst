@@ -1,12 +1,13 @@
 package org.example.controller.user;
 
+import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.service.UserServiceImpl;
 import org.example.util.Validator;
-
 import java.util.Scanner;
 
+@NoArgsConstructor
 public class UserDeleteControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
@@ -27,11 +28,11 @@ public class UserDeleteControllerImpl implements Controller {
       if (userService.delete(username) == 200) {
         System.out.println(" ✅ Successfully");
       } else {
-        System.out.print("\n      ⚠️ Not found ⚠️ \n \uD83D\uDCAC Please, enter again \n");
+        System.out.print("\n      ⚠️ Not found user ⚠️ \n \uD83D\uDCAC Please, enter again \n");
         start();
       }
     } else {
-      System.out.print("\n      ⚠️ Not found ⚠️ \n \uD83D\uDCAC Please, enter again \n");
+      System.out.print("\n      ⚠️ Not found USER-NAME ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       start();
     }
   }

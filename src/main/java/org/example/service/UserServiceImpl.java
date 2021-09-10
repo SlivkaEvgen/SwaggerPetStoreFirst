@@ -1,13 +1,15 @@
 package org.example.service;
 
+import lombok.NoArgsConstructor;
 import org.example.model.User;
 import org.example.repository.UserRepositoryImpl;
 import org.example.service.interfaces.UserService;
-import java.util.List;
 
+import java.util.List;
+@NoArgsConstructor
 public class UserServiceImpl implements UserService<User, Long> {
 
-  private final UserRepositoryImpl userRepository = new UserRepositoryImpl();
+  private final UserRepositoryImpl userRepository = UserRepositoryImpl.getUserRepository();
   private static UserServiceImpl userService;
 
   public static UserServiceImpl getUserService() {

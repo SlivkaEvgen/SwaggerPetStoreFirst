@@ -1,5 +1,6 @@
 package org.example.controller.pet;
 
+import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.service.PetServiceImpl;
@@ -7,6 +8,7 @@ import org.example.util.Validator;
 
 import java.util.Scanner;
 
+@NoArgsConstructor
 public class PetDeleteCommandImpl implements Controller {
 
   private static PetDeleteCommandImpl petDeleteCommand;

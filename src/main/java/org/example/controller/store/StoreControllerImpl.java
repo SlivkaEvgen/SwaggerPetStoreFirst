@@ -1,10 +1,12 @@
 package org.example.controller.store;
 
+import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
 import org.example.controller.Controller;
 import java.util.Scanner;
-// full
+
+@NoArgsConstructor
 public class StoreControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();

@@ -1,20 +1,22 @@
 package org.example.controller.user;
 
+import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
 import org.example.controller.Controller;
 import java.util.Scanner;
 
+@NoArgsConstructor
 public class UserControllerImpl implements Controller {
 
   private static UserControllerImpl userController;
   private final Scanner scanner = ScannerConsole.getInstance();
-  private final UserLogInControllerImpl userLogInController = UserLogInControllerImpl.getUserLoginController();
-  private final UserLogOutControllerImpl userLogOutController = UserLogOutControllerImpl.getUserLogOutController();
-  private final UserGetControllerImpl userGetController = UserGetControllerImpl.getUserGetController();
-  private final UserCreateControllerImpl userCreateController = UserCreateControllerImpl.getUserCreateController();
-  private final UserUpdateControllerImpl userUpdateController = UserUpdateControllerImpl.getUserUpdateController();
-  private final UserDeleteControllerImpl userDeleteController = UserDeleteControllerImpl.getUserDeleteController();
+//  private final UserLogInControllerImpl userLogInController = UserLogInControllerImpl.getUserLoginController();
+//  private final UserLogOutControllerImpl userLogOutController = UserLogOutControllerImpl.getUserLogOutController();
+//  private final UserGetControllerImpl userGetController = UserGetControllerImpl.getUserGetController();
+//  private final UserCreateControllerImpl userCreateController = UserCreateControllerImpl.getUserCreateController();
+//  private final UserUpdateControllerImpl userUpdateController = UserUpdateControllerImpl.getUserUpdateController();
+//  private final UserDeleteControllerImpl userDeleteController = UserDeleteControllerImpl.getUserDeleteController();
 
   public static UserControllerImpl getUserController() {
     if (userController == null) {
@@ -29,31 +31,31 @@ public class UserControllerImpl implements Controller {
         "\n \uD83D\uDC49 LOGIN \n \uD83D\uDC49 LOGOUT \n \uD83D\uDC49 GET\n \uD83D\uDC49 CREATE\n \uD83D\uDC49 UPDATE\n \uD83D\uDC49 DELETE \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
     if (next.equalsIgnoreCase("login")) {
-      userLogInController.start();
+        UserLogInControllerImpl.getUserLoginController().start();
       start();
     }
     if (next.equalsIgnoreCase("logout")) {
-      userLogOutController.start();
+        UserLogOutControllerImpl.getUserLogOutController().start();
       start();
     }
     if (next.equalsIgnoreCase("get")) {
-      userGetController.start();
+        UserGetControllerImpl.getUserGetController().start();
       start();
     }
     if (next.equalsIgnoreCase("create")) {
-      userCreateController.start();
+        UserCreateControllerImpl.getUserCreateController().start();
       start();
     }
     if (next.equalsIgnoreCase("update")) {
-      userUpdateController.start();
+        UserUpdateControllerImpl.getUserUpdateController().start();
       start();
     }
     if (next.equalsIgnoreCase("delete")) {
-      userDeleteController.start();
+        UserDeleteControllerImpl.getUserDeleteController().start();
       start();
     }
     if (next.equalsIgnoreCase("back")) {
-        new CommandImpl().start();
+      new CommandImpl().start();
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();

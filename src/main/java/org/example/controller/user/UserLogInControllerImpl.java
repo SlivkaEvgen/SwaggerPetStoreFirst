@@ -1,9 +1,11 @@
 package org.example.controller.user;
 
+import lombok.NoArgsConstructor;
 import org.example.controller.Controller;
 import org.example.controller.EnterCommands;
 import org.example.service.UserServiceImpl;
 
+@NoArgsConstructor
 public class UserLogInControllerImpl implements Controller {
 
   private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
@@ -18,10 +20,10 @@ public class UserLogInControllerImpl implements Controller {
   }
 
   private void logIn() {
-    if (userService.loginUser(enterCommands.enterName(), enterCommands.enterPassword()) == 200) {
+    if (userService.loginUser(enterCommands.enterUserName(), enterCommands.enterPassword()) == 200) {
       System.out.println(" ✅ Successfully");
     } else {
-      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
+      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, try again \n");
       logIn();
     }
   }

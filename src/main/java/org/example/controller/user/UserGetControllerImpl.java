@@ -1,5 +1,6 @@
 package org.example.controller.user;
 
+import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.model.User;
@@ -7,11 +8,13 @@ import org.example.service.UserServiceImpl;
 import org.example.util.Validator;
 import java.util.Scanner;
 
+@NoArgsConstructor
 public class UserGetControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final UserServiceImpl userService = UserServiceImpl.getUserService();
   private static UserGetControllerImpl userGetController;
+  private static  User user;
 
   public static UserGetControllerImpl getUserGetController() {
     if (userGetController == null) {
@@ -20,22 +23,29 @@ public class UserGetControllerImpl implements Controller {
     return userGetController;
   }
 
-  private void get() {
+  private void getByName() {
     System.out.print(" ENTER USERNAME \n \uD83D\uDC49 ");
     String userName = scanner.next();
-    User user = userService.getByUserName(userName);
-      if (Validator.validString(userName)& user.getId()!=null) {
-      System.out.println(user);
-      System.out.println(" ✅ Successfully");
+      if (Validator.validString(userName)) {
+          user = userService.getByUserName(userName);
+      if (user.getId() != null) {
+        System.out.println(user);
+        System.out.println(" ✅ Successfully");
+      }else {
+          System.out.print(
+                  "\n   ⚠️ User not found ⚠️ \n \uD83D\uDCAC Please, enter again \n ");
+          getByName();
+      }
     } else {
-      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-      get();
+      System.out.print(
+          "\n   ⚠️ User not found ⚠️ \n \uD83D\uDCAC Please, enter again \n ");
+          getByName();
     }
   }
 
   @Override
   public void start() {
-    get();
+      getByName();
   }
 
   @Override

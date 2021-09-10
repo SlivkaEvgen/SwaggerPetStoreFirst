@@ -1,9 +1,11 @@
 package org.example.controller.user;
 
+import lombok.NoArgsConstructor;
 import org.example.controller.Controller;
 import org.example.controller.EnterCommands;
 import org.example.service.UserServiceImpl;
 
+@NoArgsConstructor
 public class UserUpdateControllerImpl implements Controller {
 
   private final UserServiceImpl userService = UserServiceImpl.getUserService();
@@ -18,7 +20,7 @@ public class UserUpdateControllerImpl implements Controller {
   }
 
   private void update() {
-    Long update = userService.update(enterCommands.enterId(), enterCommands.enterName(), 200);
+    Long update = userService.update(enterCommands.enterId(), enterCommands.enterUserName(), 200);
     if (update == 200) {
       System.out.println(" ✅ Successfully");
     } else {
