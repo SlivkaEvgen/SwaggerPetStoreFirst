@@ -21,7 +21,14 @@ public interface UserService<T, ID> {
       String email,
       String phone);
 
-  ID update(ID id, String userName, Integer status);
+  ID update(
+      ID id,
+      String userName,
+      String firstName,
+      String lastName,
+      String password,
+      String email,
+      String phone);
 
   ID delete(String userName);
 }

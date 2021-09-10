@@ -12,17 +12,17 @@ import java.util.List;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class UserCreateUsersListControllerImpl implements Controller {
+public class UserCreateUsersListImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final UserServiceImpl userService = UserServiceImpl.getUserService();
   private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
   private final List<User> userList = new ArrayList<>();
-  private static UserCreateUsersListControllerImpl userCreateUsersListController;
+  private static UserCreateUsersListImpl userCreateUsersListController;
 
-  public static UserCreateUsersListControllerImpl getUserCreateUsersListController() {
+  public static UserCreateUsersListImpl getUserCreateUsersListController() {
     if (userCreateUsersListController == null) {
-      userCreateUsersListController = new UserCreateUsersListControllerImpl();
+      userCreateUsersListController = new UserCreateUsersListImpl();
     }
     return userCreateUsersListController;
   }
@@ -48,26 +48,37 @@ public class UserCreateUsersListControllerImpl implements Controller {
     user.setUserStatus(200);
     System.out.println(user);
     userList.add(user);
-    moreUsers();
+    start();
   }
 
-  private void moreUsers() {
+  //  private void moreUsers() {
+  ////    System.out.print("Create new user ? \n \uD83D\uDC49 yes \n \uD83D\uDC49 no \n \uD83D\uDC49
+  // ");
+  ////    String next = scanner.next();
+  ////    if (next.equalsIgnoreCase("yes")) {
+  ////      createUser();
+  ////    }
+  ////    if (next.equalsIgnoreCase("no")) {
+  ////      completeList();
+  ////    } else {
+  ////      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
+  ////      moreUsers();
+  ////    }
+  //  }
+
+  @Override
+  public void start() {
     System.out.print("Create new user ? \n \uD83D\uDC49 yes \n \uD83D\uDC49 no \n \uD83D\uDC49 ");
     String next = scanner.next();
     if (next.equalsIgnoreCase("yes")) {
-        createUser();
+      createUser();
     }
     if (next.equalsIgnoreCase("no")) {
       completeList();
     } else {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-      moreUsers();
+      start();
     }
-  }
-
-  @Override
-  public void start() {
-    moreUsers();
   }
 
   @Override

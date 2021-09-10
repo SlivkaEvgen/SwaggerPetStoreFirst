@@ -1,4 +1,4 @@
-package org.example.repository;
+package org.example.request;
 
 import com.google.gson.Gson;
 import lombok.NoArgsConstructor;
@@ -6,26 +6,26 @@ import lombok.SneakyThrows;
 import okhttp3.*;
 import org.example.config.HttpConnect;
 import org.example.model.User;
-import org.example.repository.interfaces.UserRepository;
+import org.example.request.interfaces.UserRepository;
 import org.example.util.PropertiesLoader;
 
 import java.net.URI;
 import java.util.List;
 
 @NoArgsConstructor
-public class UserRepositoryImpl  implements UserRepository<User,Long>{
+public class UserRepositoryImpl implements UserRepository<User, Long> {
 
   private final OkHttpClient OK_CLIENT = HttpConnect.getInstance();
   private final Gson GSON = new Gson();
   private final String URI_USER = PropertiesLoader.getProperties("uriUser");
   private static UserRepositoryImpl userRepository;
 
-    public static UserRepositoryImpl getUserRepository() {
-        if (userRepository == null) {
-            userRepository = new UserRepositoryImpl();
-        }
-        return userRepository;
+  public static UserRepositoryImpl getUserRepository() {
+    if (userRepository == null) {
+      userRepository = new UserRepositoryImpl();
     }
+    return userRepository;
+  }
 
   @SneakyThrows
   @Override
@@ -69,7 +69,7 @@ public class UserRepositoryImpl  implements UserRepository<User,Long>{
                     .post(requestBody)
                     .build())
             .execute();
-      return (long) response.code();
+    return (long) response.code();
   }
 
   @SneakyThrows
@@ -78,7 +78,7 @@ public class UserRepositoryImpl  implements UserRepository<User,Long>{
     Request request =
         new Request.Builder().url(HttpUrl.get(URI.create(URI_USER + "/" + userName))).get().build();
     Response response = OK_CLIENT.newCall(request).execute();
-      return GSON.fromJson(response.body().string(), User.class);
+    return GSON.fromJson(response.body().string(), User.class);
   }
 
   @SneakyThrows

@@ -9,26 +9,26 @@ import org.example.util.Validator;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class StoreDeleteCommandImpl implements Controller {
+public class StoreDeleteImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final StoreServiceImpl storeService = StoreServiceImpl.getStoreService();
-  private static StoreDeleteCommandImpl storeDeleteCommand;
+  private static StoreDeleteImpl storeDeleteCommand;
 
-  public static StoreDeleteCommandImpl getStoreDeleteCommand() {
+  public static StoreDeleteImpl getStoreDeleteCommand() {
     if (storeDeleteCommand == null) {
-      storeDeleteCommand = new StoreDeleteCommandImpl();
+      storeDeleteCommand = new StoreDeleteImpl();
     }
     return storeDeleteCommand;
   }
 
   @Override
   public void start() {
+    System.out.print(" ENTER ORDER-ID \n \uD83D\uDC49 ");
     delete();
   }
 
   private void delete() {
-    System.out.print(" ENTER ORDER-ID \n \uD83D\uDC49 ");
     String orderId = scanner.next();
     if (Validator.validNumber(orderId)) {
       if (storeService.delete(Long.valueOf(orderId)) == 200) {

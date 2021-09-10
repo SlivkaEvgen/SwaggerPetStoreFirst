@@ -4,7 +4,7 @@ import lombok.NoArgsConstructor;
 import org.example.model.Category;
 import org.example.model.Pet;
 import org.example.model.Tag;
-import org.example.repository.PetRepositoryImpl;
+import org.example.request.PetRepositoryImpl;
 import org.example.service.interfaces.PetService;
 
 import java.io.File;

@@ -1,4 +1,4 @@
-package org.example.repository.interfaces;
+package org.example.request.interfaces;
 
 public interface CrudRepository<T, ID> {
 

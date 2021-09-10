@@ -2,18 +2,14 @@ package org.example.controller.store;
 
 import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
-import org.example.controller.CommandImpl;
-import org.example.controller.Controller;
+import org.example.controller.ControllerImpl;
+
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class StoreControllerImpl implements Controller {
+public class StoreControllerImpl implements StoreController {
 
   private final Scanner scanner = ScannerConsole.getInstance();
-  private final StoreInventoryCommandImpl storeInventoryCommand = StoreInventoryCommandImpl.getStoreInventoryCommand();
-  private final StoreCreateCommandImpl storeCreateCommand = StoreCreateCommandImpl.getStoreCreateCommand();
-  private final StoreFindCommandImpl storeFindCommand = StoreFindCommandImpl.getStoreFindCommand();
-  private final StoreDeleteCommandImpl storeDeleteCommand = StoreDeleteCommandImpl.getStoreDeleteCommand();
   private static StoreControllerImpl storeController;
 
   public static StoreControllerImpl getStoreController() {
@@ -29,23 +25,26 @@ public class StoreControllerImpl implements Controller {
         "\n \uD83D\uDC49 Inventory\n \uD83D\uDC49 CreateOrder\n \uD83D\uDC49 FindOrder \n \uD83D\uDC49 DeleteOrder \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
     if (next.equalsIgnoreCase("Inventory")) {
-      storeInventoryCommand.start();
+      // StoreInventoryImpl.getStoreInventoryCommand().start();
       start();
     }
     if (next.equalsIgnoreCase("CreateOrder")) {
-      storeCreateCommand.start();
+      // StoreCreateImpl.getStoreCreateCommand().start();
+      create();
       start();
     }
     if (next.equalsIgnoreCase("FindOrder")) {
-      storeFindCommand.start();
+      //      StoreGetImpl.getStoreFindCommand().start();
+      get();
       start();
     }
     if (next.equalsIgnoreCase("DeleteOrder")) {
-      storeDeleteCommand.start();
+      //      StoreDeleteImpl.getStoreDeleteCommand().start();
+      delete();
       start();
     }
     if (next.equalsIgnoreCase("back")) {
-        new CommandImpl().start();
+      new ControllerImpl().start();
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();
@@ -58,5 +57,30 @@ public class StoreControllerImpl implements Controller {
   @Override
   public void stop() {
     System.exit(0);
+  }
+
+  @Override
+  public void get() {
+    StoreGetImpl.getStoreFindCommand().start();
+  }
+
+  @Override
+  public void getInventory() {
+    StoreInventoryImpl.getStoreInventoryCommand().start();
+  }
+
+  @Override
+  public void create() {
+    StoreCreateImpl.getStoreCreateCommand().start();
+  }
+
+  @Override
+  public void delete() {
+    StoreDeleteImpl.getStoreDeleteCommand().start();
+  }
+
+  @Override
+  public void update() {
+    start();
   }
 }

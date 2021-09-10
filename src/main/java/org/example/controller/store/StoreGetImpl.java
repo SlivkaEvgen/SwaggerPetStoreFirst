@@ -6,25 +6,24 @@ import org.example.controller.Controller;
 import org.example.model.Order;
 import org.example.service.StoreServiceImpl;
 import org.example.util.Validator;
+
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class StoreFindCommandImpl implements Controller {
+public class StoreGetImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final StoreServiceImpl storeService = StoreServiceImpl.getStoreService();
-  private static StoreFindCommandImpl storeFindCommand;
+  private static StoreGetImpl storeFindCommand;
 
-  public static StoreFindCommandImpl getStoreFindCommand() {
+  public static StoreGetImpl getStoreFindCommand() {
     if (storeFindCommand == null) {
-      storeFindCommand = new StoreFindCommandImpl();
+      storeFindCommand = new StoreGetImpl();
     }
     return storeFindCommand;
   }
 
-  @Override
-  public void start() {
-    System.out.print(" ENTER ORDER-ID \n \uD83D\uDC49 ");
+  private void getById() {
     String orderId = scanner.next();
     if (Validator.validNumber(orderId)) {
       Order byId = storeService.findById(Long.valueOf(orderId));
@@ -39,6 +38,12 @@ public class StoreFindCommandImpl implements Controller {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       start();
     }
+  }
+
+  @Override
+  public void start() {
+    System.out.print(" ENTER ORDER-ID \n \uD83D\uDC49 ");
+    getById();
   }
 
   @Override

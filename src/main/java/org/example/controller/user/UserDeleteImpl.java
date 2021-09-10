@@ -5,24 +5,24 @@ import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.service.UserServiceImpl;
 import org.example.util.Validator;
+
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class UserDeleteControllerImpl implements Controller {
+public class UserDeleteImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final UserServiceImpl userService = UserServiceImpl.getUserService();
-  private static UserDeleteControllerImpl userDeleteController;
+  private static UserDeleteImpl userDeleteController;
 
-  public static UserDeleteControllerImpl getUserDeleteController() {
+  public static UserDeleteImpl getUserDeleteController() {
     if (userDeleteController == null) {
-      userDeleteController = new UserDeleteControllerImpl();
+      userDeleteController = new UserDeleteImpl();
     }
     return userDeleteController;
   }
 
   private void delete() {
-    System.out.print(" ENTER USER-NAME \n \uD83D\uDC49 ");
     String username = scanner.next();
     if (Validator.validString(username)) {
       if (userService.delete(username) == 200) {
@@ -39,7 +39,8 @@ public class UserDeleteControllerImpl implements Controller {
 
   @Override
   public void start() {
-    delete();
+      System.out.print(" ENTER USER-NAME \n \uD83D\uDC49 ");
+      delete();
   }
 
   @Override

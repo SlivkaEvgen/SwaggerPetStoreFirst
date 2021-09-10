@@ -1,8 +1,8 @@
-package org.example.repository.interfaces;
+package org.example.request.interfaces;
 
 import java.util.List;
 
-public interface UserRepository<T,ID> {
+public interface UserRepository<T, ID> {
 
   ID loginUser(String userName, String password);
 

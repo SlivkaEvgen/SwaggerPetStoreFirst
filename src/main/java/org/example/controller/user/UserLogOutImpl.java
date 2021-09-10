@@ -5,14 +5,14 @@ import org.example.controller.Controller;
 import org.example.service.UserServiceImpl;
 
 @NoArgsConstructor
-public class UserLogOutControllerImpl implements Controller {
+public class UserLogOutImpl implements Controller {
 
   private final UserServiceImpl userService = UserServiceImpl.getUserService();
-  private static UserLogOutControllerImpl userLogOutController;
+  private static UserLogOutImpl userLogOutController;
 
-  public static UserLogOutControllerImpl getUserLogOutController() {
+  public static UserLogOutImpl getUserLogOutController() {
     if (userLogOutController == null) {
-      userLogOutController = new UserLogOutControllerImpl();
+      userLogOutController = new UserLogOutImpl();
     }
     return userLogOutController;
   }

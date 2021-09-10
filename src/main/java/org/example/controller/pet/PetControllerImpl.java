@@ -2,20 +2,15 @@ package org.example.controller.pet;
 
 import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
-import org.example.controller.CommandImpl;
+import org.example.controller.ControllerImpl;
 
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class PetControllerImpl {
+public class PetControllerImpl implements PetController {
 
   private static PetControllerImpl petController;
   private final Scanner scanner = ScannerConsole.getInstance();
-  private final PetGetCommandImpl petGetCommand = PetGetCommandImpl.getPetGetCommand();
-  private final PetCreateCommandImpl petCreateCommand = PetCreateCommandImpl.getPetCreateCommand();
-  private final PetUpdateCommandImpl petUpdateCommand = PetUpdateCommandImpl.getPetUpdateCommand();
-  private final PetUpLoadImageCommandImpl petUpLoadImageCommand = PetUpLoadImageCommandImpl.getPetUpLoadImageCommand();
-  private final PetDeleteCommandImpl petDeleteCommand = PetDeleteCommandImpl.getPetDeleteCommand();
 
   public static PetControllerImpl getPetController() {
     if (petController == null) {
@@ -29,28 +24,31 @@ public class PetControllerImpl {
         "\n \uD83D\uDC49 GET\n \uD83D\uDC49 CREATE\n \uD83D\uDC49 UPDATE\n \uD83D\uDC49 UPLOAD-IMAGE\n \uD83D\uDC49 DELETE \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
     if (next.equalsIgnoreCase("get")) {
-      petGetCommand.start();
+      //      PetGetImpl.getPetGetCommand().start();
+      get();
       start();
     }
     if (next.equalsIgnoreCase("create")) {
-      petCreateCommand.start();
+      //      PetCreateImpl.getPetCreateCommand().start();
+      create();
       start();
     }
     if (next.equalsIgnoreCase("update")) {
-      petUpdateCommand.start();
+      //      PetUpdateImpl.getPetUpdateCommand().start();
+      update();
       start();
     }
     if (next.equalsIgnoreCase("upload-image")) {
-      petUpLoadImageCommand.start();
+      //      PetUpLoadImageImpl.getPetUpLoadImageCommand().start();
+      uploadImage();
       start();
     }
     if (next.equalsIgnoreCase("delete")) {
-      petDeleteCommand.start();
+      //      PetDeleteImpl.getPetDeleteCommand().start();
       start();
     }
     if (next.equalsIgnoreCase("back")) {
-        new CommandImpl().start();
-        //   command.start();
+      new ControllerImpl().start();
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();
@@ -62,5 +60,30 @@ public class PetControllerImpl {
 
   public void stop() {
     System.exit(0);
+  }
+
+  @Override
+  public void get() {
+    PetGetImpl.getPetGetCommand().start();
+  }
+
+  @Override
+  public void create() {
+    PetCreateImpl.getPetCreateCommand().start();
+  }
+
+  @Override
+  public void update() {
+    PetUpdateImpl.getPetUpdateCommand().start();
+  }
+
+  @Override
+  public void delete() {
+    PetDeleteImpl.getPetDeleteCommand().start();
+  }
+
+  @Override
+  public void uploadImage() {
+    PetUpLoadImageImpl.getPetUpLoadImageCommand().start();
   }
 }

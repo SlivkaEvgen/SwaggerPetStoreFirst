@@ -6,15 +6,15 @@ import org.example.controller.EnterCommands;
 import org.example.service.UserServiceImpl;
 
 @NoArgsConstructor
-public class UserCreateNewUserControllerImpl implements Controller {
+public class UserCreateNewUserImpl implements Controller {
 
   private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
   private final UserServiceImpl userService = UserServiceImpl.getUserService();
-  private static UserCreateNewUserControllerImpl userCreateNewUserController;
+  private static UserCreateNewUserImpl userCreateNewUserController;
 
-  public static UserCreateNewUserControllerImpl getUserCreateController() {
+  public static UserCreateNewUserImpl getUserCreateController() {
     if (userCreateNewUserController == null) {
-      userCreateNewUserController = new UserCreateNewUserControllerImpl();
+      userCreateNewUserController = new UserCreateNewUserImpl();
     }
     return userCreateNewUserController;
   }

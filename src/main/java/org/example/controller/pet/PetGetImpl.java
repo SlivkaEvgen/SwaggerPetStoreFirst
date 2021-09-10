@@ -6,18 +6,19 @@ import org.example.controller.Controller;
 import org.example.model.Pet;
 import org.example.service.PetServiceImpl;
 import org.example.util.Validator;
+
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class PetGetCommandImpl implements Controller {
+public class PetGetImpl implements Controller {
 
-  private static PetGetCommandImpl petGetCommand;
+  private static PetGetImpl petGetCommand;
   private final Scanner scanner = ScannerConsole.getInstance();
   private final PetServiceImpl petService = PetServiceImpl.getPetServiceImpl();
 
-  public static PetGetCommandImpl getPetGetCommand() {
+  public static PetGetImpl getPetGetCommand() {
     if (petGetCommand == null) {
-      petGetCommand = new PetGetCommandImpl();
+      petGetCommand = new PetGetImpl();
     }
     return petGetCommand;
   }
@@ -51,8 +52,8 @@ public class PetGetCommandImpl implements Controller {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       findByStatus();
     } else {
-        String petByStatus = petService.findPetByStatus(status);
-        if (petByStatus != null) {
+      String petByStatus = petService.findPetByStatus(status);
+      if (petByStatus != null) {
         System.out.println(" ✅ Successfully");
         System.out.println(petByStatus);
       }

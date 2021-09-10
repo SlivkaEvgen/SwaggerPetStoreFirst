@@ -9,16 +9,16 @@ import org.example.service.PetServiceImpl;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class PetUpdateCommandImpl implements Controller {
+public class PetUpdateImpl implements Controller {
 
-  private static PetUpdateCommandImpl petUpdateCommand;
+  private static PetUpdateImpl petUpdateCommand;
   private final Scanner scanner = ScannerConsole.getInstance();
   private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
   private final PetServiceImpl petService = PetServiceImpl.getPetServiceImpl();
 
-  public static PetUpdateCommandImpl getPetUpdateCommand() {
+  public static PetUpdateImpl getPetUpdateCommand() {
     if (petUpdateCommand == null) {
-      petUpdateCommand = new PetUpdateCommandImpl();
+      petUpdateCommand = new PetUpdateImpl();
     }
     return petUpdateCommand;
   }

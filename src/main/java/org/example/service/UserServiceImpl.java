@@ -2,10 +2,11 @@ package org.example.service;
 
 import lombok.NoArgsConstructor;
 import org.example.model.User;
-import org.example.repository.UserRepositoryImpl;
+import org.example.request.UserRepositoryImpl;
 import org.example.service.interfaces.UserService;
 
 import java.util.List;
+
 @NoArgsConstructor
 public class UserServiceImpl implements UserService<User, Long> {
 
@@ -61,11 +62,22 @@ public class UserServiceImpl implements UserService<User, Long> {
   }
 
   @Override
-  public Long update(Long id, String userName, Integer status) {
+  public Long update(
+      Long id,
+      String userName,
+      String firstName,
+      String lastName,
+      String password,
+      String email,
+      String phone) {
     User user = new User();
     user.setId(id);
     user.setUserName(userName);
-    user.setUserStatus(status);
+    user.setFirstName(firstName);
+    user.setLastName(lastName);
+    user.setPassword(password);
+    user.setEmail(email);
+    user.setPhone(phone);
     return userRepository.update(user, userName);
   }
 

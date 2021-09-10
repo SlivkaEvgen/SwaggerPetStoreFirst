@@ -2,16 +2,16 @@ package org.example.service;
 
 import lombok.NoArgsConstructor;
 import org.example.model.Order;
-import org.example.repository.StoreRepositoryImpl;
+import org.example.request.StoreRepositoryImpl;
 import org.example.service.interfaces.StoreService;
 
 import java.util.Date;
+
 @NoArgsConstructor
 public class StoreServiceImpl implements StoreService<Order, Long> {
 
   private final StoreRepositoryImpl storeRepository = StoreRepositoryImpl.getStoreRepository();
   private static StoreServiceImpl storeService;
-
 
   public static StoreServiceImpl getStoreService() {
     if (storeService == null) {

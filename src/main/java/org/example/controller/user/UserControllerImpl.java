@@ -2,21 +2,15 @@ package org.example.controller.user;
 
 import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
-import org.example.controller.CommandImpl;
-import org.example.controller.Controller;
+import org.example.controller.ControllerImpl;
+
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class UserControllerImpl implements Controller {
+public class UserControllerImpl implements UserController {
 
   private static UserControllerImpl userController;
   private final Scanner scanner = ScannerConsole.getInstance();
-//  private final UserLogInControllerImpl userLogInController = UserLogInControllerImpl.getUserLoginController();
-//  private final UserLogOutControllerImpl userLogOutController = UserLogOutControllerImpl.getUserLogOutController();
-//  private final UserGetControllerImpl userGetController = UserGetControllerImpl.getUserGetController();
-//  private final UserCreateControllerImpl userCreateController = UserCreateControllerImpl.getUserCreateController();
-//  private final UserUpdateControllerImpl userUpdateController = UserUpdateControllerImpl.getUserUpdateController();
-//  private final UserDeleteControllerImpl userDeleteController = UserDeleteControllerImpl.getUserDeleteController();
 
   public static UserControllerImpl getUserController() {
     if (userController == null) {
@@ -31,31 +25,37 @@ public class UserControllerImpl implements Controller {
         "\n \uD83D\uDC49 LOGIN \n \uD83D\uDC49 LOGOUT \n \uD83D\uDC49 GET\n \uD83D\uDC49 CREATE\n \uD83D\uDC49 UPDATE\n \uD83D\uDC49 DELETE \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
     if (next.equalsIgnoreCase("login")) {
-        UserLogInControllerImpl.getUserLoginController().start();
+      //      UserLogInImpl.getUserLoginController().start();
+      logIn();
       start();
     }
     if (next.equalsIgnoreCase("logout")) {
-        UserLogOutControllerImpl.getUserLogOutController().start();
+      //      UserLogOutImpl.getUserLogOutController().start();
+      logOut();
       start();
     }
     if (next.equalsIgnoreCase("get")) {
-        UserGetControllerImpl.getUserGetController().start();
+      //      UserGetImpl.getUserGetController().start();
+      get();
       start();
     }
     if (next.equalsIgnoreCase("create")) {
-        UserCreateControllerImpl.getUserCreateController().start();
+      //      UserCreateImpl.getUserCreateController().start();
+      create();
       start();
     }
     if (next.equalsIgnoreCase("update")) {
-        UserUpdateControllerImpl.getUserUpdateController().start();
+      //      UserUpdateImpl.getUserUpdateController().start();
+      update();
       start();
     }
     if (next.equalsIgnoreCase("delete")) {
-        UserDeleteControllerImpl.getUserDeleteController().start();
+      //      UserDeleteImpl.getUserDeleteController().start();
+      delete();
       start();
     }
     if (next.equalsIgnoreCase("back")) {
-      new CommandImpl().start();
+      new ControllerImpl().start();
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();
@@ -68,5 +68,35 @@ public class UserControllerImpl implements Controller {
   @Override
   public void stop() {
     System.exit(0);
+  }
+
+  @Override
+  public void logIn() {
+    UserLogInImpl.getUserLoginController().start();
+  }
+
+  @Override
+  public void logOut() {
+    UserLogOutImpl.getUserLogOutController().start();
+  }
+
+  @Override
+  public void get() {
+    UserGetImpl.getUserGetController().start();
+  }
+
+  @Override
+  public void create() {
+    UserCreateImpl.getUserCreateController().start();
+  }
+
+  @Override
+  public void update() {
+    UserUpdateImpl.getUserUpdateController().start();
+  }
+
+  @Override
+  public void delete() {
+    UserDeleteImpl.getUserDeleteController().start();
   }
 }

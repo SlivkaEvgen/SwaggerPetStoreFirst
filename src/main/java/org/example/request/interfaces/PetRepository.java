@@ -1,4 +1,4 @@
-package org.example.repository.interfaces;
+package org.example.request.interfaces;
 
 import java.io.File;
 
