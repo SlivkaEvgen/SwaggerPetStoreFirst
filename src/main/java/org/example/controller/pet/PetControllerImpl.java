@@ -3,6 +3,7 @@ package org.example.controller.pet;
 import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 import org.example.controller.ControllerImpl;
+import org.example.controller.interfaces.PetController;
 
 import java.util.Scanner;
 
@@ -24,27 +25,23 @@ public class PetControllerImpl implements PetController {
         "\n \uD83D\uDC49 GET\n \uD83D\uDC49 CREATE\n \uD83D\uDC49 UPDATE\n \uD83D\uDC49 UPLOAD-IMAGE\n \uD83D\uDC49 DELETE \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
     if (next.equalsIgnoreCase("get")) {
-      //      PetGetImpl.getPetGetCommand().start();
       get();
       start();
     }
     if (next.equalsIgnoreCase("create")) {
-      //      PetCreateImpl.getPetCreateCommand().start();
       create();
       start();
     }
     if (next.equalsIgnoreCase("update")) {
-      //      PetUpdateImpl.getPetUpdateCommand().start();
       update();
       start();
     }
     if (next.equalsIgnoreCase("upload-image")) {
-      //      PetUpLoadImageImpl.getPetUpLoadImageCommand().start();
       uploadImage();
       start();
     }
     if (next.equalsIgnoreCase("delete")) {
-      //      PetDeleteImpl.getPetDeleteCommand().start();
+      delete();
       start();
     }
     if (next.equalsIgnoreCase("back")) {

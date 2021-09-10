@@ -3,6 +3,7 @@ package org.example.controller.store;
 import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
 import org.example.controller.ControllerImpl;
+import org.example.controller.interfaces.StoreController;
 
 import java.util.Scanner;
 
@@ -25,21 +26,18 @@ public class StoreControllerImpl implements StoreController {
         "\n \uD83D\uDC49 Inventory\n \uD83D\uDC49 CreateOrder\n \uD83D\uDC49 FindOrder \n \uD83D\uDC49 DeleteOrder \n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
     if (next.equalsIgnoreCase("Inventory")) {
-      // StoreInventoryImpl.getStoreInventoryCommand().start();
+      getInventory();
       start();
     }
     if (next.equalsIgnoreCase("CreateOrder")) {
-      // StoreCreateImpl.getStoreCreateCommand().start();
       create();
       start();
     }
     if (next.equalsIgnoreCase("FindOrder")) {
-      //      StoreGetImpl.getStoreFindCommand().start();
       get();
       start();
     }
     if (next.equalsIgnoreCase("DeleteOrder")) {
-      //      StoreDeleteImpl.getStoreDeleteCommand().start();
       delete();
       start();
     }

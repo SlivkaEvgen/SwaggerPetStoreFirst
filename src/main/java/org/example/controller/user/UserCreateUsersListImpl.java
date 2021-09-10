@@ -2,7 +2,7 @@ package org.example.controller.user;
 
 import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
-import org.example.controller.Controller;
+import org.example.controller.interfaces.Controller;
 import org.example.controller.EnterCommands;
 import org.example.model.User;
 import org.example.service.UserServiceImpl;

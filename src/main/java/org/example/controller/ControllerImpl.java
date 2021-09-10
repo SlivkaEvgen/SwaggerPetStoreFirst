@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.config.ScannerConsole;
+import org.example.controller.interfaces.Controller;
 import org.example.controller.pet.PetControllerImpl;
 import org.example.controller.store.StoreControllerImpl;
 import org.example.controller.user.UserControllerImpl;

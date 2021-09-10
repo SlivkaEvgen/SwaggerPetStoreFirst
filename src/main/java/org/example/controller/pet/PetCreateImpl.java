@@ -1,7 +1,7 @@
 package org.example.controller.pet;
 
 import lombok.NoArgsConstructor;
-import org.example.controller.Controller;
+import org.example.controller.interfaces.Controller;
 import org.example.controller.EnterCommands;
 import org.example.model.Pet;
 import org.example.service.PetServiceImpl;

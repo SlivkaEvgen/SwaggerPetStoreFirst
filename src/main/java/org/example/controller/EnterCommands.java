@@ -2,6 +2,7 @@ package org.example.controller;
 
 import lombok.NoArgsConstructor;
 import org.example.config.ScannerConsole;
+import org.example.controller.interfaces.Controller;
 import org.example.model.Category;
 import org.example.model.Tag;
 import org.example.util.Validator;

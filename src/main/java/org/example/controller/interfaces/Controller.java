@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.controller.interfaces;
 
 public interface Controller {
 
