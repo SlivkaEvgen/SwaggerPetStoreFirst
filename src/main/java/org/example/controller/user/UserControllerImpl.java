@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class UserControllerImpl implements Controller {
 
-  private static UserControllerImpl userController;// = getUserController();
+  private static UserControllerImpl userController;
   private final Scanner scanner = ScannerConsole.getInstance();
   private final UserLogInControllerImpl userLogInController = UserLogInControllerImpl.getUserLoginController();
   private final UserLogOutControllerImpl userLogOutController = UserLogOutControllerImpl.getUserLogOutController();
@@ -53,7 +53,7 @@ public class UserControllerImpl implements Controller {
       start();
     }
     if (next.equalsIgnoreCase("back")) {
-      new CommandImpl().start();
+        new CommandImpl().start();
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();

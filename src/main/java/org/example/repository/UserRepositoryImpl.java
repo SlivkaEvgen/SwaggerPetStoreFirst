@@ -41,7 +41,7 @@ public class UserRepositoryImpl implements UserRepository<User, Long> {
 
   @SneakyThrows
   @Override
-  public User create(User user) {
+  public Long create(User user) {
     RequestBody requestBody =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_USER)))
@@ -59,16 +59,16 @@ public class UserRepositoryImpl implements UserRepository<User, Long> {
                     .post(requestBody)
                     .build())
             .execute();
-    return GSON.fromJson(response.body() != null ? response.body().string() : null, User.class);
+      return (long) response.code();
   }
 
   @SneakyThrows
   @Override
-  public User get(String userName) {
+  public User getByUserName(String userName) {
     Request request =
         new Request.Builder().url(HttpUrl.get(URI.create(URI_USER + "/" + userName))).get().build();
     Response response = OK_CLIENT.newCall(request).execute();
-    return GSON.fromJson(response.body().string(), User.class);
+      return GSON.fromJson(response.body().string(), User.class);
   }
 
   @SneakyThrows

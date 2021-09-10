@@ -10,11 +10,8 @@ import java.util.Scanner;
 
 public class EnterCommands implements Controller {
 
-  private static Long id;
-  private static String name;
   private static EnterCommands enterCommands;
   private final Scanner scanner = ScannerConsole.getInstance();
-
   private final List<Tag> tagList = new ArrayList<>();
   private final List<String> imagesList = new ArrayList<>();
 
@@ -27,28 +24,38 @@ public class EnterCommands implements Controller {
 
   public Long enterId() {
     System.out.print(" ENTER ID \n \uD83D\uDC49 ");
-    id = Long.valueOf(scanner.next());
-    if (!Validator.validNumber(String.valueOf(id))) {
+    String id = scanner.next();
+    if (!Validator.validNumber(id) | id.length() > 10) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterId();
     }
-    return id;
+    return Long.valueOf(id);
   }
 
   public String enterName() {
     System.out.print(" ENTER NAME \n \uD83D\uDC49 ");
-    name = scanner.next();
-    if (!Validator.validString(name)) {
+    String name = scanner.next();
+    if (!Validator.validString(name) | name.length() > 10) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterName();
     }
     return name;
   }
 
+    public String enterUserName() {
+        System.out.print(" ENTER USER-NAME \n \uD83D\uDC49 ");
+        String name = scanner.next();
+        if (!Validator.validString(name) | name.length() > 10) {
+            System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
+            return enterName();
+        }
+        return name;
+    }
+
   public String enterFirstName() {
     System.out.print(" ENTER FIRSTNAME \n \uD83D\uDC49 ");
     String firstName = scanner.next();
-    if (!Validator.validString(firstName)) {
+    if (!Validator.validString(firstName) | firstName.length() > 10) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterFirstName();
     }
@@ -58,7 +65,7 @@ public class EnterCommands implements Controller {
   public String enterLastName() {
     System.out.print(" ENTER LASTNAME \n \uD83D\uDC49 ");
     String lastName = scanner.next();
-    if (!Validator.validString(lastName)) {
+    if (!Validator.validString(lastName) | lastName.length() > 10) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterLastName();
     }
@@ -68,7 +75,7 @@ public class EnterCommands implements Controller {
   public String enterPassword() {
     System.out.print(" ENTER PASSWORD \n \uD83D\uDC49 ");
     String password = scanner.next();
-    if (!Validator.validString(password)) {
+    if (password.length() > 10) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterPassword();
     }
@@ -78,7 +85,7 @@ public class EnterCommands implements Controller {
   public String enterEmail() {
     System.out.print(" ENTER EMAIL \n \uD83D\uDC49 ");
     String email = scanner.next();
-    if (!Validator.validString(email)) {
+    if (!Validator.validString(email) | email.length() > 20) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterEmail();
     }
@@ -92,7 +99,7 @@ public class EnterCommands implements Controller {
   public String enterPhone() {
     System.out.print(" ENTER NUMBER PHONE \n \uD83D\uDC49 ");
     String number = scanner.next();
-    if (!Validator.validNumber(number)) {
+    if (!Validator.validNumber(number) | number.length() > 12 | !number.startsWith("09")) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterPhone();
     }
@@ -123,18 +130,18 @@ public class EnterCommands implements Controller {
 
   private Long enterCategoryId() {
     System.out.print(" ENTER CATEGORY-ID \n \uD83D\uDC49 ");
-    id = Long.valueOf(scanner.next());
-    if (!Validator.validNumber(String.valueOf(id))) {
+    String id = scanner.next();
+    if (!Validator.validNumber(id) | id.length() > 10) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterId();
     }
-    return id;
+    return Long.valueOf(id);
   }
 
   private String enterCategoryName() {
     System.out.print(" ENTER CATEGORY-NAME \n \uD83D\uDC49 ");
-    name = scanner.next();
-    if (!Validator.validString(name)) {
+    String name = scanner.next();
+    if (!Validator.validString(name) | name.length() > 10) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterCategoryName();
     }
@@ -143,18 +150,18 @@ public class EnterCommands implements Controller {
 
   private Long enterTagId() {
     System.out.print(" ENTER TAG-ID \n \uD83D\uDC49 ");
-    id = Long.valueOf(scanner.next());
-    if (!Validator.validNumber(String.valueOf(id))) {
+    String id = scanner.next();
+    if (!Validator.validNumber(id) | id.length() > 10) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterTagId();
     }
-    return id;
+    return Long.valueOf(id);
   }
 
   private String enterTagName() {
     System.out.print(" ENTER TAG-NAME \n \uD83D\uDC49 ");
-    name = scanner.next();
-    if (!Validator.validString(name)) {
+    String name = scanner.next();
+    if (!Validator.validString(name) | name.length() > 10) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterTagName();
     }
@@ -171,16 +178,16 @@ public class EnterCommands implements Controller {
     Tag tag = new Tag();
     tag.setId(enterTagId());
     tag.setName(enterTagName());
-    //    String yesNo = yesNo();
-    if (Validator.validString(yesNo()) & yesNo().equalsIgnoreCase("yes")) {
+    String yesNo = yesNo();
+    if (Validator.validString(yesNo) & yesNo.equalsIgnoreCase("yes")) {
       tagList.add(tag);
       return createTag();
     }
-    if (Validator.validString(yesNo()) & yesNo().equalsIgnoreCase("no")) {
+    if (Validator.validString(yesNo) & yesNo.equalsIgnoreCase("no")) {
       return tag;
     } else {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-      yesNo();
+       yesNo();
     }
     return tag;
   }
@@ -193,19 +200,22 @@ public class EnterCommands implements Controller {
 
   public List<String> createListImages() {
     System.out.print(" ❗ Attention! ❗\n ❗ CREATING IMAGES-LIST ❗\n \uD83D\uDC49 ");
-    //    String image = pathToImage();
     imagesList.add(pathToImage());
-    //    String addImageOrNo = addImageOrNo();
-    if (Validator.validString(addImageOrNo()) & addImageOrNo().equalsIgnoreCase("yes")) {
+    String imageOrNo = addImageOrNo();
+    if (Validator.validString(imageOrNo) & imageOrNo.equalsIgnoreCase("yes")) {
       return createListImages();
     }
     return imagesList;
   }
 
   private String pathToImage() {
-    System.out.print(
-        " Please, enter the path to the file \n EXAMPLE \uD83D\uDC49 /User/DESKTOP/logo.png \n \uD83D\uDC49 ");
-    return scanner.next();
+    System.out.print(" Please, enter the path to the file \n EXAMPLE \uD83D\uDC49 /User/DESKTOP/logo.png \n \uD83D\uDC49 ");
+    String next =  scanner.next();
+    if (!next.startsWith("/")|!next.contains("png")|!next.contains("jpg")|!next.contains("/")){
+        System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
+       return pathToImage();
+    }
+    return next;
   }
 
   private String addImageOrNo() {
@@ -226,7 +236,7 @@ public class EnterCommands implements Controller {
   public String enterQuantity() {
     System.out.print(" ENTER QUANTITY \n \uD83D\uDC49 ");
     String quantity = scanner.next();
-    if (!Validator.validNumber(quantity)) {
+    if (!Validator.validNumber(quantity)|quantity.length()>3) {
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       return enterQuantity();
     }

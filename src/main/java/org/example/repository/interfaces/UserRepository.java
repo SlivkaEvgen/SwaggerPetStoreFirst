@@ -8,9 +8,9 @@ public interface UserRepository<T, ID> extends CrudRepository<T, ID> {
 
   ID logOutUser();
 
-  T create(T t);
+  ID create(T t);
 
-  T get(String userName);
+  T getByUserName(String userName);
 
   ID createListUsers(List<T> usersList);
 

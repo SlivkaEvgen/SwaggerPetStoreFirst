@@ -14,7 +14,7 @@ public interface PetRepository<T, ID> extends CrudRepository<T, ID> {
 
   ID update(ID id, String petName, String status);
 
-  T get(ID id);
+  T getById(ID id);
 
-  ID updatePut(T t);
+  T updatePut(T t);
 }

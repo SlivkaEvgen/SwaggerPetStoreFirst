@@ -10,11 +10,11 @@ public interface UserService<T, ID> extends Service<T, ID> {
 
   Long logOutUser();
 
-  User getByName(String userName);
+  User getByUserName(String userName);
 
   Long createListUsers(List<User> usersList);
 
-  User createNewUser(
+  Long createNewUser(
       Long id,
       String userName,
       String firstName,

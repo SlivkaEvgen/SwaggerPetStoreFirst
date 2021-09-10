@@ -3,6 +3,7 @@ package org.example.controller.pet;
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
 import org.example.controller.EnterCommands;
+import org.example.model.Pet;
 import org.example.service.PetServiceImpl;
 import java.util.Scanner;
 
@@ -35,7 +36,7 @@ public class PetUpdateCommandImpl implements Controller {
   }
 
   private void UpdateAnExistingPet() {
-      Long update =
+      Pet update =
         petService.updatePut(
             enterCommands.enterId(),
             enterCommands.enterName(),
@@ -44,7 +45,7 @@ public class PetUpdateCommandImpl implements Controller {
             enterCommands.createListImages(),
             enterCommands.createTagList());
     System.out.println(update);
-    if (update != 0) {
+    if (update.getId() != null) {
       System.out.println(" ✅ Successfully");
     } else {
       System.out.print("\n      ⚠️ Something Wrong ⚠️ \n \uD83D\uDCAC Please, try again \n ");

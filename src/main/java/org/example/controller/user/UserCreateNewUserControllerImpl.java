@@ -18,23 +18,22 @@ public class UserCreateNewUserControllerImpl implements Controller {
     return userCreateNewUserController;
   }
 
-  public User createUser() {
-    User newUser =
-        userService.createNewUser(
-            enterCommands.enterId(),
-            enterCommands.enterName(),
-            enterCommands.enterFirstName(),
-            enterCommands.enterLastName(),
-            enterCommands.enterPassword(),
-            enterCommands.enterEmail(),
-            enterCommands.enterPhone());
-    System.out.println(" ✅ Successfully");
-    return newUser;
+  public Long createUser() {
+    return userService.createNewUser(
+        enterCommands.enterId(),
+        enterCommands.enterUserName(),
+        enterCommands.enterFirstName(),
+        enterCommands.enterLastName(),
+        enterCommands.enterPassword(),
+        enterCommands.enterEmail(),
+        enterCommands.enterPhone());
   }
 
   @Override
   public void start() {
-    createUser();
+    if (createUser() == 200) {
+      System.out.println(" ✅ Successfully");
+    }
   }
 
   @Override

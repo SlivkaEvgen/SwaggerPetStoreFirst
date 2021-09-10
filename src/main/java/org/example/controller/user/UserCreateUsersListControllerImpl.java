@@ -2,8 +2,10 @@ package org.example.controller.user;
 
 import org.example.config.ScannerConsole;
 import org.example.controller.Controller;
+import org.example.controller.EnterCommands;
 import org.example.model.User;
 import org.example.service.UserServiceImpl;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,6 +15,7 @@ public class UserCreateUsersListControllerImpl implements Controller {
   private final Scanner scanner = ScannerConsole.getInstance();
   private final UserServiceImpl userService = UserServiceImpl.getUserService();
   private static UserCreateUsersListControllerImpl userCreateUsersListController;
+  private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
   private final List<User> userList = new ArrayList<>();
 
   public static UserCreateUsersListControllerImpl getUserCreateUsersListController() {
@@ -23,12 +26,28 @@ public class UserCreateUsersListControllerImpl implements Controller {
   }
 
   private void completeList() {
-    userService.createListUsers(userList);
+
+      Long listUsers = userService.createListUsers(userList);
+      if (listUsers==200){
+          System.out.println(" ✅ Successfully");
+      }else{
+          System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
+          completeList();
+      }
   }
 
   private void getUser() {
-    //    User user = UserCreateNewUserControllerImpl.getUserCreateController().createUser();
-    userList.add(UserCreateNewUserControllerImpl.getUserCreateController().createUser());
+       User user = new User();
+              user.setId(enterCommands.enterId());
+              user.setUserName(enterCommands.enterUserName());
+              user.setFirstName(enterCommands.enterFirstName());
+              user.setLastName(enterCommands.enterLastName());
+              user.setPassword(enterCommands.enterPassword());
+              user.setEmail(enterCommands.enterEmail());
+              user.setUserStatus(200);
+              user.setPhone(enterCommands.enterPhone());
+    System.out.println(user);
+    userList.add(user);
     moreUsers();
   }
 
@@ -38,10 +57,9 @@ public class UserCreateUsersListControllerImpl implements Controller {
     if (next.equalsIgnoreCase("yes")) {
       getUser();
     }
-
     if (next.equalsIgnoreCase("no")) {
       completeList();
-    } else {
+    } else if (!next.equalsIgnoreCase("no")&!next.equalsIgnoreCase("yes")){
       System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
       moreUsers();
     }

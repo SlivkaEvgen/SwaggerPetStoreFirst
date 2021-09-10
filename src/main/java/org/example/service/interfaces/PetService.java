@@ -19,14 +19,11 @@ public interface PetService<T, ID> extends Service<T, ID> {
       List<String> images,
       List<Tag> tagList);
 
-    Long uploadImage(File file, Long petId);
+  Long uploadImage(File file, Long petId);
 
-    Long update(
-      Long id,
-      String name,
-      String status);
+  Long update(Long id, String name, String status);
 
-    Long updatePut(
+  Pet updatePut(
       Long id,
       String name,
       String status,
@@ -34,7 +31,7 @@ public interface PetService<T, ID> extends Service<T, ID> {
       List<String> images,
       List<Tag> tagList);
 
-    Long delete(Long petId);
+  Long delete(Long petId);
 
   Pet findById(Long petId);
 }

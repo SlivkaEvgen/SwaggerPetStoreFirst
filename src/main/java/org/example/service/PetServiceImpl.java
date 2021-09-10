@@ -57,7 +57,7 @@ public class PetServiceImpl implements PetService<Pet, Long> {
   }
 
   @Override
-  public Long updatePut(
+  public Pet updatePut(
       Long id,
       String name,
       String status,
@@ -80,6 +80,6 @@ public class PetServiceImpl implements PetService<Pet, Long> {
 
   @Override
   public Pet findById(Long petId) {
-    return petRepository.get(petId);
+    return petRepository.getById(petId);
   }
 }

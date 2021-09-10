@@ -1,7 +1,7 @@
 package org.example.repository.interfaces;
 
 public interface StoreRepository<T, ID> extends CrudRepository<T, ID> {
-  T get();
+  void get();
 
   T findById(ID id);
 

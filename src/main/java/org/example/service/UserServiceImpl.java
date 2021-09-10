@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService<User, Long> {
   }
 
   @Override
-  public User getByName(String userName) {
-    return userRepository.get(userName);
+  public User getByUserName(String userName) {
+    return userRepository.getByUserName(userName);
   }
 
   @Override
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService<User, Long> {
   }
 
   @Override
-  public User createNewUser(
+  public Long createNewUser(
       Long id,
       String userName,
       String firstName,

@@ -23,7 +23,7 @@ public class UserGetControllerImpl implements Controller {
   private void get() {
     System.out.print(" ENTER USERNAME \n \uD83D\uDC49 ");
     String userName = scanner.next();
-    User user = userService.getByName(userName);
+    User user = userService.getByUserName(userName);
       if (Validator.validString(userName)& user.getId()!=null) {
       System.out.println(user);
       System.out.println(" ✅ Successfully");

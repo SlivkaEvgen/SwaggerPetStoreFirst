@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ControllerImpl implements Controller {
 
-  private static ControllerImpl controller = getController();
+  private static ControllerImpl controller;
   private final Scanner scanner = ScannerConsole.getInstance();
 
   public static ControllerImpl getController() {

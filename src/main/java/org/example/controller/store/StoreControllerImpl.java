@@ -4,7 +4,7 @@ import org.example.config.ScannerConsole;
 import org.example.controller.CommandImpl;
 import org.example.controller.Controller;
 import java.util.Scanner;
-
+// full
 public class StoreControllerImpl implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
@@ -44,7 +44,6 @@ public class StoreControllerImpl implements Controller {
     }
     if (next.equalsIgnoreCase("back")) {
         new CommandImpl().start();
-        //  command.start();
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();
