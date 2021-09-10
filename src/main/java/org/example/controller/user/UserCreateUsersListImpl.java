@@ -51,21 +51,6 @@ public class UserCreateUsersListImpl implements Controller {
     start();
   }
 
-  //  private void moreUsers() {
-  ////    System.out.print("Create new user ? \n \uD83D\uDC49 yes \n \uD83D\uDC49 no \n \uD83D\uDC49
-  // ");
-  ////    String next = scanner.next();
-  ////    if (next.equalsIgnoreCase("yes")) {
-  ////      createUser();
-  ////    }
-  ////    if (next.equalsIgnoreCase("no")) {
-  ////      completeList();
-  ////    } else {
-  ////      System.out.print("\n      ⚠️ Wrong ⚠️ \n \uD83D\uDCAC Please, enter again \n");
-  ////      moreUsers();
-  ////    }
-  //  }
-
   @Override
   public void start() {
     System.out.print("Create new user ? \n \uD83D\uDC49 yes \n \uD83D\uDC49 no \n \uD83D\uDC49 ");
