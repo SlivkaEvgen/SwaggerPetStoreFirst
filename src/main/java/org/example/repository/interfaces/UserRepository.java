@@ -1,4 +1,4 @@
-package org.example.request.interfaces;
+package org.example.repository.interfaces;
 
 import java.util.List;
 

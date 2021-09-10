@@ -1,4 +1,4 @@
-package org.example.request.interfaces;
+package org.example.repository.interfaces;
 
 public interface StoreRepository<T, ID> extends CrudRepository<T, ID> {
 

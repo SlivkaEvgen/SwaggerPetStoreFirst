@@ -2,7 +2,7 @@ package org.example.service;
 
 import lombok.NoArgsConstructor;
 import org.example.model.User;
-import org.example.request.UserRepositoryImpl;
+import org.example.repository.UserRepositoryImpl;
 import org.example.service.interfaces.UserService;
 
 import java.util.List;

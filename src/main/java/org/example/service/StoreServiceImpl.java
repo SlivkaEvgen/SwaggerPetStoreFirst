@@ -2,7 +2,7 @@ package org.example.service;
 
 import lombok.NoArgsConstructor;
 import org.example.model.Order;
-import org.example.request.StoreRepositoryImpl;
+import org.example.repository.StoreRepositoryImpl;
 import org.example.service.interfaces.StoreService;
 
 import java.util.Date;
