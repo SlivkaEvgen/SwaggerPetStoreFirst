@@ -59,22 +59,22 @@ public class StoreControllerImpl implements StoreController {
 
   @Override
   public void get() {
-    StoreGetImpl.getStoreFindCommand().start();
+    StoreGet.getStoreFindCommand().start();
   }
 
   @Override
   public void getInventory() {
-    StoreInventoryImpl.getStoreInventoryCommand().start();
+    StoreInventory.getStoreInventoryCommand().start();
   }
 
   @Override
   public void create() {
-    StoreCreateImpl.getStoreCreateCommand().start();
+    StoreCreate.getStoreCreateCommand().start();
   }
 
   @Override
   public void delete() {
-    StoreDeleteImpl.getStoreDeleteCommand().start();
+    StoreDelete.getStoreDeleteCommand().start();
   }
 
   @Override

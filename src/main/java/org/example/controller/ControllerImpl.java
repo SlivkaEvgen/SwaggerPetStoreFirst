@@ -30,7 +30,7 @@ public class ControllerImpl implements Controller {
       start();
     }
     if (next.equalsIgnoreCase("pet")) {
-      PetControllerImpl.getPetController().start();
+      PetControllerImpl.getPetControllerImpl().start();
       start();
     }
     if (next.equalsIgnoreCase("store")) {
@@ -38,7 +38,7 @@ public class ControllerImpl implements Controller {
       start();
     }
     if (next.equalsIgnoreCase("back")) {
-      StartImpl.getController().start();
+      Start.getController().start();
     }
     if (next.equalsIgnoreCase("stop")) {
       stop();

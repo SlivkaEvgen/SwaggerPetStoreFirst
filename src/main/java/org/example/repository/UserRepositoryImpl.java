@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.List;
 
 @NoArgsConstructor
-public class UserRepositoryImpl implements UserRepository<User, Long> {
+public class UserRepositoryImpl implements UserRepository {
 
   private final OkHttpClient OK_CLIENT = HttpConnect.getInstance();
   private final Gson GSON = new Gson();

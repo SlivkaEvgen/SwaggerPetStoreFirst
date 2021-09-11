@@ -12,7 +12,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pet implements Serializable {
+public class Pet implements Serializable,Model<Long> {
 
   private static final long serialVersionUID = 5888882349777L;
   private Long id;

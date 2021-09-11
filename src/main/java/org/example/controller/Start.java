@@ -7,14 +7,14 @@ import org.example.controller.interfaces.Controller;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class StartImpl implements Controller {
+public class Start implements Controller {
 
-  private static StartImpl controller;
+  private static Start controller;
   private final Scanner scanner = ScannerConsole.getInstance();
 
-  public static StartImpl getController() {
+  public static Start getController() {
     if (controller == null) {
-      controller = new StartImpl();
+      controller = new Start();
     }
     return controller;
   }

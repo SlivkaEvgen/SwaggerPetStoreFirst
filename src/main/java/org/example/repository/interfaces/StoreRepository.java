@@ -1,12 +1,8 @@
 package org.example.repository.interfaces;
 
-public interface StoreRepository<T, ID> extends CrudRepository<T, ID> {
+import org.example.model.Order;
 
-  void getInventory();
+public interface StoreRepository extends Repository<Order, Long> {
 
-  T getById(ID id);
-
-  T create(T t);
-
-  ID delete(ID id);
+  String getInventory();
 }

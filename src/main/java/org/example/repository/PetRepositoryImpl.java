@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.Objects;
 
 @NoArgsConstructor
-public class PetRepositoryImpl implements PetRepository<Pet, Long> {
+public class PetRepositoryImpl implements PetRepository {
 
   private final OkHttpClient OK_CLIENT = HttpConnect.getInstance();
   private final String URI_PET = PropertiesLoader.getProperties("uriPet");
@@ -99,11 +99,7 @@ public class PetRepositoryImpl implements PetRepository<Pet, Long> {
   @Override
   public Long update(Long id, String petName, String status) {
     FormBody formBody =
-        new FormBody.Builder()
-            .addEncoded("id", String.valueOf(id))
-            .addEncoded("name", petName)
-            .addEncoded("status", status)
-            .build();
+        new FormBody.Builder().addEncoded("name", petName).addEncoded("status", status).build();
     Request request =
         new Request.Builder()
             .url(HttpUrl.get(URI.create(URI_PET + "/" + id)))

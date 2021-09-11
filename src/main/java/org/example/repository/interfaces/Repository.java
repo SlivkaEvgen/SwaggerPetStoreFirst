@@ -1,6 +1,6 @@
 package org.example.repository.interfaces;
 
-public interface CrudRepository<T, ID> {
+public interface Repository<T, ID> {
 
   T getById(ID id);
 

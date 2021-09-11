@@ -67,31 +67,31 @@ public class UserControllerImpl implements UserController {
 
   @Override
   public void logIn() {
-    UserLogInImpl.getUserLoginController().start();
+    UserLogIn.getUserLoginController().start();
   }
 
   @Override
   public void logOut() {
-    UserLogOutImpl.getUserLogOutController().start();
+    UserLogOut.getUserLogOutController().start();
   }
 
   @Override
   public void get() {
-    UserGetImpl.getUserGetController().start();
+    UserGet.getUserGetController().start();
   }
 
   @Override
   public void create() {
-    UserCreateImpl.getUserCreateController().start();
+    UserCreate.getUserCreateController().start();
   }
 
   @Override
   public void update() {
-    UserUpdateImpl.getUserUpdateController().start();
+    UserUpdate.getUserUpdateController().start();
   }
 
   @Override
   public void delete() {
-    UserDeleteImpl.getUserDeleteController().start();
+    UserDelete.getUserDeleteController().start();
   }
 }

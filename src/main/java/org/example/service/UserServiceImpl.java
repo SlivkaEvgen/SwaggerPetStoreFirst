@@ -8,7 +8,7 @@ import org.example.service.interfaces.UserService;
 import java.util.List;
 
 @NoArgsConstructor
-public class UserServiceImpl implements UserService<User, Long> {
+public class UserServiceImpl implements UserService {
 
   private final UserRepositoryImpl userRepository = UserRepositoryImpl.getUserRepository();
   private static UserServiceImpl userService;
@@ -81,7 +81,6 @@ public class UserServiceImpl implements UserService<User, Long> {
     return userRepository.update(user, userName);
   }
 
-  @Override
   public Long delete(String userName) {
     return userRepository.delete(userName);
   }

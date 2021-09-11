@@ -12,19 +12,19 @@ import java.util.List;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class UserCreateUsersListImpl implements Controller {
+public class UserCreateList implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final UserServiceImpl userService = UserServiceImpl.getUserService();
   private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
   private final List<User> userList = new ArrayList<>();
-  private static UserCreateUsersListImpl userCreateUsersListController;
+  private static UserCreateList userCreateListController;
 
-  public static UserCreateUsersListImpl getUserCreateUsersListController() {
-    if (userCreateUsersListController == null) {
-      userCreateUsersListController = new UserCreateUsersListImpl();
+  public static UserCreateList getUserCreateListController() {
+    if (userCreateListController == null) {
+      userCreateListController = new UserCreateList();
     }
-    return userCreateUsersListController;
+    return userCreateListController;
   }
 
   private void completeList() {

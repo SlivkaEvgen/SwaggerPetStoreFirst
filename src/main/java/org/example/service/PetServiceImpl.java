@@ -11,7 +11,7 @@ import java.io.File;
 import java.util.List;
 
 @NoArgsConstructor
-public class PetServiceImpl implements PetService<Pet, Long> {
+public class PetServiceImpl implements PetService {
 
   private final PetRepositoryImpl petRepository = PetRepositoryImpl.getPetRepository();
   private static PetServiceImpl petService;

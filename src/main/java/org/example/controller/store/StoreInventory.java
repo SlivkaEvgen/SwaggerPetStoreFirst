@@ -5,21 +5,24 @@ import org.example.controller.interfaces.Controller;
 import org.example.service.StoreServiceImpl;
 
 @NoArgsConstructor
-public class StoreInventoryImpl implements Controller {
+public class StoreInventory implements Controller {
 
   private final StoreServiceImpl storeService = StoreServiceImpl.getStoreService();
-  private static StoreInventoryImpl storeInventoryCommand;
+  private static StoreInventory storeInventoryCommand;
 
-  public static StoreInventoryImpl getStoreInventoryCommand() {
+  public static StoreInventory getStoreInventoryCommand() {
     if (storeInventoryCommand == null) {
-      storeInventoryCommand = new StoreInventoryImpl();
+      storeInventoryCommand = new StoreInventory();
     }
     return storeInventoryCommand;
   }
 
+  private void inventory(){
+       storeService.returnsPetInventoriesByStatus();
+  }
   @Override
-  public void start() {
-    storeService.returnsPetInventoriesByStatus();
+  public  void start() {
+      inventory();
   }
 
   @Override

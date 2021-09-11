@@ -7,15 +7,15 @@ import org.example.model.Order;
 import org.example.service.StoreServiceImpl;
 
 @NoArgsConstructor
-public class StoreCreateImpl implements Controller {
+public class StoreCreate implements Controller {
 
   private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
   private final StoreServiceImpl storeService = StoreServiceImpl.getStoreService();
-  private static StoreCreateImpl storeCreateCommand;
+  private static StoreCreate storeCreateCommand;
 
-  public static StoreCreateImpl getStoreCreateCommand() {
+  public static StoreCreate getStoreCreateCommand() {
     if (storeCreateCommand == null) {
-      storeCreateCommand = new StoreCreateImpl();
+      storeCreateCommand = new StoreCreate();
     }
     return storeCreateCommand;
   }

@@ -10,15 +10,15 @@ import org.example.util.Validator;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class StoreGetImpl implements Controller {
+public class StoreGet implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final StoreServiceImpl storeService = StoreServiceImpl.getStoreService();
-  private static StoreGetImpl storeFindCommand;
+  private static StoreGet storeFindCommand;
 
-  public static StoreGetImpl getStoreFindCommand() {
+  public static StoreGet getStoreFindCommand() {
     if (storeFindCommand == null) {
-      storeFindCommand = new StoreGetImpl();
+      storeFindCommand = new StoreGet();
     }
     return storeFindCommand;
   }

@@ -1,11 +1,11 @@
 package org.example.client;
 
-import org.example.controller.StartImpl;
+import org.example.controller.Start;
 
 public class Main {
 
   public static void main(String[] args) {
 
-    StartImpl.getController().start();
+    Start.getController().start();
   }
 }

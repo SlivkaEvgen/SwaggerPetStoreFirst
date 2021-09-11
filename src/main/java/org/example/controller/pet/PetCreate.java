@@ -7,15 +7,15 @@ import org.example.model.Pet;
 import org.example.service.PetServiceImpl;
 
 @NoArgsConstructor
-public class PetCreateImpl implements Controller {
+public class PetCreate implements Controller {
 
-  private static PetCreateImpl petCreateCommand;
+  private static PetCreate petCreateCommand;
   private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
   private final PetServiceImpl petService = PetServiceImpl.getPetServiceImpl();
 
-  public static PetCreateImpl getPetCreateCommand() {
+  public static PetCreate getPetCreateCommand() {
     if (petCreateCommand == null) {
-      petCreateCommand = new PetCreateImpl();
+      petCreateCommand = new PetCreate();
     }
     return petCreateCommand;
   }

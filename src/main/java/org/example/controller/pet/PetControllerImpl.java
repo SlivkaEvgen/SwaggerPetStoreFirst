@@ -10,14 +10,14 @@ import java.util.Scanner;
 @NoArgsConstructor
 public class PetControllerImpl implements PetController {
 
-  private static PetControllerImpl petController;
+  private static PetControllerImpl petControllerImpl;
   private final Scanner scanner = ScannerConsole.getInstance();
 
-  public static PetControllerImpl getPetController() {
-    if (petController == null) {
-      petController = new PetControllerImpl();
+  public static PetControllerImpl getPetControllerImpl() {
+    if (petControllerImpl == null) {
+      petControllerImpl = new PetControllerImpl();
     }
-    return petController;
+    return petControllerImpl;
   }
 
   public void start() {
@@ -61,26 +61,26 @@ public class PetControllerImpl implements PetController {
 
   @Override
   public void get() {
-    PetGetImpl.getPetGetCommand().start();
+    PetGet.getPetGetCommand().start();
   }
 
   @Override
   public void create() {
-    PetCreateImpl.getPetCreateCommand().start();
+    PetCreate.getPetCreateCommand().start();
   }
 
   @Override
   public void update() {
-    PetUpdateImpl.getPetUpdateCommand().start();
+    PetUpdate.getPetUpdateCommand().start();
   }
 
   @Override
   public void delete() {
-    PetDeleteImpl.getPetDeleteCommand().start();
+    PetDelete.getPetDeleteCommand().start();
   }
 
   @Override
   public void uploadImage() {
-    PetUpLoadImageImpl.getPetUpLoadImageCommand().start();
+    PetUpLoadImage.getPetUpLoadImageCommand().start();
   }
 }

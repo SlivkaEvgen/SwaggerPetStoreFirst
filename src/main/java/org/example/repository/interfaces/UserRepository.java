@@ -1,20 +1,21 @@
 package org.example.repository.interfaces;
 
+import org.example.model.User;
 import java.util.List;
 
-public interface UserRepository<T, ID> {
+public interface UserRepository {
 
-  ID loginUser(String userName, String password);
+  Long loginUser(String userName, String password);
 
-  ID logOutUser();
+  Long logOutUser();
 
-  ID create(T t);
+  Long create(User user);
 
-  T getByUserName(String userName);
+  User getByUserName(String userName);
 
-  ID createListUsers(List<T> usersList);
+  Long createListUsers(List<User> usersList);
 
-  ID update(T t, String userName);
+  Long update(User user, String userName);
 
-  ID delete(String userName);
+  Long delete(String userName);
 }

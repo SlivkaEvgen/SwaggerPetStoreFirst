@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order implements Serializable {
+public class Order implements Serializable,Model<Long> {
 
   private static final long serialVersionUID = 62345888887777L;
   private Long id;

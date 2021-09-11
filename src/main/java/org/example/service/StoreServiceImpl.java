@@ -8,7 +8,7 @@ import org.example.service.interfaces.StoreService;
 import java.util.Date;
 
 @NoArgsConstructor
-public class StoreServiceImpl implements StoreService<Order, Long> {
+public class StoreServiceImpl implements StoreService {
 
   private final StoreRepositoryImpl storeRepository = StoreRepositoryImpl.getStoreRepository();
   private static StoreServiceImpl storeService;
@@ -22,7 +22,7 @@ public class StoreServiceImpl implements StoreService<Order, Long> {
 
   @Override
   public void returnsPetInventoriesByStatus() {
-    storeRepository.getInventory();
+    System.out.println(storeRepository.getInventory());
   }
 
   @Override

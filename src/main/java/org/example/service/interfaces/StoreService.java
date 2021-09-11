@@ -1,12 +1,10 @@
 package org.example.service.interfaces;
 
-public interface StoreService<T, ID> extends Service<T, ID> {
+import org.example.model.Order;
+
+public interface StoreService extends Service<Order, Long> {
 
   void returnsPetInventoriesByStatus();
 
-  T placeAnOrderForAPet(ID orderId, ID petId, Integer quantity, String status);
-
-  T findById(ID petId);
-
-  ID delete(ID orderId);
+  Order placeAnOrderForAPet(Long orderId, Long petId, Integer quantity, String status);
 }

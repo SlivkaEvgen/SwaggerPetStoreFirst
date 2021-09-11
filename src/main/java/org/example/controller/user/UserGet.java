@@ -10,15 +10,15 @@ import org.example.util.Validator;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class UserGetImpl implements Controller {
+public class UserGet implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final UserServiceImpl userService = UserServiceImpl.getUserService();
-  private static UserGetImpl userGetController;
+  private static UserGet userGetController;
 
-  public static UserGetImpl getUserGetController() {
+  public static UserGet getUserGetController() {
     if (userGetController == null) {
-      userGetController = new UserGetImpl();
+      userGetController = new UserGet();
     }
     return userGetController;
   }

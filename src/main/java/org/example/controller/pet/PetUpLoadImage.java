@@ -10,15 +10,15 @@ import java.io.File;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class PetUpLoadImageImpl implements Controller {
+public class PetUpLoadImage implements Controller {
 
-  private static PetUpLoadImageImpl petUpLoadImageCommand;
+  private static PetUpLoadImage petUpLoadImageCommand;
   private final Scanner scanner = ScannerConsole.getInstance();
   private final PetServiceImpl petService = PetServiceImpl.getPetServiceImpl();
 
-  public static PetUpLoadImageImpl getPetUpLoadImageCommand() {
+  public static PetUpLoadImage getPetUpLoadImageCommand() {
     if (petUpLoadImageCommand == null) {
-      petUpLoadImageCommand = new PetUpLoadImageImpl();
+      petUpLoadImageCommand = new PetUpLoadImage();
     }
     return petUpLoadImageCommand;
   }

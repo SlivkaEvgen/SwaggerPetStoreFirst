@@ -9,15 +9,15 @@ import org.example.util.Validator;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class UserDeleteImpl implements Controller {
+public class UserDelete implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final UserServiceImpl userService = UserServiceImpl.getUserService();
-  private static UserDeleteImpl userDeleteController;
+  private static UserDelete userDeleteController;
 
-  public static UserDeleteImpl getUserDeleteController() {
+  public static UserDelete getUserDeleteController() {
     if (userDeleteController == null) {
-      userDeleteController = new UserDeleteImpl();
+      userDeleteController = new UserDelete();
     }
     return userDeleteController;
   }

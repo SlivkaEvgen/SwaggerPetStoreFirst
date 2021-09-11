@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category implements Serializable {
+public class Category implements Serializable,Model<Long> {
 
   private static final long serialVersionUID = 7835463788887777L;
   private Long id;

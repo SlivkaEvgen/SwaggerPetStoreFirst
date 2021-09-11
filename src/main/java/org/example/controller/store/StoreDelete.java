@@ -9,15 +9,15 @@ import org.example.util.Validator;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class StoreDeleteImpl implements Controller {
+public class StoreDelete implements Controller {
 
   private final Scanner scanner = ScannerConsole.getInstance();
   private final StoreServiceImpl storeService = StoreServiceImpl.getStoreService();
-  private static StoreDeleteImpl storeDeleteCommand;
+  private static StoreDelete storeDeleteCommand;
 
-  public static StoreDeleteImpl getStoreDeleteCommand() {
+  public static StoreDelete getStoreDeleteCommand() {
     if (storeDeleteCommand == null) {
-      storeDeleteCommand = new StoreDeleteImpl();
+      storeDeleteCommand = new StoreDelete();
     }
     return storeDeleteCommand;
   }

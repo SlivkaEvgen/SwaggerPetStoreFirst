@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Tag implements Serializable {
+public class Tag implements Serializable,Model<Long> {
 
   private static final long serialVersionUID = 9382619309373L;
   private Long id;

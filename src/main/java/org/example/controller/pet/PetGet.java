@@ -10,15 +10,15 @@ import org.example.util.Validator;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class PetGetImpl implements Controller {
+public class PetGet implements Controller {
 
-  private static PetGetImpl petGetCommand;
+  private static PetGet petGetCommand;
   private final Scanner scanner = ScannerConsole.getInstance();
   private final PetServiceImpl petService = PetServiceImpl.getPetServiceImpl();
 
-  public static PetGetImpl getPetGetCommand() {
+  public static PetGet getPetGetCommand() {
     if (petGetCommand == null) {
-      petGetCommand = new PetGetImpl();
+      petGetCommand = new PetGet();
     }
     return petGetCommand;
   }

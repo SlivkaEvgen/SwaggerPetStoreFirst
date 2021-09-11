@@ -9,21 +9,21 @@ import org.example.service.PetServiceImpl;
 import java.util.Scanner;
 
 @NoArgsConstructor
-public class PetUpdateImpl implements Controller {
+public class PetUpdate implements Controller {
 
-  private static PetUpdateImpl petUpdateCommand;
+  private static PetUpdate petUpdateCommand;
   private final Scanner scanner = ScannerConsole.getInstance();
   private final EnterCommands enterCommands = EnterCommands.getEnterCommands();
   private final PetServiceImpl petService = PetServiceImpl.getPetServiceImpl();
 
-  public static PetUpdateImpl getPetUpdateCommand() {
+  public static PetUpdate getPetUpdateCommand() {
     if (petUpdateCommand == null) {
-      petUpdateCommand = new PetUpdateImpl();
+      petUpdateCommand = new PetUpdate();
     }
     return petUpdateCommand;
   }
 
-  private void UpdatesWithFormData() {
+  private void updateNameAndStatus() {
       Long update =
         petService.update(
             enterCommands.enterId(),
@@ -37,7 +37,7 @@ public class PetUpdateImpl implements Controller {
     }
   }
 
-  private void UpdateAnExistingPet() {
+  private void updatePet() {
       Pet update =
         petService.updatePut(
             enterCommands.enterId(),
@@ -57,15 +57,15 @@ public class PetUpdateImpl implements Controller {
   @Override
   public void start() {
     System.out.print(
-        "\n \uD83D\uDC49 UpdatesWithFormData\n \uD83D\uDC49 UpdateAnExistingPet\n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
+        "\n \uD83D\uDC49 updateNameAndStatus\n \uD83D\uDC49 updatePet\n   \uD83D\uDC49 BACK \n   \uD83D\uDC49 STOP\n\uD83D\uDC49 ");
     String next = scanner.next();
-    if (next.equalsIgnoreCase("UpdatesWithFormData")) {
-      UpdatesWithFormData();
+    if (next.equalsIgnoreCase("updateNameAndStatus")) {
+      updateNameAndStatus();
       start();
     }
 
-    if (next.equalsIgnoreCase("UpdateAnExistingPet")) {
-      UpdateAnExistingPet();
+    if (next.equalsIgnoreCase("updatePet")) {
+      updatePet();
       start();
     }
 

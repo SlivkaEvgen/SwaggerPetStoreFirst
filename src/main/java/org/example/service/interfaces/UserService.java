@@ -1,19 +1,21 @@
 package org.example.service.interfaces;
 
+import org.example.model.User;
+
 import java.util.List;
 
-public interface UserService<T, ID> {
+public interface UserService {
 
-  ID loginUser(String username, String password);
+  Long loginUser(String username, String password);
 
-  ID logOutUser();
+  Long logOutUser();
 
-  T getByUserName(String userName);
+  User getByUserName(String userName);
 
-  ID createListUsers(List<T> usersList);
+  Long createListUsers(List<User> usersList);
 
-  ID createNewUser(
-      ID id,
+  Long createNewUser(
+      Long id,
       String userName,
       String firstName,
       String lastName,
@@ -21,8 +23,8 @@ public interface UserService<T, ID> {
       String email,
       String phone);
 
-  ID update(
-      ID id,
+  Long update(
+      Long id,
       String userName,
       String firstName,
       String lastName,
@@ -30,5 +32,5 @@ public interface UserService<T, ID> {
       String email,
       String phone);
 
-  ID delete(String userName);
+  Long delete(String userName);
 }
